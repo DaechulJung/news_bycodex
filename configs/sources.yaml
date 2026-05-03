@@ -1,0 +1,56 @@
+sources:
+  - id: hacker_news
+    name: Hacker News Algolia
+    type: hn_algolia
+    enabled: true
+    url: https://hn.algolia.com/api/v1/search_by_date
+    credibility: 0.8
+    limit: 10
+  - id: arxiv
+    name: arXiv Search
+    type: arxiv
+    enabled: true
+    url: https://export.arxiv.org/api/query
+    credibility: 0.9
+    limit: 10
+  - id: github_search
+    name: GitHub Repository Search
+    type: github_search
+    enabled: true
+    url: https://api.github.com/search/repositories
+    credibility: 0.75
+    limit: 10
+  - id: reddit_machine_learning
+    name: Reddit MachineLearning
+    type: reddit_json
+    enabled: true
+    url: https://www.reddit.com/r/MachineLearning/new.json
+    credibility: 0.65
+    limit: 10
+  - id: huggingface_blog
+    name: Hugging Face Blog
+    type: rss
+    enabled: true
+    url: https://huggingface.co/blog/feed.xml
+    credibility: 0.85
+    limit: 10
+  - id: geeknews
+    name: GeekNews
+    type: web
+    enabled: true
+    url: https://news.hada.io/
+    credibility: 0.7
+    limit: 10
+    selectors:
+      item: "a"
+      title: "a"
+  - id: papers_with_code
+    name: Papers with Code Latest
+    type: web
+    enabled: true
+    url: https://paperswithcode.com/latest
+    credibility: 0.8
+    limit: 10
+    selectors:
+      item: "a"
+      title: "a"
