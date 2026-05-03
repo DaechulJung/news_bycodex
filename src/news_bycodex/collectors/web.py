@@ -22,7 +22,10 @@ def collect_web_html(source: SourceConfig, html: str, keywords: list[str]) -> li
         href = node.get("href") if hasattr(node, "get") else None
         if not href and title_node is not None:
             href = title_node.get("href")
-        url = urljoin(base_url, str(href or ""))
+        href_text = str(href or "").strip()
+        if not href_text:
+            continue
+        url = urljoin(base_url, href_text)
         if not title or not url:
             continue
         if keywords and not text_matches_keywords(title, keywords):

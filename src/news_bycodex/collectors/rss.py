@@ -1,4 +1,5 @@
 import feedparser
+from dateutil.parser import ParserError
 from dateutil import parser as date_parser
 
 from news_bycodex.collectors.base import text_matches_keywords
@@ -17,7 +18,10 @@ def collect_rss_text(source: SourceConfig, xml: str, keywords: list[str]) -> lis
         if keywords and not text_matches_keywords(f"{title} {summary}", keywords):
             continue
         published = entry.get("published") or entry.get("updated")
-        published_at = date_parser.parse(published) if published else None
+        try:
+            published_at = date_parser.parse(published) if published else None
+        except (ParserError, TypeError, OverflowError):
+            published_at = None
         items.append(
             RawItem(
                 source_id=source.id,

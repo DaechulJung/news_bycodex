@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 
 import httpx
 
+from news_bycodex.collectors.base import text_matches_keywords
 from news_bycodex.models import RawItem, SourceConfig
 
 
@@ -67,18 +68,21 @@ def collect_arxiv(client: httpx.Client, source: SourceConfig, keywords: list[str
 def collect_github_search(
     client: httpx.Client, source: SourceConfig, keywords: list[str]
 ) -> list[RawItem]:
-    query = " ".join(keywords[:3])
-    response = client.get(
-        str(source.url),
-        params={"q": query, "sort": "updated", "order": "desc", "per_page": source.limit},
-    )
-    response.raise_for_status()
     items: list[RawItem] = []
-    for repo in response.json().get("items", []):
-        title = repo.get("full_name", "")
-        url = repo.get("html_url", "")
-        summary = repo.get("description") or ""
-        if title and url:
+    seen_urls: set[str] = set()
+    for keyword in keywords:
+        response = client.get(
+            str(source.url),
+            params={"q": keyword, "sort": "updated", "order": "desc", "per_page": source.limit},
+        )
+        response.raise_for_status()
+        for repo in response.json().get("items", []):
+            title = repo.get("full_name", "")
+            url = repo.get("html_url", "")
+            summary = repo.get("description") or ""
+            if not title or not url or url in seen_urls:
+                continue
+            seen_urls.add(url)
             items.append(
                 RawItem(
                     source_id=source.id,
@@ -86,6 +90,7 @@ def collect_github_search(
                     source_type=source.type,
                     title=title,
                     url=url,
+                    published_at=repo.get("updated_at") or repo.get("pushed_at") or repo.get("created_at"),
                     summary=summary,
                     metadata={
                         "collector": "github_search",
@@ -93,6 +98,8 @@ def collect_github_search(
                     },
                 )
             )
+            if len(items) >= source.limit:
+                return items
     return items[: source.limit]
 
 
@@ -110,9 +117,11 @@ def collect_reddit_json(
         data = child.get("data", {})
         title = data.get("title", "")
         summary = data.get("selftext", "")
-        if keywords and not any(keyword.lower() in f"{title} {summary}".lower() for keyword in keywords):
-            continue
         permalink = data.get("permalink", "")
+        if not title or not permalink:
+            continue
+        if keywords and not text_matches_keywords(f"{title} {summary}", keywords):
+            continue
         items.append(
             RawItem(
                 source_id=source.id,
