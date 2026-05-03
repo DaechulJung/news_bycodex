@@ -93,10 +93,16 @@ def duplicate_related_items(item: RawItem, raw_items: list[RawItem]) -> list[str
     duplicates = [raw_item for raw_item in raw_items if canonical_url(raw_item.url) == duplicate_key]
     if len(duplicates) <= 1:
         return []
-    return [
-        f"{duplicate.source_name}: {duplicate.url}"
-        for duplicate in duplicates
-    ]
+    related_items = []
+    duplicate_count = item.metadata.get("duplicate_count")
+    duplicate_sources = item.metadata.get("duplicate_sources")
+    if duplicate_count is not None:
+        related_items.append(f"duplicate_count={duplicate_count}")
+    if duplicate_sources:
+        sources = ", ".join(str(source) for source in duplicate_sources)
+        related_items.append(f"duplicate_sources={sources}")
+    related_items.extend(f"{duplicate.source_name}: {duplicate.url}" for duplicate in duplicates)
+    return related_items
 
 
 def normalize_trend(item: RawItem, raw_items: list[RawItem], credibility: float, history_text: str):

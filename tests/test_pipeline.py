@@ -251,6 +251,8 @@ sources:
 
     processed_items = read_jsonl(tmp_path / "data/processed/2026-05-03/trends.jsonl")
     related_items = processed_items[0]["related_items"]
+    assert "duplicate_count=2" in related_items
+    assert "duplicate_sources=duplicate_rss, duplicate_web" in related_items
     assert any("Duplicate RSS" in item for item in related_items)
     assert any("Duplicate Web" in item for item in related_items)
     assert any("https://example.com/agent" in item for item in related_items)
