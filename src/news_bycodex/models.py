@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
 
 SourceType = Literal["rss", "hn_algolia", "arxiv", "github_search", "reddit_json", "web"]
@@ -21,6 +21,8 @@ Impact = Literal["low", "medium", "high", "strategic"]
 
 
 class SourceConfig(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     id: str
     name: str
     type: SourceType
@@ -29,6 +31,12 @@ class SourceConfig(BaseModel):
     credibility: float = Field(default=0.5, ge=0.0, le=1.0)
     limit: int = Field(default=10, ge=1, le=100)
     selectors: dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def require_url_for_enabled_sources(self) -> "SourceConfig":
+        if self.enabled and self.url is None:
+            raise ValueError("enabled sources require url")
+        return self
 
 
 class RawItem(BaseModel):

@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 import yaml
 
@@ -16,7 +16,16 @@ def _load_yaml(path: Path) -> dict[str, Any]:
 
 def load_sources(path: str | Path) -> list[SourceConfig]:
     data = _load_yaml(Path(path))
-    return [SourceConfig.model_validate(item) for item in data.get("sources", []) if item]
+    sources = data.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("sources must be a list")
+
+    configs: list[SourceConfig] = []
+    for index, item in enumerate(sources):
+        if not isinstance(item, Mapping):
+            raise ValueError(f"sources[{index}] must be a mapping")
+        configs.append(SourceConfig.model_validate(item))
+    return configs
 
 
 def load_keywords(path: str | Path) -> list[str]:
