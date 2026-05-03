@@ -24,7 +24,7 @@
 <main>
   <header>
     <h1>Agent/AI Trend Report</h1>
-    <p>{{ report.date }} · generated {{ report.generated_at.isoformat() }}</p>
+    <p>{{ report.date }} - generated {{ report.generated_at.isoformat() }}</p>
   </header>
 
   <section>
@@ -34,10 +34,11 @@
 
   <section>
     <h2>Top Trends</h2>
+    {% if report.top_trends %}
     <div class="grid">
       {% for item in report.top_trends %}
       <article class="card">
-        <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+        <h3><a href="{{ item.url | safe_url }}">{{ item.title }}</a></h3>
         <div class="meta">
           <span class="tag">{{ item.category }}</span>
           <span class="tag">{{ item.maturity }}</span>
@@ -50,12 +51,15 @@
       </article>
       {% endfor %}
     </div>
+    {% else %}
+    <p>No top trends were promoted in this run.</p>
+    {% endif %}
   </section>
 
   <section>
     <h2>Weak Signals</h2>
     {% for item in report.weak_signals %}
-    <p><a href="{{ item.url }}">{{ item.title }}</a> · {{ item.source }} · signal {{ item.signal_strength }}/5</p>
+    <p><a href="{{ item.url | safe_url }}">{{ item.title }}</a> - {{ item.source }} - signal {{ item.signal_strength }}/5</p>
     {% else %}
     <p>No weak signals were promoted in this run.</p>
     {% endfor %}
@@ -64,7 +68,7 @@
   <section>
     <h2>Noise and Deferred Items</h2>
     {% for item in report.deferred_items %}
-    <p><a href="{{ item.url }}">{{ item.title }}</a> · {{ item.source }}</p>
+    <p><a href="{{ item.url | safe_url }}">{{ item.title }}</a> - {{ item.source }}</p>
     {% else %}
     <p>No deferred items were recorded.</p>
     {% endfor %}
