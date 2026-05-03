@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>AI Blog</title>
+    <item>
+      <title>New agent framework</title>
+      <link>https://example.com/agent-framework</link>
+      <description>Agent framework release notes</description>
+      <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Unrelated database update</title>
+      <link>https://example.com/database</link>
+      <description>Storage engine details</description>
+    </item>
+  </channel>
+</rss>
