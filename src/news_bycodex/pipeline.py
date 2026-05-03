@@ -4,13 +4,14 @@ from pathlib import Path
 
 import httpx
 
-from news_bycodex.analysis import dedupe_raw_items, normalize_item
+from news_bycodex.analysis import canonical_url, dedupe_raw_items, normalize_item
 from news_bycodex.collectors.api import (
     collect_arxiv,
     collect_github_search,
     collect_hn_algolia,
     collect_reddit_json,
 )
+from news_bycodex.collectors.base import text_matches_keywords
 from news_bycodex.collectors.rss import collect_rss_text
 from news_bycodex.collectors.web import collect_web_html
 from news_bycodex.config import load_keywords, load_sources
@@ -21,8 +22,36 @@ from news_bycodex.render import render_report
 
 FIXTURE_RSS = """<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0"><channel><item><title>Fixture agent launch</title>
-<link>https://example.com/agent</link><description>Released coding agent framework</description>
+<link>https://example.com/agent</link><description>Released AI agent framework for autonomous coding agent workflows</description>
 </item></channel></rss>"""
+
+FIXTURE_WEB = """
+<html><body><a href="/agent">Fixture agentic framework launch</a></body></html>
+"""
+
+
+def fixture_raw_item(source: SourceConfig) -> RawItem:
+    return RawItem(
+        source_id=source.id,
+        source_name=source.name,
+        source_type=source.type,
+        title="Fixture agent launch",
+        url="https://example.com/agent",
+        summary="Released AI agent framework for autonomous coding agent workflows",
+        metadata={"collector": f"fixture_{source.type}"},
+    )
+
+
+def collect_fixture_source(source: SourceConfig, keywords: list[str]) -> list[RawItem]:
+    if source.type == "rss":
+        return collect_rss_text(source, FIXTURE_RSS, keywords)
+    if source.type == "web":
+        return collect_web_html(source, FIXTURE_WEB, keywords)
+
+    item = fixture_raw_item(source)
+    if keywords and not text_matches_keywords(f"{item.title} {item.summary}", keywords):
+        return []
+    return [item]
 
 
 def collect_source(
@@ -31,8 +60,8 @@ def collect_source(
     keywords: list[str],
     offline_fixtures: bool,
 ) -> list[RawItem]:
-    if offline_fixtures and source.type == "rss":
-        return collect_rss_text(source, FIXTURE_RSS, keywords)
+    if offline_fixtures:
+        return collect_fixture_source(source, keywords)
     if source.type == "rss":
         response = client.get(str(source.url), timeout=20)
         response.raise_for_status()
@@ -59,6 +88,22 @@ def executive_summary(top_count: int, weak_count: int, error_count: int) -> str:
     )
 
 
+def duplicate_related_items(item: RawItem, raw_items: list[RawItem]) -> list[str]:
+    duplicate_key = canonical_url(item.url)
+    duplicates = [raw_item for raw_item in raw_items if canonical_url(raw_item.url) == duplicate_key]
+    if len(duplicates) <= 1:
+        return []
+    return [
+        f"{duplicate.source_name}: {duplicate.url}"
+        for duplicate in duplicates
+    ]
+
+
+def normalize_trend(item: RawItem, raw_items: list[RawItem], credibility: float, history_text: str):
+    trend = normalize_item(item, source_credibility=credibility, history_text=history_text)
+    return trend.model_copy(update={"related_items": duplicate_related_items(item, raw_items)})
+
+
 def run_report(args: Namespace) -> Path:
     sources = [source for source in load_sources(args.sources) if source.enabled]
     keywords = load_keywords(args.keywords)
@@ -72,8 +117,9 @@ def run_report(args: Namespace) -> Path:
         for source in sources:
             try:
                 items = collect_source(client, source, keywords, args.offline_fixtures)
-                raw_items.extend(items[: args.limit_per_source])
-                write_jsonl(raw_dir / f"{source.id}.jsonl", items)
+                capped_items = items[: args.limit_per_source]
+                raw_items.extend(capped_items)
+                write_jsonl(raw_dir / f"{source.id}.jsonl", capped_items)
             except Exception as exc:
                 message = f"{type(exc).__name__}: {exc}"
                 source_errors.append({"source_id": source.id, "message": message})
@@ -84,9 +130,10 @@ def run_report(args: Namespace) -> Path:
     history_path = Path("memory/trend_history.md")
     history_text = history_path.read_text(encoding="utf-8") if history_path.exists() else ""
     trends = [
-        normalize_item(
+        normalize_trend(
             item,
-            source_credibility=credibility.get(item.source_id, 0.5),
+            raw_items=raw_items,
+            credibility=credibility.get(item.source_id, 0.5),
             history_text=history_text,
         )
         for item in deduped
