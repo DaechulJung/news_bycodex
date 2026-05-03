@@ -1487,7 +1487,7 @@ description: Structure raw Agent/AI news items into categorized, scored trend in
 
 # Analyze Trends
 
-Input: `data/raw/YYYY-MM-DD/*.jsonl` and `memory/*.md`.
+Input: collected `RawItem` objects in memory during `run_report`, plus `memory/trend_history.md`.
 
 Output: `data/processed/YYYY-MM-DD/trends.jsonl`.
 
@@ -1497,6 +1497,10 @@ Rules:
 - Promote strong signals when `signal_strength >= 3`.
 - Mark weak signals separately instead of discarding them.
 - Preserve source URLs and source names.
+- `data/raw/YYYY-MM-DD/*.jsonl` is the persisted audit/replay artifact for collected raw items.
+- Manual or future replay workflows may use `data/raw/YYYY-MM-DD/*.jsonl` as their input source.
+- The automated pipeline currently uses `memory/trend_history.md` for novelty checks.
+- `memory/interests.md` and `memory/noise_patterns.md` are editorial guidance for Codex/manual review until they are wired into automated scoring.
 ```
 
 Create the other skill files with matching input/output contracts:
@@ -1542,10 +1546,14 @@ Rules:
 ```markdown
 ---
 name: collect-search
-description: Discover Agent/AI trend items from keyword-driven search sources.
+description: Discover Agent/AI trend items from generic manual web search.
 ---
 
 # Collect Search
+
+Manual/future workflow: this skill describes Codex-assisted generic web search discovery and is not automated by `news-bycodex report` in the MVP pipeline today.
+
+This is separate from the implemented keyword-driven HN Algolia and GitHub API source types.
 
 Input: `configs/keywords.yaml`.
 
@@ -1556,6 +1564,7 @@ Rules:
 - Keep query text in metadata.
 - Exclude generic SEO pages when they match known noise patterns.
 - Promote search findings only after normalization and scoring.
+- Treat the input/output contract as aspirational until a generic web search workflow is implemented.
 ```
 
 ```markdown
@@ -1566,7 +1575,7 @@ description: Render processed trend intelligence into the daily HTML report.
 
 # Render HTML Report
 
-Input: `data/processed/YYYY-MM-DD/trends.jsonl`.
+Input: in-memory `ReportData` assembled by `run_report`.
 
 Output: `reports/YYYY-MM-DD.html`.
 
@@ -1574,7 +1583,8 @@ Rules:
 - Include executive summary, top trends, weak signals, deferred items, and source coverage.
 - Preserve links to original sources.
 - Mark maturity, impact, and signal strength visibly.
-- Disclose source errors from `data/raw/YYYY-MM-DD/errors.jsonl`.
+- Disclose source errors carried in `ReportData.source_errors`.
+- `data/processed/YYYY-MM-DD/trends.jsonl` and `data/raw/YYYY-MM-DD/errors.jsonl` are persisted audit artifacts, not the renderer's direct inputs in the MVP pipeline.
 ```
 
 - [ ] **Step 4: Commit**
