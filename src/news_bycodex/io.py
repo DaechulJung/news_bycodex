@@ -1,7 +1,7 @@
-import json
 from datetime import datetime, timezone
+import json
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 from pydantic import BaseModel
 
@@ -10,10 +10,20 @@ def ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
 
+def normalize_json_value(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return value.isoformat().replace("+00:00", "Z")
+    if isinstance(value, dict):
+        return {key: normalize_json_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [normalize_json_value(item) for item in value]
+    return value
+
+
 def to_jsonable(item: BaseModel | dict) -> dict:
     if isinstance(item, BaseModel):
         return item.model_dump(mode="json")
-    return item
+    return normalize_json_value(item)
 
 
 def write_jsonl(path: str | Path, items: Iterable[BaseModel | dict]) -> None:
