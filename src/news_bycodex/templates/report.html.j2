@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent/AI Trend Report - {{ report.date }}</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #172026; background: #f7f8fa; }
+    main { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+    header { border-bottom: 3px solid #172026; margin-bottom: 24px; }
+    h1 { font-size: 32px; margin: 0 0 8px; }
+    h2 { font-size: 21px; margin-top: 28px; }
+    .summary { font-size: 16px; line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .card { background: white; border: 1px solid #d9dee3; border-radius: 8px; padding: 16px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    .tag { font-size: 12px; background: #e9eef3; border-radius: 999px; padding: 4px 8px; }
+    a { color: #0b5cad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .error { color: #8a1f11; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Agent/AI Trend Report</h1>
+    <p>{{ report.date }} · generated {{ report.generated_at.isoformat() }}</p>
+  </header>
+
+  <section>
+    <h2>Executive Summary</h2>
+    <p class="summary">{{ report.executive_summary }}</p>
+  </section>
+
+  <section>
+    <h2>Top Trends</h2>
+    <div class="grid">
+      {% for item in report.top_trends %}
+      <article class="card">
+        <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+        <div class="meta">
+          <span class="tag">{{ item.category }}</span>
+          <span class="tag">{{ item.maturity }}</span>
+          <span class="tag">{{ item.impact }}</span>
+          <span class="tag">signal {{ item.signal_strength }}/5</span>
+        </div>
+        <p>{{ item.summary }}</p>
+        <p><strong>Why it matters:</strong> {{ item.why_it_matters }}</p>
+        <p><small>{{ item.source }}</small></p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section>
+    <h2>Weak Signals</h2>
+    {% for item in report.weak_signals %}
+    <p><a href="{{ item.url }}">{{ item.title }}</a> · {{ item.source }} · signal {{ item.signal_strength }}/5</p>
+    {% else %}
+    <p>No weak signals were promoted in this run.</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Noise and Deferred Items</h2>
+    {% for item in report.deferred_items %}
+    <p><a href="{{ item.url }}">{{ item.title }}</a> · {{ item.source }}</p>
+    {% else %}
+    <p>No deferred items were recorded.</p>
+    {% endfor %}
+  </section>
+
+  <section>
+    <h2>Source Coverage</h2>
+    {% for error in report.source_errors %}
+    <p class="error">{{ error.source_id }}: {{ error.message }}</p>
+    {% else %}
+    <p>All configured sources completed without recorded errors.</p>
+    {% endfor %}
+  </section>
+</main>
+</body>
+</html>
