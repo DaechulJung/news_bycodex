@@ -88,6 +88,20 @@ def executive_summary(top_count: int, weak_count: int, error_count: int) -> str:
     )
 
 
+def deterministic_timestamp(date_value: str) -> datetime:
+    return datetime.fromisoformat(date_value).replace(tzinfo=timezone.utc)
+
+
+def run_timestamp(args: Namespace) -> datetime:
+    if args.offline_fixtures:
+        return deterministic_timestamp(args.date)
+    return datetime.now(timezone.utc)
+
+
+def with_collected_at(items: list[RawItem], collected_at: datetime) -> list[RawItem]:
+    return [item.model_copy(update={"collected_at": collected_at}) for item in items]
+
+
 def duplicate_related_items(item: RawItem, raw_items: list[RawItem]) -> list[str]:
     duplicate_key = canonical_url(item.url)
     duplicates = [raw_item for raw_item in raw_items if canonical_url(raw_item.url) == duplicate_key]
@@ -118,11 +132,14 @@ def run_report(args: Namespace) -> Path:
     error_path = raw_dir / "errors.jsonl"
     raw_items: list[RawItem] = []
     source_errors: list[dict[str, str]] = []
+    generated_at = run_timestamp(args)
 
     with httpx.Client(headers={"User-Agent": "news-bycodex/0.1"}) as client:
         for source in sources:
             try:
                 items = collect_source(client, source, keywords, args.offline_fixtures)
+                if args.offline_fixtures:
+                    items = with_collected_at(items, generated_at)
                 capped_items = items[: args.limit_per_source]
                 raw_items.extend(capped_items)
                 write_jsonl(raw_dir / f"{source.id}.jsonl", capped_items)
@@ -149,7 +166,7 @@ def run_report(args: Namespace) -> Path:
     weak_signals = [item for item in trends if item.signal_strength < 3]
     report = ReportData(
         date=args.date,
-        generated_at=datetime.now(timezone.utc),
+        generated_at=generated_at,
         executive_summary=executive_summary(len(top_trends), len(weak_signals), len(source_errors)),
         top_trends=top_trends,
         weak_signals=weak_signals,

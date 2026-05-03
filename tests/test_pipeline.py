@@ -26,6 +26,26 @@ def make_args(tmp_path: Path, sources: Path, keywords: Path, *, offline_fixtures
     )
 
 
+def write_fixture_config(directory: Path) -> tuple[Path, Path]:
+    sources = directory / "sources.yaml"
+    keywords = directory / "keywords.yaml"
+    write_yaml(
+        sources,
+        """
+sources:
+  - id: fixture_rss
+    name: Fixture RSS
+    type: rss
+    enabled: true
+    url: https://example.com/rss.xml
+    credibility: 0.9
+    limit: 5
+""",
+    )
+    write_yaml(keywords, "keywords:\n  - agent\n")
+    return sources, keywords
+
+
 def test_run_report_with_offline_fixtures_writes_raw_and_processed_outputs(
     tmp_path: Path, monkeypatch
 ):
@@ -55,6 +75,34 @@ sources:
     processed_items = read_jsonl(tmp_path / "data/processed/2026-05-03/trends.jsonl")
     assert raw_items[0]["title"] == "Fixture agent launch"
     assert processed_items[0]["title"] == "Fixture agent launch"
+
+
+def test_offline_fixture_outputs_are_deterministic(tmp_path: Path, monkeypatch):
+    first_run = tmp_path / "first"
+    second_run = tmp_path / "second"
+    first_run.mkdir()
+    second_run.mkdir()
+
+    monkeypatch.chdir(first_run)
+    first_sources, first_keywords = write_fixture_config(first_run)
+    first_output = run_report(make_args(first_run, first_sources, first_keywords))
+    first_raw = (first_run / "data/raw/2026-05-03/fixture_rss.jsonl").read_text(
+        encoding="utf-8"
+    )
+    first_html = first_output.read_text(encoding="utf-8")
+
+    monkeypatch.chdir(second_run)
+    second_sources, second_keywords = write_fixture_config(second_run)
+    second_output = run_report(make_args(second_run, second_sources, second_keywords))
+    second_raw = (second_run / "data/raw/2026-05-03/fixture_rss.jsonl").read_text(
+        encoding="utf-8"
+    )
+    second_html = second_output.read_text(encoding="utf-8")
+
+    assert first_raw == second_raw
+    assert first_html == second_html
+    assert "2026-05-03T00:00:00+00:00" in first_html
+    assert "2026-05-03T00:00:00Z" in first_raw
 
 
 def test_offline_fixtures_do_not_call_network_for_any_supported_source_type(
