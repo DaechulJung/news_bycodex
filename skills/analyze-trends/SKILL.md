@@ -5,7 +5,7 @@ description: Structure raw Agent/AI news items into categorized, scored trend in
 
 # Analyze Trends
 
-Input: `data/raw/YYYY-MM-DD/*.jsonl` and `memory/trend_history.md`.
+Input: collected `RawItem` objects in memory during `run_report`, plus `memory/trend_history.md`.
 
 Output: `data/processed/YYYY-MM-DD/trends.jsonl`.
 
@@ -15,5 +15,7 @@ Rules:
 - Promote strong signals when `signal_strength >= 3`.
 - Mark weak signals separately instead of discarding them.
 - Preserve source URLs and source names.
+- `data/raw/YYYY-MM-DD/*.jsonl` is the persisted audit/replay artifact for collected raw items.
+- Manual or future replay workflows may use `data/raw/YYYY-MM-DD/*.jsonl` as their input source.
 - The automated pipeline currently uses `memory/trend_history.md` for novelty checks.
 - `memory/interests.md` and `memory/noise_patterns.md` are editorial guidance for Codex/manual review until they are wired into automated scoring.
