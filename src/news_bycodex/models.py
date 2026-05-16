@@ -4,10 +4,19 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
 
-SourceType = Literal["rss", "hn_algolia", "arxiv", "github_search", "reddit_json", "web"]
+SourceType = Literal[
+    "rss",
+    "hn_algolia",
+    "arxiv",
+    "github_search",
+    "google_search",
+    "reddit_json",
+    "web",
+]
 Category = Literal[
     "model",
     "agent_framework",
+    "harness_engineering",
     "coding_agent",
     "research",
     "product",
@@ -55,13 +64,21 @@ class TrendItem(BaseModel):
     title: str
     url: str
     source: str
+    image_url: str | None = None
     published_at: datetime | None = None
     summary: str
+    detail_summary: str = ""
     category: Category
     maturity: Maturity
     impact: Impact
     signal_strength: int = Field(ge=1, le=5)
+    hotness_score: float = 0
+    tags: list[str] = Field(default_factory=list)
+    tag_flags: dict[str, bool] = Field(default_factory=dict)
     why_it_matters: str
+    quality_score: int = Field(default=0, ge=0, le=5)
+    revision_requests: list[str] = Field(default_factory=list)
+    review_notes: list[str] = Field(default_factory=list)
     related_items: list[str] = Field(default_factory=list)
 
 
@@ -73,3 +90,4 @@ class ReportData(BaseModel):
     weak_signals: list[TrendItem]
     deferred_items: list[TrendItem]
     source_errors: list[dict[str, str]] = Field(default_factory=list)
+    editorial_reviews: list[dict[str, Any]] = Field(default_factory=list)

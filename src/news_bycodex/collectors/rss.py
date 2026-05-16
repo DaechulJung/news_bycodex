@@ -31,7 +31,31 @@ def collect_rss_text(source: SourceConfig, xml: str, keywords: list[str]) -> lis
                 url=url,
                 published_at=published_at,
                 summary=summary,
-                metadata={"collector": "rss"},
+                metadata=rss_metadata(entry),
             )
         )
     return items[: source.limit]
+
+
+def rss_metadata(entry) -> dict[str, str]:
+    metadata = {"collector": "rss"}
+    image_url = rss_image_url(entry)
+    if image_url:
+        metadata["image_url"] = image_url
+    return metadata
+
+
+def rss_image_url(entry) -> str:
+    thumbnails = entry.get("media_thumbnail") or []
+    if thumbnails:
+        thumbnail_url = thumbnails[0].get("url")
+        if thumbnail_url:
+            return str(thumbnail_url)
+    media_content = entry.get("media_content") or []
+    for content in media_content:
+        content_url = content.get("url")
+        medium = content.get("medium", "")
+        content_type = content.get("type", "")
+        if content_url and (medium == "image" or str(content_type).startswith("image/")):
+            return str(content_url)
+    return ""

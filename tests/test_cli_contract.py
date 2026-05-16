@@ -16,3 +16,33 @@ def test_cli_accepts_date_and_limit_arguments():
     assert args.command == "report"
     assert args.date == "2026-05-03"
     assert args.limit_per_source == 3
+    assert args.use_seen_db is False
+
+
+def test_cli_enables_seen_db_only_when_requested():
+    parser = build_parser()
+    args = parser.parse_args(
+        [
+            "report",
+            "--date",
+            "2026-05-03",
+            "--use-seen-db",
+        ]
+    )
+
+    assert args.use_seen_db is True
+
+
+def test_cli_accepts_codex_agents_full_mode():
+    parser = build_parser()
+    args = parser.parse_args(
+        [
+            "report",
+            "--date",
+            "2026-05-03",
+            "--codex-agents",
+            "full",
+        ]
+    )
+
+    assert args.codex_agents == "full"

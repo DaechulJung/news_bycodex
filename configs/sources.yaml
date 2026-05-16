@@ -20,6 +20,53 @@ sources:
     url: https://api.github.com/search/repositories
     credibility: 0.75
     limit: 10
+  - id: google_search
+    name: Google Search
+    type: google_search
+    enabled: true
+    url: https://www.googleapis.com/customsearch/v1
+    credibility: 0.7
+    limit: 10
+  - id: openai_news
+    name: OpenAI News
+    type: rss
+    enabled: true
+    url: https://openai.com/news/rss.xml
+    credibility: 0.95
+    limit: 15
+  - id: google_ai_blog
+    name: Google AI Blog
+    type: rss
+    enabled: true
+    url: https://blog.google/technology/ai/rss/
+    credibility: 0.9
+    limit: 15
+  - id: anthropic_news
+    name: Anthropic News
+    type: web
+    enabled: true
+    url: https://www.anthropic.com/news
+    credibility: 0.9
+    limit: 15
+    selectors:
+      item: "a[href^='/news/']"
+  - id: langchain_blog
+    name: LangChain Blog
+    type: rss
+    enabled: true
+    url: https://www.langchain.com/blog/rss.xml
+    credibility: 0.85
+    limit: 15
+  - id: llamaindex_blog
+    name: LlamaIndex Blog
+    type: web
+    enabled: true
+    url: https://www.llamaindex.ai/blog
+    credibility: 0.85
+    limit: 15
+    selectors:
+      item: ".Post"
+      title: "a[href^='/blog/']"
   - id: reddit_machine_learning
     name: Reddit MachineLearning
     type: reddit_json
@@ -54,3 +101,93 @@ sources:
     selectors:
       item: "a"
       title: "a"
+  - id: youtube_jocoding
+    name: JoCoding YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCQNE2JmbasNYbjGAcuBiRRg
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@jocoding/videos
+  - id: youtube_code_factory
+    name: Code Factory YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCxZ2AlaT0hOmxzZVbF_j_Sw
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@codefactory_official/videos
+  - id: youtube_gymcoding
+    name: GymCoding YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCZ30aWiMw5C8mGcESlAGQbA
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@gymcoding/videos
+  - id: youtube_nomad_coders
+    name: Nomad Coders YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCUpJs89fSBXNolQGOYKn0YQ
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@nomadcoders/videos
+  - id: youtube_dream_coding
+    name: Dream Coding YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UC_4u-bXaba7yrRz_6x6kb_w
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/channel/UC_4u-bXaba7yrRz_6x6kb_w/videos
+  - id: youtube_fireship
+    name: Fireship YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA
+    credibility: 0.75
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@Fireship/videos
+  - id: youtube_two_minute_papers
+    name: Two Minute Papers YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg
+    credibility: 0.75
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@TwoMinutePapers/videos
+  - id: youtube_matthew_berman
+    name: Matthew Berman YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCzi5kcwU8aT4aLR7LcYhfWQ
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@matthew_berman/videos
+  - id: youtube_wes_roth
+    name: Wes Roth YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCqcbQf6yw5KzRoDDcZ_wBSw
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@WesRoth/videos
+  - id: youtube_the_primeagen
+    name: ThePrimeagen YouTube
+    type: rss
+    enabled: true
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw
+    credibility: 0.7
+    limit: 10
+    selectors:
+      channel_url: https://www.youtube.com/@ThePrimeagen/videos

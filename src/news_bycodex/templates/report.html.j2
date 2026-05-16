@@ -1,85 +1,179 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agent/AI Trend Report - {{ report.date }}</title>
+  <title>Agent/AI 트렌드 리포트 - {{ report.date }}</title>
   <style>
     body { margin: 0; font-family: Arial, sans-serif; color: #172026; background: #f7f8fa; }
-    main { max-width: 1080px; margin: 0 auto; padding: 32px 20px; }
+    main { max-width: 1160px; margin: 0 auto; padding: 32px 20px; }
     header { border-bottom: 3px solid #172026; margin-bottom: 24px; }
     h1 { font-size: 32px; margin: 0 0 8px; }
     h2 { font-size: 21px; margin-top: 28px; }
+    h3 { font-size: 18px; line-height: 1.3; margin: 0; }
     .summary { font-size: 16px; line-height: 1.55; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
-    .card { background: white; border: 1px solid #d9dee3; border-radius: 8px; padding: 16px; }
-    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    .trend-list { display: grid; gap: 14px; }
+    .trend-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 260px;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #d9dee3;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .trend-card.no-image { grid-template-columns: minmax(0, 1fr) 260px; }
+    .trend-image { min-height: 112px; background: #e9eef3; border-radius: 6px; overflow: hidden; }
+    .trend-image img { width: 100%; height: 100%; min-height: 112px; object-fit: cover; display: block; }
+    .trend-content { min-width: 0; }
+    .trend-content p { margin: 10px 0 0; line-height: 1.5; }
+    .trend-detail { margin-top: 10px; line-height: 1.5; }
+    .trend-detail summary {
+      cursor: pointer;
+      color: #172026;
+      list-style-position: outside;
+    }
+    .trend-detail summary:hover { color: #0b5cad; }
+    .trend-detail-body {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-left: 3px solid #0b5cad;
+      background: #f3f6f9;
+      border-radius: 6px;
+      white-space: pre-line;
+    }
+    .weak-detail { margin: 4px 0 12px; }
+    .weak-detail summary::before { content: "- "; }
+    .trend-insight {
+      border-left: 1px solid #d9dee3;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .trend-insight strong { display: block; margin-bottom: 8px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
     .tag { font-size: 12px; background: #e9eef3; border-radius: 999px; padding: 4px 8px; }
+    .related { margin-top: 12px; }
+    .related ul { margin: 6px 0 0; padding-left: 18px; }
+    .related li { margin: 3px 0; }
     a { color: #0b5cad; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .error { color: #8a1f11; }
+    @media (max-width: 860px) {
+      .trend-card { grid-template-columns: 1fr; }
+      .trend-insight { border-left: 0; border-top: 1px solid #d9dee3; padding-left: 0; padding-top: 12px; }
+    }
   </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>Agent/AI Trend Report</h1>
-    <p>{{ report.date }} - generated {{ report.generated_at.isoformat() }}</p>
+    <h1>Agent/AI 트렌드 리포트</h1>
+    <p>{{ report.date }} - 생성 {{ report.generated_at.isoformat() }}</p>
   </header>
 
   <section>
-    <h2>Executive Summary</h2>
+    <h2>핵심 요약</h2>
     <p class="summary">{{ report.executive_summary }}</p>
   </section>
 
   <section>
-    <h2>Top Trends</h2>
+    <h2>핵심 트렌드</h2>
     {% if report.top_trends %}
-    <div class="grid">
+    <div class="trend-list">
       {% for item in report.top_trends %}
-      <article class="card">
-        <h3><a href="{{ item.url | safe_url }}">{{ item.title }}</a></h3>
-        <div class="meta">
-          <span class="tag">{{ item.category }}</span>
-          <span class="tag">{{ item.maturity }}</span>
-          <span class="tag">{{ item.impact }}</span>
-          <span class="tag">signal {{ item.signal_strength }}/5</span>
+      <article class="trend-card{% if not item.image_url %} no-image{% endif %}" data-layout="horizontal">
+        {% if item.image_url %}
+        <a class="trend-image" href="{{ item.url | safe_url }}">
+          <img src="{{ item.image_url | safe_url }}" alt="">
+        </a>
+        {% endif %}
+        <div class="trend-content">
+          <h3><a href="{{ item.url | safe_url }}">{{ item.title }}</a></h3>
+          <div class="meta">
+            {% for tag in item.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+            {% if not item.tags %}
+            <span class="tag">#{{ item.category }}</span>
+            {% endif %}
+            <span class="tag">{{ item.maturity }}</span>
+            <span class="tag">{{ item.impact }}</span>
+            <span class="tag">신호 {{ item.signal_strength }}/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>{{ item.summary | display_summary(item.title) }}</summary>
+            <div class="trend-detail-body">{{ item | display_detail_summary }}</div>
+          </details>
+          <p><small>{{ item.source }}</small></p>
+          {% set links = item.related_items | related_links(item.url) %}
+          {% if links %}
+          <div class="related">
+            <strong>{{ item.title }} - 근거 및 관련 링크</strong>
+            <ul>
+              {% for link in links %}
+              <li><a href="{{ link.url | safe_url }}">{{ link.label }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
         </div>
-        <p>{{ item.summary }}</p>
-        <p><strong>Why it matters:</strong> {{ item.why_it_matters }}</p>
-        <p><small>{{ item.source }}</small></p>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          {{ item.why_it_matters }}
+        </aside>
       </article>
       {% endfor %}
     </div>
     {% else %}
-    <p>No top trends were promoted in this run.</p>
+    <p>이번 실행에서 승격된 핵심 트렌드가 없습니다.</p>
     {% endif %}
   </section>
 
   <section>
-    <h2>Weak Signals</h2>
+    <h2>관찰 신호</h2>
     {% for item in report.weak_signals %}
-    <p><a href="{{ item.url | safe_url }}">{{ item.title }}</a> - {{ item.source }} - signal {{ item.signal_strength }}/5</p>
+    <p><a href="{{ item.url | safe_url }}">{{ item.title }}</a> - {{ item.source }} - 신호 {{ item.signal_strength }}/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>{{ item.summary | display_summary(item.title) }}</summary>
+      <div class="trend-detail-body">{{ item | display_detail_summary }}</div>
+    </details>
+    {% set links = item.related_items | related_links(item.url) %}
+    {% if links %}
+    <div class="related">
+      <strong>{{ item.title }} - 근거 및 관련 링크</strong>
+      <ul>
+        {% for link in links %}
+        <li><a href="{{ link.url | safe_url }}">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
     {% else %}
-    <p>No weak signals were promoted in this run.</p>
+    <p>이번 실행에서 관찰 신호가 없습니다.</p>
     {% endfor %}
   </section>
 
   <section>
-    <h2>Noise and Deferred Items</h2>
+    <h2>노이즈 및 보류 항목</h2>
     {% for item in report.deferred_items %}
     <p><a href="{{ item.url | safe_url }}">{{ item.title }}</a> - {{ item.source }}</p>
+    <details class="trend-detail weak-detail">
+      <summary>{{ item.summary | display_summary(item.title) }}</summary>
+      <div class="trend-detail-body">{{ item | display_detail_summary }}</div>
+    </details>
     {% else %}
-    <p>No deferred items were recorded.</p>
+    <p>보류 항목이 없습니다.</p>
     {% endfor %}
   </section>
 
   <section>
-    <h2>Source Coverage</h2>
+    <h2>수집 범위</h2>
     {% for error in report.source_errors %}
     <p class="error">{{ error.source_id }}: {{ error.message }}</p>
     {% else %}
-    <p>All configured sources completed without recorded errors.</p>
+    <p>설정된 모든 소스가 기록된 오류 없이 완료되었습니다.</p>
     {% endfor %}
   </section>
 </main>

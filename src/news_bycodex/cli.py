@@ -12,6 +12,17 @@ def build_parser() -> argparse.ArgumentParser:
     report.add_argument("--keywords", default="configs/keywords.yaml")
     report.add_argument("--output-dir", default="reports")
     report.add_argument("--offline-fixtures", action="store_true")
+    report.add_argument(
+        "--use-seen-db",
+        action="store_true",
+        help="Exclude items already recorded in the local seen-item database.",
+    )
+    report.add_argument(
+        "--codex-agents",
+        choices=["off", "review", "full"],
+        default="off",
+        help="Run Codex-backed editorial subagents: off, review, or full.",
+    )
     return parser
 
 

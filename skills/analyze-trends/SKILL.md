@@ -12,6 +12,8 @@ Output: `data/processed/YYYY-MM-DD/trends.jsonl`.
 Rules:
 - Deduplicate by canonical URL first.
 - Classify each item by category, maturity, impact, and signal strength.
+- Treat `harness_engineering` as a first-class category for agent harnesses, runtimes, orchestration, subagents, tool calling, MCP, evaluation, tracing, observability, and durable execution.
+- Promote agentic/harness signals when they affect production readiness, developer workflow, reliability, cost, security, or evaluation.
 - Promote strong signals when `signal_strength >= 3`.
 - Mark weak signals separately instead of discarding them.
 - Preserve source URLs and source names.

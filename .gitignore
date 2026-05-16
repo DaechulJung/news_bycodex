@@ -5,6 +5,6 @@ __pycache__/
 *.pyc
 data/raw/
 data/processed/
-reports/*.html
+data/state/
 *.log
 .env
