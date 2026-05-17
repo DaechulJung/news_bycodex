@@ -7,4 +7,5 @@ data/raw/
 data/processed/
 data/state/
 *.log
+logs/
 .env

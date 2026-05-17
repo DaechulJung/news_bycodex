@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent/AI 트렌드 리포트 - 2026-05-10</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #172026; background: #f7f8fa; }
+    main { max-width: 1160px; margin: 0 auto; padding: 32px 20px; }
+    header { border-bottom: 3px solid #172026; margin-bottom: 24px; }
+    h1 { font-size: 32px; margin: 0 0 8px; }
+    h2 { font-size: 21px; margin-top: 28px; }
+    h3 { font-size: 18px; line-height: 1.3; margin: 0; }
+    .summary { font-size: 16px; line-height: 1.55; }
+    .trend-list { display: grid; gap: 14px; }
+    .trend-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 260px;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #d9dee3;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .trend-card.no-image { grid-template-columns: minmax(0, 1fr) 260px; }
+    .trend-image { min-height: 112px; background: #e9eef3; border-radius: 6px; overflow: hidden; }
+    .trend-image img { width: 100%; height: 100%; min-height: 112px; object-fit: cover; display: block; }
+    .trend-content { min-width: 0; }
+    .trend-content p { margin: 10px 0 0; line-height: 1.5; }
+    .trend-detail { margin-top: 10px; line-height: 1.5; }
+    .trend-detail summary {
+      cursor: pointer;
+      color: #172026;
+      list-style-position: outside;
+    }
+    .trend-detail summary:hover { color: #0b5cad; }
+    .trend-detail-body {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-left: 3px solid #0b5cad;
+      background: #f3f6f9;
+      border-radius: 6px;
+      white-space: pre-line;
+    }
+    .weak-detail { margin: 4px 0 12px; }
+    .weak-detail summary::before { content: "- "; }
+    .trend-insight {
+      border-left: 1px solid #d9dee3;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .trend-insight strong { display: block; margin-bottom: 8px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+    .tag { font-size: 12px; background: #e9eef3; border-radius: 999px; padding: 4px 8px; }
+    .related { margin-top: 12px; }
+    .related ul { margin: 6px 0 0; padding-left: 18px; }
+    .related li { margin: 3px 0; }
+    a { color: #0b5cad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .error { color: #8a1f11; }
+    @media (max-width: 860px) {
+      .trend-card { grid-template-columns: 1fr; }
+      .trend-insight { border-left: 0; border-top: 1px solid #d9dee3; padding-left: 0; padding-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Agent/AI 트렌드 리포트</h1>
+    <p>2026-05-10 - 생성 2026-05-16T07:14:04.699852+00:00</p>
+  </header>
+
+  <section>
+    <h2>핵심 요약</h2>
+    <p class="summary">핵심 트렌드 2건 · 관찰 신호 20건을 정리했습니다.</p>
+  </section>
+
+  <section>
+    <h2>핵심 트렌드</h2>
+    <div class="trend-list">
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69cba99add151f0038d5bf22_OpenSWE.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents">Open SWE: An Open-Source Framework for Internal Coding Agents</a></h3>
+          <div class="meta">
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#agent_framework</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#orchestration</span>
+            <span class="tag">#open_source</span>
+            <span class="tag">#langgraph</span>
+            <span class="tag">#developer_tooling</span>
+            <span class="tag">#repo_metadata_needed</span>
+            <span class="tag">beta</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangChain의 Open SWE는 내부 코딩 에이전트 하네스 신호로 최상단 배치하되, GitHub 메타데이터 수집 전까지 채택 점수는 보류합니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- LangChain Blog RSS는 Open SWE를 internal coding agents를 위한 open-source framework로 소개한다.
+- 제공된 summary 기준 Open SWE는 Deep Agents와 LangGraph 위에 구축되어 코딩 에이전트 아키텍처의 핵심 구성요소를 제공한다.
+- 이 신호는 IDE 보조 기능보다 조직 내부 코드베이스에서 실행되는 coding-agent harness와 orchestration에 가깝다.
+- LangGraph 의존성은 stateful workflow, tool orchestration, execution graph, 중단과 재개 설계와 연결된다.
+- 입력에는 GitHub 저장소 URL, stars, forks, release tag, commit activity, issue/PR activity, 설치 예제, 라이선스 정보가 없다.
+- 따라서 공식 발표 신호는 강하지만 실제 developer adoption 점수는 repository metadata 수집 전까지 제한된다.
+인사이트
+- 코딩 에이전트가 단일 챗 UI에서 내부 개발 플랫폼과 하네스로 이동하는 흐름을 보여준다.
+- production 도입 판단에는 sandbox, approval flow, telemetry, 실패 복구, PR 생성과 리뷰 흐름이 중요하다.
+확인 포인트
+- GitHub 저장소, license, releases, 최근 commit, examples, CI/eval 포함 여부를 확인해야 한다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          내부 코딩 에이전트 프레임워크는 production agent harness의 핵심 후보가 될 수 있다. 실제 채택 가능성은 블로그 발표보다 저장소 품질과 운영 안전장치로 판단해야 한다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://openai.com/index/running-codex-safely">Running Codex safely at OpenAI</a></h3>
+          <div class="meta">
+            <span class="tag">#openai</span>
+            <span class="tag">#codex</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#security</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#telemetry</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Codex 안전 운영 원칙은 sandbox, approval, network policy, telemetry를 다루는 공식 하네스 운영 기준선으로 승격합니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- OpenAI News RSS는 Codex를 안전하게 운영하기 위한 sandboxing, approvals, network policies, telemetry를 핵심 주제로 제시한다.
+- 제공 summary는 보안과 컴플라이언스 요구가 있는 조직에서 coding agent를 도입하는 방식에 초점을 둔다.
+- 네트워크 정책과 승인 정책은 에이전트가 외부 리소스와 내부 코드에 접근할 때 권한 경계를 정하는 요소다.
+- agent-native telemetry는 일반 로그가 아니라 에이전트 작업 추적, 감사, 품질 점검에 쓰일 수 있는 운영 신호다.
+- 제품 출시보다 Codex 운영 원칙과 enterprise adoption을 뒷받침하는 공식 설명에 가깝다.
+인사이트
+- 코딩 에이전트 확산의 병목은 모델 성능뿐 아니라 sandbox, 승인, 네트워크 차단, 감사 가능성이다.
+- 내부 harness 설계에서는 이 안전장치 묶음을 baseline requirement로 삼아야 한다.
+확인 포인트
+- telemetry 이벤트, 보존 정책, 민감정보 처리, 관리자 제어 범위를 확인해야 한다.
+- sandbox에서 허용되는 파일, 네트워크, 명령 범위와 사람 승인 flow가 실제 워크플로에 맞는지 검증해야 한다.</div>
+          </details>
+          <p><small>OpenAI News</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          공식 Codex 안전 운영 설명은 기업형 coding-agent harness의 기준선을 제시한다. 보안 경계와 감사 가능성이 도입 승인에 직접 영향을 준다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/open-models-have-crossed-a-threshold">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69d77bf97ddb73352609004d_72.webp" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/open-models-have-crossed-a-threshold">Open Models have crossed a threshold</a></h3>
+          <div class="meta">
+            <span class="tag">#model</span>
+            <span class="tag">#open_source</span>
+            <span class="tag">#agentic</span>
+            <span class="tag">#tool_use</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#benchmark</span>
+            <span class="tag">#langchain</span>
+            <span class="tag">#deep_agents</span>
+            <span class="tag">#developer_tooling</span>
+            <span class="tag">beta</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>GLM-5와 MiniMax M2.7의 agent task 성능 주장은 모델 라우팅·비용 최적화 신호로 유지하되, 재현 가능한 eval 확인이 필요합니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- LangChain Blog RSS는 GLM-5와 MiniMax M2.7 같은 open models가 core agent tasks에서 closed frontier models와 맞먹는 수준에 도달했다고 설명한다.
+- 명시된 task는 file operations, tool use, instruction following이다.
+- 원문 summary는 이 모델들이 비용과 latency 측면에서 유리하며 Deep Agents에서 사용을 시작하는 방법을 다룬다고 한다.
+- developer 관점에서는 모델 발표 자체보다 agent harness의 model routing, 비용 최적화, tool-use reliability 평가와 관련된 신호다.
+- 입력에는 eval 표, benchmark harness, 반복 횟수, 실패 유형, GitHub 예제, SDK 변경, release artifact 정보가 없다.
+- Open SWE보다 repository/adoption 신호는 약하지만 production agent 비용 구조에는 높은 관련성이 있다.
+인사이트
+- open model이 agent task에서 충분히 안정적이면 coding agent와 내부 harness의 provider lock-in, latency budget, per-task routing 전략이 바뀔 수 있다.
+- 실제 적용 판단은 eval 재현성, tool-call 실패율, 파일 수정 안정성, 긴 작업 체인에서의 recovery 성능을 봐야 한다.
+확인 포인트
+- GLM-5와 MiniMax M2.7의 model card, license, API/weights availability, pricing, context limit, tool-calling schema 지원 여부를 확인해야 한다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          agent harness 운영비와 latency를 줄일 수 있는 모델 선택 신호다. 다만 production 적용은 재현 가능한 eval과 SDK/예제 수준 검증이 필요하다.
+        </aside>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>관찰 신호</h2>
+    <p><a href="https://openai.com/index/simplex">Simplex rethinks software development with Codex</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI case study는 Simplex가 ChatGPT Enterprise와 Codex로 design, build, testing 시간을 줄이며 AI-driven development workflow를 확장했다고 소개한다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News RSS는 Simplex가 ChatGPT Enterprise와 Codex를 활용해 소프트웨어 개발 방식을 바꾸고 있다고 소개한다.
+- 제공 summary는 design, build, testing 시간을 줄이고 AI-driven workflow를 확장했다는 점을 강조한다.
+- 이 항목은 신제품 출시보다 enterprise adoption case study에 가깝다.
+- Codex가 실제 조직 개발 프로세스의 설계, 구현, 테스트 단계에 들어갔다는 사용 사례로 볼 수 있다.
+- 입력에는 정량 수치, 구체적 harness 구조, human review 비율, 실패 사례가 없다.
+인사이트
+- Codex adoption 사례는 코딩 에이전트가 실험 단계에서 개발 프로세스 운영 도구로 이동 중임을 보여준다.
+- case study는 성공 사례 편향이 있으므로 생산성 수치, 리뷰 부담, 보안 승인 절차를 따로 확인해야 한다.
+확인 포인트
+- Codex가 자동 PR, 테스트, 리뷰까지 포함하는지 확인해야 한다.
+- 개발 시간 단축 수치와 코드 품질 측정 방식이 있는지 원문 상세 추출이 필요하다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=QacldO_VQww">클로드 코드 입문, 설치부터 프롬프트 1줄로 웹 만들기</a> - GymCoding YouTube - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Claude Code 설치, 요금제, PATH 오류, IDE 터미널 연동, Sonnet 기본 모델 변경을 다루는 한국어 입문 튜토리얼이다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GymCoding 영상 설명은 Claude Code 입문자를 대상으로 Mac, Windows PowerShell, Git Bash 설치 과정을 다룬다.
+- 5개월간 6,800명이 수강한 Claude Code 강의에서 많이 나온 설치 질문을 모았다고 소개한다.
+- 주요 내용은 Pro 20달러와 Max 100달러/200달러 플랜 비교, GUI/CLI 개념, PATH 환경 변수 오류 해결, 작업 디렉터리 이동, 첫 실행이다.
+- VS Code, Cursor, IntelliJ 내장 터미널에서 Claude Code를 쓰는 방법을 포함한다.
+- 기본 모델을 Opus에서 Sonnet으로 바꿔 토큰을 절약하는 흐름과 프롬프트 1줄로 오늘의 운세 웹 앱을 만드는 실습이 있다.
+- 설명란에는 Claude Code 공식 문서와 Visual Studio Code 링크가 포함되어 있다.
+인사이트
+- 신제품 발표가 아니라 Claude Code 사용 확산과 비개발자 온보딩 수요를 보여주는 교육형 신호다.
+- 설치 오류, IDE 연동, 모델 선택, 토큰 절약은 coding-agent adoption에서 반복적으로 막히는 실무 지점이다.
+확인 포인트
+- 공식 문서 기준 설치 명령, 지원 OS, 요금제, 모델 선택 방식이 영상 내용과 일치하는지 확인해야 한다.</div>
+    </details>
+    <div class="related">
+      <strong>클로드 코드 입문, 설치부터 프롬프트 1줄로 웹 만들기 - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://code.claude.com">https://code.claude.com</a></li>
+        <li><a href="https://code.visualstudio.com">https://code.visualstudio.com</a></li>
+      </ul>
+    </div>
+    <p><a href="https://openai.com/index/parloa">Parloa builds service agents customers want to talk to</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI case study는 Parloa가 OpenAI models로 real-time voice-driven customer service agents를 설계, 시뮬레이션, 배포한다고 소개한다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News RSS는 Parloa가 OpenAI 모델을 활용해 voice-driven AI customer service agents를 운영한다고 소개한다.
+- 제공 summary는 enterprises가 대화형 고객 서비스 에이전트를 design, simulate, deploy할 수 있다는 점을 강조한다.
+- 핵심은 실시간 음성 상호작용과 고객 서비스 에이전트이며, coding agent보다는 vertical agent product 사례다.
+- 모델 성능 발표가 아니라 OpenAI 기반 서비스 에이전트 배포 사례로 분류하는 것이 적절하다.
+- 입력에는 구체 모델명, latency, tool integration, 평가 지표가 없다.
+인사이트
+- 음성 고객 서비스 에이전트는 agent deployment의 중요한 제품 분야다.
+- harness 관점에서는 simulation, QA, escalation, observability 구조가 핵심이다.
+확인 포인트
+- 어떤 OpenAI 모델과 음성 stack을 쓰는지, real-time latency와 fallback 정책을 확인해야 한다.
+- 고객 서비스 에이전트의 평가 기준, escalation flow, 개인정보 처리 정책을 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.anthropic.com/news/enterprise-ai-services-company">May 4, 2026 Announcements Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs</a> - Anthropic News - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Anthropic이 Blackstone, Hellman &amp; Friedman, Goldman Sachs와 enterprise AI services company를 만든다고 발표한 회사/enterprise-services 신호다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Anthropic News 항목은 2026년 5월 4일 발표로, Blackstone, Hellman &amp; Friedman, Goldman Sachs와 새로운 enterprise AI services company를 만든다는 내용이다.
+- 제공 입력에는 본문 summary가 비어 있어 구체 제품 기능, API 변화, 모델 성능 변화는 확인되지 않는다.
+- 제목상 핵심은 Anthropic 모델 업데이트가 아니라 기업 고객 대상 AI 서비스 회사 설립이다.
+- agent harness 관점에서는 enterprise deployment, consulting/service delivery, governance 요구가 늘어나는 시장 신호로 볼 수 있다.
+- 현재 입력만으로 Claude, API, pricing, tool use, MCP 관련 변경을 주장할 근거는 없다.
+인사이트
+- 대형 금융 및 투자 파트너와의 enterprise AI services 발표는 AI 도입이 제품 판매에서 운영 서비스 패키지로 확장되는 신호다.
+- 하네스 구현자에게 직접적인 조치가 되려면 구체 플랫폼, 모델, 보안, 배포 방식이 추가 수집되어야 한다.
+확인 포인트
+- 새 회사의 역할이 consulting, managed service, platform resale, deployment tooling 중 무엇인지 확인해야 한다.
+- Claude 모델/API 변경, enterprise governance 기능, agent deployment 지원 여부가 있는지 원문 본문에서 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=PzqRRYHHpbw">지난주에 클로드를 삭제했어.</a> - Nomad Coders YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Nomad Coders가 특정 하네스 설치 후 Claude를 열지 않게 됐다는 경험담을 소개한다. 제품명과 공식 링크가 없어 강한 신호로 보기 어렵다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Nomad Coders 영상 설명은 한 번도 들어본 적 없는 어떤 하네스를 설치했고 48시간도 안 돼 Claude를 열지 않게 됐다고 말한다.
+- 설명란에는 AI 기초 강의와 AI Agents 강의 홍보 링크가 포함된다.
+- 강의 주제로 CrewAI, Autogen, OpenAI Agents SDK, ADK, LangGraph를 언급한다.
+- 실제 영상이 다루는 하네스의 이름, 저장소, 설치 방법, 비교 대상, 평가 결과는 입력에 없다.
+- 따라서 agent framework 교육/관심 신호는 있지만 특정 제품이나 릴리스 신호는 아니다.
+인사이트
+- 한국 개발자 커뮤니티에서 agent framework와 harness 용어가 교육 콘텐츠로 확산되는 흐름은 관찰할 만하다.
+- 제품명이 비어 있어 ranking 상단에 올리기보다 후속 수집 대상으로 두는 것이 안전하다.
+확인 포인트
+- transcript 또는 설명란 추가 링크에서 실제 하네스 이름, 공식 URL, GitHub 저장소를 추출해야 한다.
+- Claude 대체 주장이 개인 경험인지 반복 가능한 workflow 비교인지 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=4nQnhjimB4Y">OpenAI&#39;s ChatGPT 5.5 Instant: The Good, The Bad And The Insane</a> - Two Minute Papers YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Two Minute Papers 영상은 GPT 5.5 Instant 원문과 arXiv classifier paper를 찾는 discovery 항목으로만 유지합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Two Minute Papers 설명란은 GPT 5.5 Instant 관련 링크로 OpenAI release와 Deployment Safety Hub introduction을 제공한다.
+- Classifiers paper로 arXiv PDF 링크를 포함한다.
+- RSS summary에는 영상 자체의 평가 수치, 실험 조건, 장단점 분석 내용은 없다.
+- sponsor, Patreon, supporter, 연구자 홈페이지, thumbnail 정보가 상당 부분을 차지한다.
+- 따라서 이 항목은 YouTube 카드보다 OpenAI 공식 릴리스와 안전 문서, arXiv 논문을 primary source로 승격하는 용도가 적절하다.
+인사이트
+- YouTube는 모델 릴리스와 안전성 문서 발견 채널로 유용하지만 모델 성능/안전성 판단은 공식 문서와 논문으로 해야 한다.
+- collector는 YouTube 설명란 링크를 추출해 primary-source graph를 만드는 쪽이 보고서 품질을 높인다.
+확인 포인트
+- GPT 5.5 Instant 공식 release, safety 문서, classifier paper 요지를 별도 카드로 재구성해야 한다.
+- transcript 없이 영상 독자 주장이나 평가를 추가하면 안 된다.</div>
+    </details>
+    <div class="related">
+      <strong>OpenAI&#39;s ChatGPT 5.5 Instant: The Good, The Bad And The Insane - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://deploymentsafety.openai.com/gpt-5-5-instant/introduction">https://deploymentsafety.openai.com/gpt-5-5-instant/introduction</a></li>
+        <li><a href="https://openai.com/index/gpt-5-5-instant/">https://openai.com/index/gpt-5-5-instant/</a></li>
+        <li><a href="https://arxiv.org/pdf/2501.18837">https://arxiv.org/pdf/2501.18837</a></li>
+      </ul>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v=eCw33snvoNI">NVIDIA&#39;s New AI Turns One Photo Into A World That Never Breaks</a> - Two Minute Papers YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Two Minute Papers의 NVIDIA 영상은 Lyra 2.0 project page로 이어지는 discovery 신호다. 보고서에는 project/arXiv/model artifact를 우선해야 한다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Two Minute Papers 설명란은 NVIDIA의 한 장 사진 기반 world generation 관련 paper/project 링크를 제공한다.
+- 입력에 포함된 primary link는 NVIDIA Lyra 2.0 project page다.
+- RSS summary 자체에는 방법론, benchmark, 모델 크기, 라이선스, 코드 공개 여부가 없다.
+- sponsor, Patreon, supporter 목록이 대부분이며 영상 transcript는 없다.
+- 따라서 이 YouTube 항목은 연구 발견 채널로만 쓰고 실제 카드는 NVIDIA project page와 연결 artifact를 기준으로 다시 작성해야 한다.
+인사이트
+- 멀티모달/3D world generation 연구는 simulation, robotics, synthetic data harness와 연결될 수 있다.
+- Agent/AI daily report에서는 YouTube 제목보다 paper, weights, inference code, license가 핵심 판단 기준이다.
+확인 포인트
+- Lyra 2.0 project page에서 paper, model weights, inference code, license, hardware 요구사항을 직접 추출해야 한다.
+- agent/coding relevance가 낮으면 research 섹션으로만 유지한다.</div>
+    </details>
+    <div class="related">
+      <strong>NVIDIA&#39;s New AI Turns One Photo Into A World That Never Breaks - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://research.nvidia.com/labs/sil/projects/lyra2/">https://research.nvidia.com/labs/sil/projects/lyra2/</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>노이즈 및 보류 항목</h2>
+    <p><a href="https://www.youtube.com/shorts/96sPY1q7lMg">AI 실수 반복되면 하네스로 막으세요 | 클로드코드 hookify로 토큰 낭비 끝내는 법</a> - GymCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Claude Code에서 반복 실수를 hookify로 사전 차단하고 토큰 낭비를 줄인다는 한국어 Shorts다. 공식 도구 주장은 검증이 필요하다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GymCoding Shorts는 Claude가 같은 실수를 반복해 토큰을 낭비하는 상황을 문제로 제시한다.
+- 설명란은 Anthropic 공식 도구 hookify로 AI 실수를 사전에 차단할 수 있다고 주장한다.
+- 제시된 기능은 자주 하는 실수 등록, 같은 실수 3회 반복 시 자동 패턴 추출, 실수 발생 전 사전 차단이다.
+- 하네스 엔지니어링의 핵심 도구라고 표현하지만 입력에는 공식 문서 URL, GitHub 저장소, 릴리스 노트가 없다.
+- Mitchell Hashimoto 인용문이 포함되어 있으나 출처 검증 정보는 없다.
+인사이트
+- 반복 실패를 프롬프트로만 고치지 않고 hook/rule 기반 환경 제어로 막는 흐름은 agent harness 설계와 직접 관련 있다.
+- 현재 근거는 YouTube 설명란뿐이므로 공식 도구 여부와 기능 범위가 확인되기 전까지 약신호로 둬야 한다.
+확인 포인트
+- hookify의 공식 문서, 저장소, 설치 방법, 라이선스, Claude Code 연동 방식이 있는지 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/EKTSrPTEgn0">CLAUDE.md 자동 관리하는 공식 플러그인 | 클로드 코드</a> - GymCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>CLAUDE.md를 자동 정리하고 평가한다는 claude-md-management 플러그인 소개 Shorts다. 공식 플러그인 여부와 배포 위치 확인이 필요하다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GymCoding Shorts는 프로젝트가 진행될수록 CLAUDE.md가 비대해지는 문제를 제기한다.
+- claude-md-management 플러그인이 이 문제를 해결한다고 소개한다.
+- 설명된 하위 기능은 revise-claude-md와 claude-md-improver다.
+- revise-claude-md는 작업 종료 뒤 회의록처럼 자동 정리한다고 설명한다.
+- claude-md-improver는 6개 기준으로 CLAUDE.md를 채점하고 이슈까지 진단한다고 한다.
+- 입력에는 공식 문서, 저장소, 설치 명령, 플러그인 권한 범위가 없다.
+인사이트
+- 코딩 에이전트용 프로젝트 메모리 파일 자동 관리는 컨텍스트 품질과 비용 관리에 실무적으로 중요하다.
+- 현재는 Shorts 설명란 수준이므로 공식 배포물인지 커뮤니티 플러그인인지 분리해야 한다.
+확인 포인트
+- claude-md-management, revise-claude-md, claude-md-improver의 공식 URL 또는 GitHub 저장소를 수집해야 한다.
+- 자동 수정이 CLAUDE.md에 어떤 기준으로 쓰기 작업을 하는지, 사용자 승인 절차가 있는지 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/P0bMi2G3GTM">세션 리포트 모르면 토큰 줄줄 새요 | 클로드 코드 토큰 절약법</a> - GymCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Claude Code 세션 리포트 플러그인으로 프로젝트, 스킬, 프롬프트별 토큰 사용량과 캐시 작동 여부를 확인한다는 Shorts다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GymCoding Shorts는 Claude Code 사용 중 세션 리포트를 모르면 토큰이 계속 낭비된다고 설명한다.
+- 세션 리포트 플러그인을 카드값 명세서에 비유하며 토큰 사용량 가시화를 강조한다.
+- 제시된 기능은 프로젝트별 토큰 분석, 스킬별·프롬프트별 사용량, 캐시 작동 여부 확인, 30일·24시간 기간 옵션이다.
+- 설명란은 캐시가 토큰 비용을 1/10로 할인하지만 깨지면 무용지물이라고 주장한다.
+- 공식 문서, 플러그인 URL, 실제 비용 계산 예시는 입력에 없다.
+인사이트
+- 코딩 에이전트 운영에서 비용 관측성은 단순 팁이 아니라 팀 도입의 핵심 통제 지점이다.
+- 현재는 플러그인 실체와 수치 근거가 부족하므로 비용 최적화 약신호로 유지한다.
+확인 포인트
+- 세션 리포트 플러그인의 공식 배포 위치, 지원 Claude Code 버전, 수집하는 사용량 데이터 범위를 확인해야 한다.
+- 캐시 할인 수치와 캐시 미스 진단 방식은 공식 가격/문서로 검증해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=lkifbWtxxlk">732 bytes of Python just borked every Linux machine on earth…</a> - Fireship YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Fireship 항목은 CodeRabbit Slack Agent 후원 신호와 Linux 취약점 이야기가 섞여 있어 분리 수집이 필요합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Fireship 설명란은 CodeRabbit의 새 Slack Agent가 팀의 agentic workflow를 Slack 안에서 관리하게 해준다고 소개한다.
+- 본문 주제는 Linux kernel의 100% reliable logic flaw와 AI tool이 작성한 exploit이다.
+- 취약점은 2017년 이후 업데이트된 Linux 머신에 영향을 준다고 설명하지만 CVE, 패치 링크, 기술 분석 원문은 입력에 없다.
+- Agent/AI 관점의 직접 신호는 CodeRabbit Slack Agent와 AI exploit 작성 언급이다.
+- CodeRabbit 링크는 후원 문구에 붙어 있어 독립 제품 뉴스로 승격하려면 공식 릴리스 확인이 필요하다.
+인사이트
+- Slack 안에서 agentic workflow를 관리하는 제품은 개발팀 협업형 coding-agent 운영과 연결된다.
+- 보안 취약점과 AI exploit 작성은 agent safety와 secure coding 관점에서 중요하지만 YouTube 설명만으로는 기술 근거가 부족하다.
+확인 포인트
+- CodeRabbit Slack Agent의 공식 릴리스, 기능 범위, 권한, 가격, 지원 플랫폼을 확인해야 한다.
+- Linux 취약점은 CVE, kernel patch, security advisory, AI exploit 도구 원문을 별도로 수집해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=p7K3xfViWCE">DeepSeek V4 AI Beats Billion Dollar Systems…For Free</a> - Two Minute Papers YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>DeepSeek V4 성능 주장은 공식 model card, technical report, benchmark가 없어 deferred로 유지합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Two Minute Papers 설명란은 DeepSeek homepage, DeepSeek Engram YouTube 링크, 여러 일반 웹 링크와 X 게시물을 제공한다.
+- 제목은 DeepSeek V4가 billion dollar systems를 무료로 이긴다는 강한 성능 주장을 담고 있다.
+- RSS summary에는 모델 아키텍처, 공개 weights, API 가격, 라이선스, benchmark table, 재현 가능한 eval harness가 없다.
+- 연결된 출처도 공식 model card나 technical report가 아니라 homepage, 다른 영상, 일반 글, X 게시물 중심이다.
+- 따라서 현재는 model rumor 또는 deferred item으로 유지하는 것이 맞다.
+인사이트
+- 무료 또는 저비용 frontier급 모델 주장은 agent harness 비용 구조에 중요하지만 검증 없는 성능 주장은 보고서 신뢰도를 떨어뜨린다.
+- 공식 model card, technical report, API 문서, SWE-bench/tool-use benchmark가 나오기 전까지 상단 배치하면 안 된다.
+확인 포인트
+- DeepSeek V4 공식 발표, model card, weights/API availability, license, benchmark 결과를 확인해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=vqBSNTZeLsg">Google&#39;s INSANE new AI Agent</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth 영상은 Google/DeepMind, robotics, Gemini Nano in Chrome 등 여러 주제를 다루지만 구체 Agent 제품 출시 근거가 없다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Wes Roth 영상 설명은 EVE Online, Figure Robots, tele-operated home robots, DeepMind, Gemini Nano in Chrome 등 다양한 타임라인을 포함한다.
+- 제목은 Google의 새 AI Agent를 말하지만 설명란에서 구체적인 Google agent 제품명, 공식 링크, 릴리스 노트는 확인되지 않는다.
+- 주요 구간에는 DeepMind가 EVE Online을 AI lab으로 활용한다는 내용과 Gemini Nano in Chrome 언급이 있다.
+- sponsor와 해설성 섹션이 많고 입력에는 primary source 링크가 없다.
+- 따라서 model/agent release가 아니라 opinion/news roundup 약신호로 분류해야 한다.
+인사이트
+- Google agent 관련 키워드 탐지 후보로는 유용하지만 공식 발표가 연결되지 않으면 보고서 상단에 올리면 안 된다.
+- Gemini Nano in Chrome이나 DeepMind/EVE 주제는 별도 primary source가 수집될 때만 product/research 카드로 승격할 수 있다.
+확인 포인트
+- 설명 또는 transcript에서 Google 공식 블로그, DeepMind 발표, Chrome release note 링크를 추출해야 한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=Nn2eXwch-K0">we JUST figured out how AI thinks</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth의 일반 AI 뉴스 영상이다. 설명란에는 구체 논문, 모델, 릴리스 링크가 없어 트렌드 카드로는 부적합하다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 설명란은 최신 AI 뉴스, LLM, GenAI, AGI rollout 준비를 다룬다고만 소개한다.
+- OpenAI, Google, Anthropic, NVIDIA, Open Source AI를 폭넓게 다룬다는 채널 설명이 포함된다.
+- 구체적인 모델명, 연구 논문, 공식 발표, 제품 링크, 타임스탬프별 출처는 입력에 없다.
+- 제목은 AI가 어떻게 생각하는지 알아냈다는 식의 주장이나 관련 paper 또는 interpretability 연구 링크가 제공되지 않았다.
+인사이트
+- 광범위한 AI 해설 영상은 discovery 후보가 될 수 있지만 현재 RSS summary만으로는 보고서에 넣을 고유 사실이 없다.
+확인 포인트
+- transcript 또는 설명란 원문에서 논문/공식 발표 링크를 추출할 수 없으면 제외한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=fabe7nYQa1Q">World Banks JUST got scared...</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth 영상은 IMF의 AI 기반 사이버공격과 금융 안정성 리스크 글을 해설한다. AI agent/product 출시 신호는 아니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 설명란은 IMF article 링크를 포함하며 제목은 World Banks가 scared라는 시장 해설형 문구다.
+- 타임라인은 IMF warns about AI, Financial Stability Risks Mount, systemic risk, financialization of AI risk 등을 포함한다.
+- 영상은 금융권 AI 리스크 해설에 가깝고 구체 LLM 모델 업데이트나 개발자 도구 출시는 확인되지 않는다.
+- sponsor 링크와 채널 링크가 포함되며 Agent/AI 제품 변경 근거는 없다.
+인사이트
+- AI가 사이버공격을 촉진해 금융 안정성 리스크를 높인다는 담론은 정책/보안 맥락에서 의미가 있다.
+- daily Agent/AI harness report에서는 IMF 원문을 primary source로 따로 수집하고 YouTube는 commentary로 내려야 한다.
+확인 포인트
+- IMF 글의 날짜, 핵심 주장, 권고 사항, AI/cyber risk 근거를 원문에서 직접 추출해야 한다.
+- 모델 또는 coding-agent 태그는 제거한다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=rzVhPTSNWnE">Claude BROKE Wall Street Overnight...</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth 영상은 Anthropic/OpenAI의 Wall Street 진출, forward-deployed engineer, deployment model을 다루는 시장 해설이다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 설명란 타임라인은 AI bubble, exponentials, Anthropic and OpenAI join Wall Street, forward-deployed engineer, new deployment model을 포함한다.
+- 구체적인 Anthropic/OpenAI 공식 발표 링크, 계약명, 제품명, API 변경, 모델 릴리스는 입력에 없다.
+- 제목은 자극적이지만 내용상 enterprise deployment와 FDE 모델을 해설하는 영상으로 보인다.
+- sponsor와 채널 홍보 링크가 포함되어 있다.
+인사이트
+- AI 기업들이 enterprise deployment와 forward-deployed engineer 모델로 이동한다는 시장 흐름은 agent 도입 방식과 관련 있을 수 있다.
+- 그러나 YouTube 해설만으로는 회사 전략이나 제품 변화로 확정할 수 없으므로 company/market 약신호로 둔다.
+확인 포인트
+- Anthropic/OpenAI의 공식 enterprise announcement, hiring 자료, customer case, product page를 별도 수집해야 한다.
+- 영상 제목 기반으로 모델 업데이트 태그를 붙이지 않는다.</div>
+    </details>
+    <p><a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-april-2026/">The latest AI news we announced in April 2026</a> - Google AI Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Google April 2026 AI recap은 공식 월간 roundup 후보지만 제공 RSS summary가 mp4 alt text에 가까워 구체 제품 판단이 어렵다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Google AI Blog 항목은 The latest AI news we announced in April 2026라는 월간 AI 업데이트 모음이다.
+- 제공된 RSS summary는 underwater video와 mobile AI video mockup을 담은 mp4 설명에 가깝고 제품명이나 출시 세부가 없다.
+- 현재 입력만으로 agent harness, coding agent, MCP, tool use, pricing, deployment 관련 구체 업데이트를 확정할 수 없다.
+- 월간 recap은 여러 발표를 포함할 가능성이 있지만 카드로 올리려면 본문에서 개별 제품 항목을 분해해야 한다.
+- 지금 상태에서는 source extraction 부족 항목으로 처리하는 것이 안전하다.
+인사이트
+- Google 월간 recap은 제품 발표를 놓치지 않기 위한 수집 후보지만 RSS summary만으로는 보고서 품질을 떨어뜨린다.
+- collector가 본문 headings와 outbound links를 추출해 Gemini, AI Studio, Vertex AI, coding/tooling 관련 항목만 별도 카드화해야 한다.
+확인 포인트
+- 본문 내 제품명, 출시 상태, preview 여부, developer-facing API/SDK 변경을 추출해야 한다.</div>
+    </details>
+    <p><a href="https://blog.google/company-news/inside-google/company-announcements/the-small-brief/">See what happens when creative legends use AI to make ads for small businesses.</a> - Google AI Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Google Small Brief 항목은 supplied RSS 기준 마케팅 콘텐츠에 가까우며 agent-harness 또는 developer product change 근거가 없다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Google AI Blog 항목 제목은 creative legends가 small businesses용 ads를 AI로 만드는 내용을 다룬다.
+- 제공된 summary는 Susan Credle, Jayonta Jenkins, Tiffany Rolfe의 headshot card 설명뿐이며 본문 핵심 내용이 없다.
+- 현재 입력만으로 제품 출시, preview, API, agent workflow, coding tool, deployment 기능을 확인할 수 없다.
+- 광고 제작 사례 또는 캠페인성 콘텐츠일 가능성이 높아 agent harness report의 핵심 카드로는 부적합하다.
+- full article extraction 없이 Google tooling 또는 IDE 태그를 붙이는 것은 근거가 약하다.
+인사이트
+- AI 마케팅 캠페인은 adoption narrative로는 의미가 있을 수 있지만 agent/coding/tooling 보고서에서는 구체 제품 기능이 없으면 제외하는 편이 낫다.
+- 본문에서 실제 SMB용 광고 생성 도구, Workspace/Ads product 기능, availability가 확인될 때만 product 카드로 승격할 수 있다.
+확인 포인트
+- Google Ads, Workspace, Gemini 앱 등 실제 제품 기능 발표인지 확인해야 한다.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE5jVWg3ZEFhVGZDRXJfZ1kxUFo2OTdRVzF5dHJOTmR1eEh0NVpBRW9Tc3RQYlA5SWNIeXBMSmNqYjctemhwRTMwRjZXZmhSNmllS0E?oc=5">AI를 더 잘 쓰려면, 질문 보다 환경 - 브런치</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>브런치 글 제목은 AI 활용에서 질문보다 환경이 중요하다는 방향을 시사하지만 Google News RSS에는 본문 근거가 거의 없다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Google Search fallback으로 수집된 항목이며 keyword는 agent harness다.
+- 제목은 AI를 더 잘 쓰려면, 질문 보다 환경이라고 되어 있어 prompt 자체보다 작업 환경 설계가 중요하다는 주제를 시사한다.
+- 제공 summary는 원문 제목과 매체명 반복에 가까워 본문 주장, 사례, 도구, 방법론은 확인되지 않는다.
+- 현재 입력만으로 agent harness, tool calling, evaluation, observability, coding workflow와 직접 연결되는 구체 근거는 없다.
+- 따라서 source extraction 전에는 trend card가 아니라 수집 후보로 두는 편이 안전하다.
+인사이트
+- 환경 설계라는 키워드는 harness engineering과 맞닿아 있지만 제목만으로 내용을 확정하면 안 된다.
+- 원문이 실제로 권한 경계, 도구 세팅, 작업 디렉터리, 지식 파일, 평가 루프를 다룬다면 harness 약신호로 승격할 수 있다.
+확인 포인트
+- 브런치 원문 본문을 추출해 구체 사례, 도구명, 적용 절차, 한계가 있는지 확인해야 한다.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>수집 범위</h2>
+    <p>설정된 모든 소스가 기록된 오류 없이 완료되었습니다.</p>
+  </section>
+</main>
+</body>
+</html>
