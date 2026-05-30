@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import subprocess
 from typing import Any
 
@@ -114,10 +115,66 @@ SECRET_ENV_MARKERS = (
     "SECRET",
     "TOKEN",
 )
+CODEX_TIMEOUT_ENV = "NEWS_BYCODEX_CODEX_TIMEOUT_SECONDS"
 
 
 class CodexAgentError(RuntimeError):
     """Raised when a Codex worker process cannot return a usable JSON response."""
+
+
+def terminate_process_tree(pid: int) -> None:
+    if os.name == "nt":
+        subprocess.run(
+            ["taskkill", "/F", "/T", "/PID", str(pid)],
+            capture_output=True,
+            text=True,
+        )
+        return
+    try:
+        os.killpg(pid, signal.SIGKILL)
+    except ProcessLookupError:
+        return
+
+
+def run_worker_process(
+    command: list[str],
+    *,
+    input_text: str,
+    timeout_seconds: int,
+    cwd: Path,
+    env: dict[str, str],
+) -> subprocess.CompletedProcess[str]:
+    popen_kwargs: dict[str, Any] = {
+        "stdin": subprocess.PIPE,
+        "stdout": subprocess.PIPE,
+        "stderr": subprocess.PIPE,
+        "text": True,
+        "cwd": cwd,
+        "env": env,
+        "encoding": "utf-8",
+    }
+    if os.name != "nt":
+        popen_kwargs["start_new_session"] = True
+    process = subprocess.Popen(command, **popen_kwargs)
+    try:
+        stdout, stderr = process.communicate(input=input_text, timeout=timeout_seconds)
+    except subprocess.TimeoutExpired as exc:
+        terminate_process_tree(process.pid)
+        raise CodexAgentError(
+            f"codex exec timed out after {timeout_seconds}s: {' '.join(command)}"
+        ) from exc
+    return subprocess.CompletedProcess(command, process.returncode, stdout or "", stderr or "")
+
+
+def codex_timeout_seconds(default: int = 600) -> int:
+    raw_value = os.environ.get(CODEX_TIMEOUT_ENV)
+    if not raw_value:
+        return default
+    try:
+        timeout = int(raw_value)
+    except ValueError:
+        return default
+    return timeout if timeout > 0 else default
 
 
 def codex_role_sequence(mode: str) -> list[str]:
@@ -137,13 +194,15 @@ class CodexAgentRunner:
         workspace: str | Path | None = None,
         prompts_dir: str | Path = "prompts/roles",
         output_dir: str | Path = "data/processed/codex_agents",
-        timeout_seconds: int = 600,
+        timeout_seconds: int | None = None,
         command: str | None = None,
     ) -> None:
         self.workspace = Path(workspace or Path.cwd())
         self.prompts_dir = Path(prompts_dir)
         self.output_dir = Path(output_dir)
-        self.timeout_seconds = timeout_seconds
+        self.timeout_seconds = (
+            timeout_seconds if timeout_seconds is not None else codex_timeout_seconds()
+        )
         self.command = command or shutil.which("codex.cmd") or shutil.which("codex") or "codex"
 
     def run(self, role: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -170,21 +229,22 @@ class CodexAgentRunner:
             str(role_output_path),
             "-",
         ]
-        completed = subprocess.run(
+        completed = run_worker_process(
             command,
-            input=prompt,
-            text=True,
-            capture_output=True,
-            timeout=self.timeout_seconds,
+            input_text=prompt,
+            timeout_seconds=self.timeout_seconds,
             cwd=self.workspace,
             env=sanitized_environment(),
-            encoding="utf-8",
         )
         if completed.returncode != 0:
             raise CodexAgentError(
                 f"codex exec failed for {role}: {completed.stderr or completed.stdout}"
             )
-        response_text = role_output_path.read_text(encoding="utf-8") if role_output_path.exists() else completed.stdout
+        response_text = (
+            role_output_path.read_text(encoding="utf-8")
+            if role_output_path.exists()
+            else completed.stdout
+        )
         try:
             return parse_json_response(response_text)
         except ValueError as exc:
@@ -295,7 +355,9 @@ def build_agent_payload(
     raw_items: list[RawItem],
     mode: str,
 ) -> dict[str, Any]:
-    selected_raw_items = raw_items_for_role(role, raw_items) if role in SOURCE_REPORTER_ROLES else raw_items
+    selected_raw_items = (
+        raw_items_for_role(role, raw_items) if role in SOURCE_REPORTER_ROLES else raw_items
+    )
     return {
         "mode": mode,
         "role": role,
@@ -315,7 +377,9 @@ def raw_item_matches_role(item: RawItem, role: str) -> bool:
     if role == "research_reporter":
         return any(marker in source for marker in ["arxiv", "papers", "benchmark", "research"])
     if role == "developer_reporter":
-        return any(marker in source for marker in ["github", "developer", "langchain", "llamaindex"])
+        return any(
+            marker in source for marker in ["github", "developer", "langchain", "llamaindex"]
+        )
     if role == "youtube_reporter":
         return "youtube" in source
     if role == "product_reporter":
@@ -401,7 +465,9 @@ def apply_codex_agent_response(
     original_sections = section_by_url(report)
     errors: list[str] = []
     updated_count = apply_trend_updates(trends_by_url, response.get("trend_updates"), errors)
-    top_trends, weak_signals, deferred_items = apply_section_updates(report, trends_by_url, response)
+    top_trends, weak_signals, deferred_items = apply_section_updates(
+        report, trends_by_url, response
+    )
     moved_count = count_section_moves(
         original_sections,
         {
@@ -499,7 +565,11 @@ def normalize_trend_update_shape(update: dict[str, Any]) -> dict[str, Any]:
         return update
     if len(update) == 1:
         url, value = next(iter(update.items()))
-        if isinstance(url, str) and url.startswith(("http://", "https://")) and isinstance(value, dict):
+        if (
+            isinstance(url, str)
+            and url.startswith(("http://", "https://"))
+            and isinstance(value, dict)
+        ):
             return {"url": url, **value}
     return update
 

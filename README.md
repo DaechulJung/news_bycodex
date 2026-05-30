@@ -32,6 +32,18 @@ Run the full Codex editorial chain:
 uv run news-bycodex report --date 2026-05-03 --limit-per-source 5 --codex-agents full
 ```
 
+Generate every missing report from the earliest existing `reports/YYYY-MM-DD.html` through a date:
+
+```powershell
+uv run news-bycodex catch-up --through-date 2026-05-30 --output-dir reports --codex-agents full
+```
+
+For unattended catch-up runs, cap each Codex worker role with:
+
+```powershell
+$env:NEWS_BYCODEX_CODEX_TIMEOUT_SECONDS = "180"
+```
+
 `--codex-agents full` runs source reporters, the trend analyst, editor-in-chief, and final
 reviewer through `codex exec`. Use `--codex-agents review` when only the final Codex review pass is
 needed. If a Codex worker fails or returns invalid JSON, the deterministic report still renders and

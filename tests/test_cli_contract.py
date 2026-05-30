@@ -46,3 +46,23 @@ def test_cli_accepts_codex_agents_full_mode():
     )
 
     assert args.codex_agents == "full"
+
+
+def test_cli_accepts_catch_up_report_generation_arguments():
+    parser = build_parser()
+    args = parser.parse_args(
+        [
+            "catch-up",
+            "--through-date",
+            "2026-05-30",
+            "--output-dir",
+            "reports",
+            "--codex-agents",
+            "full",
+        ]
+    )
+
+    assert args.command == "catch-up"
+    assert args.through_date == "2026-05-30"
+    assert args.output_dir == "reports"
+    assert args.codex_agents == "full"

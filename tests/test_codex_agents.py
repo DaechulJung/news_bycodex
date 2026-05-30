@@ -2,7 +2,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 import subprocess
 
+import pytest
+
 from news_bycodex.agents.codex_runner import (
+    CodexAgentError,
     CodexAgentRunner,
     apply_codex_agent_response,
     codex_role_sequence,
@@ -99,8 +102,13 @@ def test_apply_codex_agent_response_updates_trend_fields_and_sections():
     assert audit["role"] == "editor_in_chief"
     assert audit["updated_count"] == 1
     assert updated.top_trends[0].url == "https://example.com/codex-goal"
-    assert updated.top_trends[0].summary == "Codex subagent rewrote this as a concise Korean summary"
-    assert updated.top_trends[0].detail_summary == "핵심 정리\n- Codex subagent wrote detailed Korean context."
+    assert (
+        updated.top_trends[0].summary == "Codex subagent rewrote this as a concise Korean summary"
+    )
+    assert (
+        updated.top_trends[0].detail_summary
+        == "핵심 정리\n- Codex subagent wrote detailed Korean context."
+    )
     assert updated.top_trends[0].impact == "strategic"
     assert updated.top_trends[0].tags == ["#coding_agent", "#openai", "#cli"]
     assert updated.editorial_reviews[0]["reviewer"] == "codex_final_reviewer"
@@ -141,7 +149,7 @@ def test_codex_runner_places_global_flags_before_exec(tmp_path: Path, monkeypatc
         output_path.write_text('{"notes": ["ok"]}', encoding="utf-8")
         return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
 
-    monkeypatch.setattr("news_bycodex.agents.codex_runner.subprocess.run", fake_run)
+    monkeypatch.setattr("news_bycodex.agents.codex_runner.run_worker_process", fake_run)
     runner = CodexAgentRunner(
         workspace=tmp_path,
         prompts_dir=prompts,
@@ -156,6 +164,49 @@ def test_codex_runner_places_global_flags_before_exec(tmp_path: Path, monkeypatc
     assert command.index("--ask-for-approval") < exec_index
     assert command.index("--sandbox") < exec_index
     assert command.index("-C") < exec_index
+
+
+def test_codex_runner_kills_worker_process_tree_on_timeout(tmp_path: Path, monkeypatch):
+    prompts = tmp_path / "prompts"
+    prompts.mkdir()
+    (prompts / "trend_analyst.md").write_text("# Trend Analyst", encoding="utf-8")
+    killed = []
+
+    class TimeoutProcess:
+        pid = 12345
+        returncode = None
+
+        def communicate(self, **kwargs):
+            raise subprocess.TimeoutExpired(cmd=["codex"], timeout=1)
+
+    monkeypatch.setattr(
+        "news_bycodex.agents.codex_runner.subprocess.Popen",
+        lambda *args, **kwargs: TimeoutProcess(),
+    )
+    monkeypatch.setattr(
+        "news_bycodex.agents.codex_runner.terminate_process_tree",
+        lambda pid: killed.append(pid),
+    )
+    runner = CodexAgentRunner(
+        workspace=tmp_path,
+        prompts_dir=prompts,
+        output_dir=tmp_path / "out",
+        timeout_seconds=1,
+        command="codex",
+    )
+
+    with pytest.raises(CodexAgentError, match="timed out"):
+        runner.run("trend_analyst", {"report": {}})
+
+    assert killed == [12345]
+
+
+def test_codex_runner_reads_timeout_from_environment(tmp_path: Path, monkeypatch):
+    monkeypatch.setenv("NEWS_BYCODEX_CODEX_TIMEOUT_SECONDS", "45")
+
+    runner = CodexAgentRunner(workspace=tmp_path)
+
+    assert runner.timeout_seconds == 45
 
 
 def test_codex_runner_prompt_requires_source_grounded_detailed_summary(tmp_path: Path):
