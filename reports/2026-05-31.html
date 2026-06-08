@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent/AI 트렌드 리포트 - 2026-05-31</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #172026; background: #f7f8fa; }
+    main { max-width: 1160px; margin: 0 auto; padding: 32px 20px; }
+    header { border-bottom: 3px solid #172026; margin-bottom: 24px; }
+    h1 { font-size: 32px; margin: 0 0 8px; }
+    h2 { font-size: 21px; margin-top: 28px; }
+    h3 { font-size: 18px; line-height: 1.3; margin: 0; }
+    .summary { font-size: 16px; line-height: 1.55; }
+    .trend-list { display: grid; gap: 14px; }
+    .trend-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 260px;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #d9dee3;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .trend-card.no-image { grid-template-columns: minmax(0, 1fr) 260px; }
+    .trend-image { min-height: 112px; background: #e9eef3; border-radius: 6px; overflow: hidden; }
+    .trend-image img { width: 100%; height: 100%; min-height: 112px; object-fit: cover; display: block; }
+    .trend-content { min-width: 0; }
+    .trend-content p { margin: 10px 0 0; line-height: 1.5; }
+    .trend-detail { margin-top: 10px; line-height: 1.5; }
+    .trend-detail summary {
+      cursor: pointer;
+      color: #172026;
+      list-style-position: outside;
+    }
+    .trend-detail summary:hover { color: #0b5cad; }
+    .trend-detail-body {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-left: 3px solid #0b5cad;
+      background: #f3f6f9;
+      border-radius: 6px;
+      white-space: pre-line;
+    }
+    .weak-detail { margin: 4px 0 12px; }
+    .weak-detail summary::before { content: "- "; }
+    .trend-insight {
+      border-left: 1px solid #d9dee3;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .trend-insight strong { display: block; margin-bottom: 8px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+    .tag { font-size: 12px; background: #e9eef3; border-radius: 999px; padding: 4px 8px; }
+    .related { margin-top: 12px; }
+    .related ul { margin: 6px 0 0; padding-left: 18px; }
+    .related li { margin: 3px 0; }
+    a { color: #0b5cad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .error { color: #8a1f11; }
+    @media (max-width: 860px) {
+      .trend-card { grid-template-columns: 1fr; }
+      .trend-insight { border-left: 0; border-top: 1px solid #d9dee3; padding-left: 0; padding-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Agent/AI 트렌드 리포트</h1>
+    <p>2026-05-31 - 생성 2026-06-07T05:03:06.780503+00:00</p>
+  </header>
+
+  <section>
+    <h2>핵심 요약</h2>
+    <p class="summary">핵심 트렌드 7건 · 관찰 신호 17건 · 수집 이슈 1건을 정리했습니다.</p>
+  </section>
+
+  <section>
+    <h2>핵심 트렌드</h2>
+    <div class="trend-list">
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/langsmith-sandboxes-generally-available">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6a18c6d7cbf740622caf3469_langsmith%20sandboxes.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/langsmith-sandboxes-generally-available">LangSmith Sandboxes are Generally Available</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#agent_runtime</span>
+            <span class="tag">#sandbox</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#release</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangSmith Sandboxes GA는 coding agents, CI agents, data pipelines를 위한 kernel-isolated microVM 실행 환경을 제품화한 강한 developer/runtime 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- LangChain은 LangSmith Sandboxes가 generally available 상태라고 소개합니다.
+- 실행 환경은 kernel-isolated microVMs로 설명됩니다.
+- snapshots와 parallel forks를 지원합니다.
+- service URLs와 auth proxies가 포함됩니다.
+- 대상 사용 사례는 coding agents, CI agents, data pipelines입니다.
+
+인사이트
+- 개발자 관점에서 이 항목은 단순 관찰 도구가 아니라 에이전트가 코드를 실행하는 런타임 계층입니다.
+- snapshot/fork 기능은 coding agent eval, 회귀 재현, CI agent 병렬 실험에 직접적인 실용성이 있습니다.
+- 입력에는 GitHub 저장소, stars, forks, SDK 버전 정보가 없으므로 채택 수치 평가는 보류해야 합니다.
+
+확인 포인트
+- microVM 권한 경계, 네트워크 격리, 파일시스템 수명 주기를 확인해야 합니다.
+- auth proxies가 토큰 주입과 회수를 어떻게 처리하는지 확인해야 합니다.
+- SDK/API 예제와 CI 통합 샘플이 공개되어 있는지 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+          <div class="related">
+            <strong>LangSmith Sandboxes are Generally Available - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.langchain.com/blog/introducing-langsmith-engine">https://www.langchain.com/blog/introducing-langsmith-engine</a></li>
+              <li><a href="https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes">https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          production coding agent를 만들 때 안전한 실행, 재현 가능한 스냅샷, 병렬 평가 환경이 핵심 인프라가 되기 때문입니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/introducing-langsmith-engine">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6a18c6cb88253b878b64a363_langsmith%20engine.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/introducing-langsmith-engine">Introducing Langsmith Engine</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#agentic</span>
+            <span class="tag">#release</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangSmith Engine은 production traces를 감시하고 agent failures를 named issues로 클러스터링하며 targeted fixes와 eval coverage를 제안하는 운영형 eval/observability 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- LangSmith Engine은 production traces를 watch한다고 설명됩니다.
+- agent failures를 named issues로 clustering합니다.
+- 각 이슈에 대해 targeted fixes를 제안합니다.
+- eval coverage 제안도 포함됩니다.
+- 목적은 agent failure의 수동 triage를 줄이는 것입니다.
+
+인사이트
+- developer reporter 관점에서 핵심은 production incident를 eval backlog와 연결하는 루프입니다.
+- 실패 클러스터링, targeted fix, eval coverage 제안은 coding agent와 agent app의 운영 품질 개선에 직접 연결됩니다.
+- 입력에는 GitHub repo, release changelog, adoption metrics가 없어 실제 개발자 사용량은 확인되지 않았습니다.
+
+확인 포인트
+- targeted fixes가 코드 패치, PR 제안, 분석 리포트 중 어느 수준인지 확인해야 합니다.
+- eval coverage 제안이 LangSmith 내부 평가만 지원하는지, 외부 eval framework와 연동되는지 확인해야 합니다.
+- failure clustering 정확도와 false grouping을 검증할 샘플/벤치마크가 있는지 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+          <div class="related">
+            <strong>Introducing Langsmith Engine - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.langchain.com/blog/langsmith-sandboxes-generally-available">https://www.langchain.com/blog/langsmith-sandboxes-generally-available</a></li>
+              <li><a href="https://www.langchain.com/blog/may-2026-langchain-newsletter">https://www.langchain.com/blog/may-2026-langchain-newsletter</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          운영 trace를 보고 끝나는 것이 아니라 실패 유형을 eval과 수정 제안으로 되돌리는 agent harness 품질 루프를 제품화했기 때문입니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://www.llamaindex.ai/blog/llamaindex-newsletter-5-26-26">LlamaIndex Newsletter 5-26-26</a></h3>
+          <div class="meta">
+            <span class="tag">#llamaindex</span>
+            <span class="tag">#llamaparse</span>
+            <span class="tag">#developer_examples</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#tool_use</span>
+            <span class="tag">#api</span>
+            <span class="tag">#release</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LlamaIndex 뉴스레터는 LlamaParse HEIC 파싱, job latency metrics, Google sandboxed Agents API 템플릿, SEC filing QA 데모를 묶은 실용적인 developer example 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- LlamaParse가 Apple HEIC 파일을 네이티브로 파싱한다고 소개합니다.
+- Parse, Extract, Classify job마다 latency metrics가 제공된다고 설명합니다.
+- Google의 새로운 sandboxed Agents API에 LlamaParse를 연결하는 템플릿을 공개했다고 합니다.
+- SEC filing에 대해 질문에 답하고 원본 PDF 위 citation을 하이라이트하는 600-line demo agent를 언급합니다.
+- ParseBench webinar 안내도 포함되어 파싱 평가 흐름과 연결됩니다.
+
+인사이트
+- 개발자 관점에서 템플릿과 600-line demo agent는 실제 하네스 구현에 재사용 가능한 신호입니다.
+- latency metrics는 문서 기반 agent pipeline의 병목과 SLA를 다루는 데 중요합니다.
+- 입력에는 템플릿 저장소 URL, stars, forks, release tag가 없으므로 GitHub 활동 수치는 별도 확인이 필요합니다.
+
+확인 포인트
+- Google sandboxed Agents API 템플릿이 GitHub 예제로 공개됐는지 확인해야 합니다.
+- SEC filing demo agent의 코드 위치, 라이선스, 의존성, 재사용 가능성을 확인해야 합니다.
+- latency metrics가 API 응답, 대시보드, 로그 중 어디에 노출되는지 확인해야 합니다.</div>
+          </details>
+          <p><small>LlamaIndex Blog</small></p>
+          <div class="related">
+            <strong>LlamaIndex Newsletter 5-26-26 - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.llamaindex.ai/blog/building-a-financial-document-pipeline-with-llamaparse">https://www.llamaindex.ai/blog/building-a-financial-document-pipeline-with-llamaparse</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          문서 파싱, 에이전트 샌드박스, latency 관찰, citation UX가 하나의 개발자 워크플로 예제로 묶였기 때문입니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6a15d44fbcc56ddb5fa6ef30_mission-control.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/mission-control-operating-self-hosted-langsmith-on-kubernetes">Mission Control for Self-Hosted LangSmith on Kubernetes</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#kubernetes</span>
+            <span class="tag">#self_hosted</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#deployment</span>
+            <span class="tag">#release</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Mission Control은 self-hosted LangSmith를 Kubernetes에서 운영하기 위한 in-cluster config, preflight checks, health views, releases, diagnostics 기능을 제공하는 운영 하네스 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- Mission Control은 teams가 Kubernetes에서 self-hosted LangSmith를 운영하도록 돕는 기능으로 설명됩니다.
+- in-cluster config를 지원합니다.
+- preflight checks로 배포 전 설정 문제를 점검할 수 있습니다.
+- health views로 운영 상태를 확인하는 흐름을 제공합니다.
+- releases와 diagnostics 기능도 함께 언급됩니다.
+
+인사이트
+- 개발자 플랫폼 관점에서 agent observability를 SaaS가 아닌 자체 클러스터에 두려는 팀에게 중요한 운영 기능입니다.
+- preflight, health, diagnostics는 production agent harness의 day-2 operation 비용을 줄이는 요소입니다.
+- 입력에는 Helm chart, operator, GitHub repo, release cadence 정보가 없어 배포 생태계 지표는 확인되지 않았습니다.
+
+확인 포인트
+- Mission Control이 어떤 배포 아티팩트와 함께 제공되는지 확인해야 합니다.
+- diagnostics가 trace, prompt, eval data 같은 민감 데이터를 외부로 전송하는지 확인해야 합니다.
+- release management가 Kubernetes manifest, Helm, operator 중 무엇과 연결되는지 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+          <div class="related">
+            <strong>Mission Control for Self-Hosted LangSmith on Kubernetes - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.langchain.com/blog/langsmith-sandboxes-generally-available">https://www.langchain.com/blog/langsmith-sandboxes-generally-available</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          에이전트 관찰성과 평가 데이터를 내부 Kubernetes 환경에서 운영하려는 팀에게 배포 검증과 진단 기능은 실제 도입 가능성을 좌우합니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="http://arxiv.org/abs/2605.25958v1">PolyGnosis 2.0: Enhancing LLM Reasoning via Agentic Harness Engineering for Polymarket and OSINT Insight Extraction</a></h3>
+          <div class="meta">
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#agentic</span>
+            <span class="tag">#orchestration</span>
+            <span class="tag">#benchmark</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#research</span>
+            <span class="tag">#paper</span>
+            <span class="tag">#tool_use</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">prototype</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>PolyGnosis 2.0은 reflection, tool-calling, divide-and-conquer partitioning, deterministic validation을 비교한 agentic harness engineering 연구 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약
+- PolyGnosis 2.0은 Polymarket anomaly signal과 GDELT 중심 글로벌 OSINT 스트림을 합성하는 멀티에이전트 아키텍처로 설명됩니다.
+- Polymarket sentiment와 글로벌 미디어 흐름 사이의 narrative divergence인 Perspective Mismatches를 high-alpha trading signal로 정의합니다.
+- reflection loop, tool-calling, divide-and-conquer partitioning, chain-of-thought 같은 Harness Engineering 기법을 금융 도메인에서 비교합니다.
+- human-expert benchmark를 사용하며 분석 정밀도, latency, token overhead의 균형을 본다고 설명합니다.
+- 구조적 partitioning은 multi-dimensional alignment에 필수적이지만 unconstrained terminal reflection은 logical drift를 유발할 수 있다고 보고합니다.
+- 모든 agent configuration에서 narrative reasoning 중 consensus bias가 관찰되어 deterministic validation 필요성을 주장합니다.
+- professional-grade analytical precision과 비용/지연 최소화를 동시에 노리는 Pareto-optimal configuration을 분리했다고 설명합니다.
+
+인사이트
+- 개발자 관점에서는 특정 금융 앱보다 reflection loop와 partitioning을 운영 하네스 변수로 분리했다는 점이 유용합니다.
+- 무제한 reflection이 자동으로 품질을 높이지 않고 logical drift를 만들 수 있다는 관찰은 production agent 설계에서 eval gate가 필요하다는 근거입니다.
+- 입력에는 코드 저장소, stars/forks, reproducibility artifact가 없어 구현 채택 신호는 아직 약합니다.
+
+확인 포인트
+- 논문 코드, 프롬프트, 데이터 추출 스크립트가 공개됐는지 확인해야 합니다.
+- human-expert benchmark의 규모, 라벨링 방식, 평가자 수를 확인해야 합니다.
+- Pareto-optimal configuration이 다른 기간이나 다른 OSINT 도메인에서도 검증됐는지 확인해야 합니다.</div>
+          </details>
+          <p><small>arXiv Search</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          agent harness 설계에서 reflection, tool-use, partitioning, deterministic validation을 실험 변수로 다룬 연구라 production agent 평가 설계에 참고 가치가 있습니다.
+        </aside>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>관찰 신호</h2>
+    <p><a href="https://www.langchain.com/blog/may-2026-langchain-newsletter">Fixing agent failures in production: Interrupt 2026 recap | LangChain Newsletter</a> - LangChain Blog - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>LangChain Newsletter는 Interrupt 2026에서 LangSmith Engine, Sandboxes GA, LangChain Labs, LinkedIn/Rippling/Cisco 발표를 묶은 생태계 recap입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 글은 Interrupt 2026의 two days를 recap한다고 설명합니다.
+- 핵심 항목으로 LangSmith Engine이 언급됩니다.
+- Sandboxes GA도 함께 언급됩니다.
+- LangChain Labs와 23 talks가 포함됩니다.
+- 발표 팀에는 LinkedIn, Rippling, Cisco 등이 포함된다고 설명됩니다.
+- 콘텐츠는 now on demand로 제공된다고 합니다.
+
+인사이트
+- developer reporter 관점에서는 ecosystem/adoption 보조 신호입니다.
+- 개별 제품 release는 LangSmith Engine과 Sandboxes GA 항목에서 직접 다루는 편이 정확합니다.
+- LinkedIn, Rippling, Cisco 발표는 기업 개발팀 채택 신호가 될 수 있지만 입력에는 발표 세부 내용이 없습니다.
+
+확인 포인트
+- 23 talks 중 production agent failure, eval, observability, coding agent 사례가 무엇인지 확인해야 합니다.
+- LangChain Labs가 개발자 프로그램인지 제품/SDK인지 확인해야 합니다.
+- 개별 발표 URL과 중복 노출을 줄여야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Fixing agent failures in production: Interrupt 2026 recap | LangChain Newsletter - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://www.langchain.com/blog/introducing-langsmith-engine">https://www.langchain.com/blog/introducing-langsmith-engine</a></li>
+        <li><a href="https://www.langchain.com/blog/langsmith-sandboxes-generally-available">https://www.langchain.com/blog/langsmith-sandboxes-generally-available</a></li>
+      </ul>
+    </div>
+    <p><a href="https://www.llamaindex.ai/blog/building-a-financial-document-pipeline-with-llamaparse">Building a Financial Document Pipeline with LlamaParse</a> - LlamaIndex Blog - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>LlamaParse 금융 문서 파이프라인 글은 loan underwriting pipeline을 만드는 hands-on workshop 사례로, developer example 신호는 있으나 제품 발표는 아닙니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- LlamaIndex의 Logan, Head of OSS가 NYC hands-on workshop을 진행했다고 설명됩니다.
+- 개발자들은 LlamaParse tools로 loan underwriting pipeline을 처음부터 구축했습니다.
+- 입력 문서는 pay stubs와 brokerage statements 같은 messy financial PDFs입니다.
+- 결과 애플리케이션은 structured data extraction을 수행했습니다.
+- 여러 문서에 걸친 cross-document analysis도 가능했다고 소개됩니다.
+- 게시일은 2026년 5월 26일이며 OCR 관련 태그가 붙어 있습니다.
+
+인사이트
+- 개발자 reporter 관점에서는 예제/워크숍 기반 채택 신호입니다.
+- 문서 파싱, 구조화 추출, cross-document analysis는 agentic document workflow의 실제 구현 패턴입니다.
+- 입력에는 워크숍 코드 저장소, stars, forks, 샘플 데이터, 정확도 평가가 없습니다.
+
+확인 포인트
+- 워크숍 코드나 템플릿이 공개되어 재사용 가능한지 확인해야 합니다.
+- fixture와 extraction accuracy 평가가 있는지 확인해야 합니다.
+- 금융 문서 처리의 개인정보 마스킹, audit trail, 저장 정책을 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Building a Financial Document Pipeline with LlamaParse - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://www.llamaindex.ai/blog/llamaindex-newsletter-5-26-26">https://www.llamaindex.ai/blog/llamaindex-newsletter-5-26-26</a></li>
+      </ul>
+    </div>
+    <p><a href="https://openai.com/index/braintrust">How Braintrust turns customer requests into code with Codex</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Braintrust 사례는 Codex와 GPT-5.5를 실험 실행 및 고객 요청 기반 코드 작업에 활용한다는 coding assistant adoption 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News의 Braintrust 항목은 Braintrust engineers가 Codex를 사용한다고 설명합니다.
+- 함께 언급된 모델은 GPT-5.5입니다.
+- 사용 목적은 experiments를 run하고 code faster하게 만드는 것입니다.
+- 제목은 customer requests를 code로 전환하는 Braintrust의 흐름을 강조합니다.
+- 입력에는 신규 Codex 기능, 가격, API 변경, 구체적 벤치마크 수치가 포함되어 있지 않습니다.
+
+인사이트
+- 개발자 reporter 관점에서는 coding assistant의 실제 팀 채택 사례입니다.
+- 제품 출시가 아니라 adoption case이므로 top release와 분리해야 합니다.
+- 입력에는 Braintrust 내부 워크플로의 PR 승인, 테스트, 배포 게이트, 정량 생산성 수치가 없습니다.
+
+확인 포인트
+- Codex가 요구사항 분석, 실험 코드 작성, 테스트 작성, PR 생성 중 어디까지 수행하는지 확인해야 합니다.
+- GPT-5.5 언급이 공개 제품 가용성을 의미하는지 사례 내 표현인지 확인해야 합니다.
+- 고객 요청에서 코드 변경까지 추적성과 human review 절차가 설명되는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense">Strengthening societal resilience with Rosalind Biodefense</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI가 vetted developers와 U.S. government partners 대상으로 GPT-Rosalind 접근을 확장하는 Rosalind Biodefense를 출시했습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI는 Rosalind Biodefense를 launches한다고 설명합니다.
+- GPT-Rosalind에 대한 trusted access를 확장하는 내용입니다.
+- 접근 대상은 vetted developers와 U.S. government partners로 제한되어 있습니다.
+- 적용 영역은 biodefense, public health, pandemic preparedness입니다.
+- frontier AI를 활용해 해당 분야의 대응 역량을 높이는 프로그램으로 소개됩니다.
+
+인사이트
+- 일반 개발자용 API 업데이트는 아니지만, 고위험 도메인에서 검증된 사용자에게 제한 접근을 제공하는 제품/프로그램 모델입니다.
+- agent harness 관점에서는 도메인 제한, 사용자 심사, 접근 통제, 안전 평가가 제품 출시와 함께 묶이는 사례로 볼 수 있습니다.
+
+확인 포인트
+- GPT-Rosalind의 기능 범위와 일반 OpenAI 모델/API와의 차이를 확인해야 합니다.
+- vetted developer 기준, U.S. government partner 범위, 접근 승인 절차를 확인해야 합니다.
+- 생물보안 도메인에서 logging, review, refusal, audit 정책이 어떻게 적용되는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/is-grep-all-you-need-lexical-vs-sematic-search-for-agents">Is grep all you need? Lexical VS Sematic Search for Agents</a> - LlamaIndex Blog - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>LlamaIndex의 lexical vs semantic search 글은 enterprise agent retrieval에서 grep, layout-aware parsing, semantic index를 조합하는 architecture guidance입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 글은 grep이 fast, precise, battle-tested라고 인정하면서 시작합니다.
+- 질문은 AI agent가 enterprise knowledge base를 검색할 때 grep만으로 충분한가입니다.
+- 수백만 개 PDF, spreadsheets, scanned documents 같은 corpus에서는 lexical search가 한계에 부딪힌다고 설명합니다.
+- 한계로 unstructured formats를 읽지 못하는 점, scale 문제, vocabulary gaps를 메우지 못하는 점을 듭니다.
+- 제안은 layout-aware tools로 비정형 문서를 parse하고 semantic search index를 만들며, exact-match가 맞는 경우에는 grep을 계속 도구함에 두는 layered approach입니다.
+- 글의 목적은 어떤 접근을 언제 선택할지 판단 기준을 제공하는 것입니다.
+
+인사이트
+- 개발자 관점에서는 release보다 retrieval architecture guide에 가깝습니다.
+- RAG/agent harness에서 search tool 선택은 답변 품질과 latency, 비용을 동시에 좌우합니다.
+- 입력에는 벤치마크 수치, 코드 예제, GitHub 저장소 정보가 없습니다.
+
+확인 포인트
+- 구체 API 또는 reference implementation이 제공되는지 확인해야 합니다.
+- corpus 규모별 latency, recall, 비용 비교가 있는지 확인해야 합니다.
+- hybrid ranking과 fallback 전략이 구현 수준으로 제시되는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=F_6go08nHv4">Claude Opus 4.8 Is Too Smart… and TOO HONEST</a> - Wes Roth YouTube - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth가 Claude Opus 4.8과 Claude Code의 ‘AI engineering team’화 가능성을 다룬 영상입니다. 입력상 공식 Anthropic 출처가 아니라 YouTube/뉴스레터 기반 2차 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “Claude Opus 4.8 Is Too Smart… and TOO HONEST”입니다.
+- RSS 설명은 추가 상세 링크로 natural20.beehiiv.com의 “claude-opus-4-8-is-here-and-anthropic-is-turning-claude-code-into-an-ai-engineering-team” 글을 연결합니다.
+- 설명에는 Wes Roth의 X, AI Newsletter, AI Podcast, 비즈니스 문의 링크가 포함되어 있습니다.
+- 해시태그는 #ai #openai #llm로 되어 있으나, 제목과 링크 슬러그는 Claude/Anthropic/Claude Code 쪽을 가리킵니다.
+- 같은 입력 묶음에 Code Factory의 “Opus 4.8 + Ultracode 앙!” 영상도 있어 한국어 채널에서도 유사 주제가 관찰됩니다.
+
+인사이트
+- Claude Opus 4.8과 Claude Code 기능 확장이 사실이라면 코딩 에이전트 성능과 팀 단위 개발 워크플로에 영향이 있을 수 있습니다.
+- 다만 현재 입력은 YouTube 설명과 2차 뉴스레터 링크뿐이라 모델 출시, API 제공, Claude Code 기능 변경을 확정하면 안 됩니다.
+- 상단 트렌드로 올리기보다 ‘반복 보도되는 모델/코딩 에이전트 루머 또는 관찰 신호’로 두고 공식 Anthropic 문서 확인을 요구하는 편이 안전합니다.
+
+확인 포인트
+- Anthropic 공식 릴리스 노트나 문서에서 Claude Opus 4.8 공개 여부를 확인해야 합니다.
+- Claude Code가 실제로 멀티에이전트/엔지니어링 팀 기능을 제공하는지 확인해야 합니다.
+- Ultracode가 제품명, 벤치마크명, 커뮤니티 표현 중 무엇인지 1차 출처로 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Claude Opus 4.8 Is Too Smart… and TOO HONEST - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=h19erzb5GiA">https://www.youtube.com/watch?v=h19erzb5GiA</a></li>
+      </ul>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v=huAwz_BR8WM">Demis Hassabis On What AI Will Do Next</a> - Two Minute Papers YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Two Minute Papers가 Demis Hassabis 인터뷰를 통해 Gemini Health Scans, Gemma 4, DeepMind Co-Scientist, 임상시험 가속, recursive self-improvement를 다룹니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상은 Google DeepMind 초청 인터뷰 형식이라고 설명합니다.
+- 타임스탬프에는 Gemini Health Scans and Gemma 4가 포함됩니다.
+- AI as a Brainstorming Partner, Second Order Nobel, DeepMind Co-Scientist가 별도 챕터로 제시됩니다.
+- Curing All Diseases, Exponential Growth in Drug Discovery, Regulatory Bottlenecks, Accelerating Clinical Trials를 다룹니다.
+- EVE Online Partnership, The Einstein Test, Recursive Self-Improvement도 후반부 주제로 나옵니다.
+- Lambda GPU Cloud 후원 링크와 Patreon 안내가 포함되어 있습니다.
+
+인사이트
+- AI co-scientist, 임상시험 가속, recursive self-improvement는 장기 연구 에이전트 방향과 연결됩니다.
+- 다만 입력은 인터뷰 주제와 타임스탬프 수준이라 논문, 벤치마크, 공개 제품으로 확정할 수 없습니다.
+- 연구 섹션의 약한 관찰 신호로 두고, DeepMind 공식 자료나 논문으로 보강해야 합니다.
+
+확인 포인트
+- Gemma 4와 Gemini Health Scans가 실제 공개 제품/모델인지 확인해야 합니다.
+- DeepMind Co-Scientist 관련 논문, 데모, 평가 수치가 있는지 확인해야 합니다.
+- The Einstein Test와 recursive self-improvement가 구체 벤치마크인지 인터뷰성 전망인지 구분해야 합니다.</div>
+    </details>
+    <p><a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/">Take our I/O 2026 quiz, vibe coded in Google AI Studio.</a> - Google AI Blog - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Google이 Google AI Studio로 I/O 2026 발표 내용을 다루는 quiz를 vibe coding했다는 짧은 사례를 공개했습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Google AI Blog 항목은 I/O 2026 quiz를 소개합니다.
+- quiz는 Google AI Studio를 사용해 vibe code했다고 설명됩니다.
+- 주제는 Google의 top I/O 2026 announcements입니다.
+- RSS 입력에는 이미지 URL이 포함되어 있습니다.
+- 신규 API, 모델, 가격, 배포 기능에 대한 구체 내용은 입력에 없습니다.
+
+인사이트
+- Google AI Studio의 개발자 경험을 보여주는 마케팅/데모성 신호입니다.
+- coding agent나 harness 제품 변화로 보기에는 근거가 약하며, AI Studio 활용 사례 정도로 낮게 배치하는 것이 적절합니다.
+
+확인 포인트
+- 본문이 실제 Google AI Studio 기능 업데이트를 포함하는지 확인해야 합니다.
+- quiz 코드, 프롬프트, 사용 모델, 배포 방식이 공개되는지 확인해야 합니다.
+- I/O 2026 발표 중 agent/tool-use 관련 기능과 연결되는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=86B_oGCkyMs">코덱스 18가지 필수 기능 12분 정리</a> - Code Factory YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Code Factory의 Codex 기능 정리 영상입니다. 한국 개발자 대상 사용법 콘텐츠로 보이지만 RSS 설명에 실제 18개 기능 목록은 없습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “코덱스 18가지 필수 기능 12분 정리”입니다.
+- RSS 설명에는 실제 Codex 18개 기능 목록이나 기능별 설명이 포함되어 있지 않습니다.
+- 설명은 AI 썸네일 제작, Claude 디자인, Claude 영상 편집 관련 링크를 먼저 제공합니다.
+- Code Factory 강의, 서적, 메일링 리스트, SNS, 오픈채팅 링크가 포함되어 있습니다.
+- Codex의 신규 기능, API 변경, 가격, IDE/CLI 업데이트 근거는 입력에 없습니다.
+
+인사이트
+- 한국 개발자 커뮤니티에서 Codex 사용법 콘텐츠 수요가 있다는 약한 adoption 신호입니다.
+- 하지만 제품 업데이트나 기능 출시 신호로 쓰기에는 근거가 부족합니다.
+- 영상 본문 또는 공식 OpenAI Codex 문서와 대조해 실제 기능 목록을 확인해야 합니다.
+
+확인 포인트
+- 영상에서 소개한 18개 기능이 공식 Codex 기능인지 확인해야 합니다.
+- CLI, IDE, GitHub 연동, 테스트 실행, 코드 리뷰 등 어떤 워크플로를 다루는지 확인해야 합니다.
+- OpenAI 공식 문서와 불일치하는 설명이 없는지 점검해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>코덱스 18가지 필수 기능 12분 정리 - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://openai.com/index/braintrust">https://openai.com/index/braintrust</a></li>
+      </ul>
+    </div>
+    <p><a href="https://huggingface.co/blog/agent-glossary">Harness, Scaffold, and the AI Agent Terms Worth Getting Right</a> - Hugging Face Blog - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Hugging Face가 agent, harness, scaffold 같은 용어를 정리하는 글을 공개했습니다. 제품 출시보다는 개념 정리/커뮤니티 표준화 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 입력에 확인된 제목은 Harness, Scaffold, and the AI Agent Terms Worth Getting Right입니다.
+- 출처는 Hugging Face Blog이며 게시일은 2026년 5월 25일입니다.
+- 입력에는 본문 요약이 제공되지 않았습니다.
+- 제목상 agent 용어, 특히 harness와 scaffold의 구분을 다루는 글로 보입니다.
+- 신규 모델, API, 가격, 배포 제품, 벤치마크 수치 근거는 입력에 없습니다.
+
+인사이트
+- 공식 제품 발표는 아니지만, agent harness/scaffold 용어가 혼용되는 상황에서 개념 표준화 신호로는 의미가 있습니다.
+- 리포트에서는 제품 섹션 상단보다 약한 신호 또는 참고 항목으로 배치하는 것이 적절합니다.
+
+확인 포인트
+- 본문에서 Hugging Face의 특정 라이브러리, agent framework, Spaces, Transformers Agents 등과 연결되는지 확인해야 합니다.
+- harness와 scaffold 정의가 실제 평가/배포 아키텍처 판단에 쓸 만큼 구체적인지 확인해야 합니다.
+- 제품 발표가 아니라 교육/해설 콘텐츠인지 최종 확인해야 합니다.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>노이즈 및 보류 항목</h2>
+    <p><a href="https://www.youtube.com/watch?v=2tF77s2IOC0">직접 클로드 만들어봤어. (생각보다 쉬움)</a> - Nomad Coders YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Nomad Coders가 Claude Code 대신 Claude Agent SDK로 직접 에이전트를 만드는 흐름을 소개합니다. 한국 개발자 교육 채널의 에이전트 SDK 관심 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “직접 클로드 만들어봤어. (생각보다 쉬움)”입니다.
+- RSS 설명은 “Claude Code 쓰지 말고, 직접 만들기...?”라고 시작합니다.
+- 핵심 도구로 “Claude Agent SDK”를 언급합니다.
+- 설명은 AI 패러다임의 핵심이 ‘에이전트’라고 강조합니다.
+- Nomad Coders의 AI Agents Masterclass에 Claude Agent SDK 보너스 섹션이 2026년 5월 무료로 추가됐다고 설명합니다.
+- 강의 링크가 포함되어 있어 교육/프로모션 성격도 강합니다.
+
+인사이트
+- 한국 개발자 커뮤니티에서 Claude Code 사용을 넘어 직접 에이전트 SDK를 다루려는 관심이 생긴 신호입니다.
+- 다만 입력은 강의 홍보성 설명이며, SDK 공식 문서, 코드 예제, 버전, API 범위는 제공되지 않았습니다.
+- 실제 트렌드로 쓰려면 Claude Agent SDK가 공식 명칭인지, 어떤 런타임/권한/도구 호출 모델을 제공하는지 확인해야 합니다.
+
+확인 포인트
+- Anthropic 공식 문서나 GitHub에서 Claude Agent SDK의 존재와 지원 범위를 확인해야 합니다.
+- 영상이 실제 구현 데모인지, 강의 홍보 중심인지 구분해야 합니다.
+- Claude Code와 Claude Agent SDK의 역할 차이를 공식 자료로 대조해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=F6-9u3X9TE8">Kimi K2.6 Agent Swarm 사용해서 병렬 작업 실행하기!</a> - Code Factory YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Code Factory가 Kimi K2.6 Agent Swarm으로 병렬 작업을 실행하는 주제를 다룹니다. 제목 관련성은 높지만 RSS 설명은 광고/링크 중심이라 근거가 약합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “Kimi K2.6 Agent Swarm 사용해서 병렬 작업 실행하기!”입니다.
+- RSS 설명은 Kimi platform 링크와 첫 구매 10% 추가 크레딧 안내를 포함합니다.
+- 설명에는 AI 썸네일 제작, Claude 디자인, Claude 영상 편집 관련 다른 영상 링크가 포함되어 있습니다.
+- Code Factory 강의, 서적, 메일링 리스트, SNS, 오픈채팅 링크가 길게 포함되어 있습니다.
+- Agent Swarm의 구조, 병렬 실행 방식, Kimi K2.6 모델 특성, 코드 예제는 입력에 제공되지 않았습니다.
+
+인사이트
+- ‘Agent Swarm’과 병렬 작업 실행은 코딩 에이전트/하네스 관점에서 중요한 주제입니다.
+- 그러나 현재 입력은 제품 설명보다 프로모션 링크 비중이 높아 독립 트렌드로 보기 어렵습니다.
+- Kimi 쪽 공식 문서나 데모 코드가 확인되면 병렬 subagent 실행 워크플로 신호로 재평가할 수 있습니다.
+
+확인 포인트
+- Kimi K2.6과 Agent Swarm이 공식 기능인지 확인해야 합니다.
+- 병렬 작업 실행이 API, UI 기능, 프롬프트 패턴 중 무엇인지 확인해야 합니다.
+- 비용, rate limit, 작업 격리, 실패 재시도 방식이 제공되는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=hGCrvDDpl5w">Ghost AI let&#39;s AI Agents build disposable worlds</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth가 Ghost AI의 ‘AI agents build disposable worlds’ 주제를 다룹니다. 에이전트용 임시 환경/월드 생성 가능성을 암시하지만 입력 세부가 부족합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “Ghost AI let&#39;s AI Agents build disposable worlds”입니다.
+- RSS 설명은 “Try it at” 링크로 b.link/wes-roth-ghost를 제공합니다.
+- 설명에는 Wes Roth의 X, 뉴스레터, 팟캐스트, 비즈니스 문의 링크가 포함되어 있습니다.
+- 해시태그는 #ai #openai #llm입니다.
+- disposable worlds가 샌드박스, 시뮬레이션 환경, 브라우저/게임 월드, 에이전트 테스트 공간 중 무엇인지는 입력에 없습니다.
+
+인사이트
+- 에이전트가 임시 실행 환경을 만들고 버리는 개념은 LangSmith Sandboxes 같은 agent runtime 흐름과 연결될 수 있습니다.
+- 하지만 현재 자료는 제목과 체험 링크뿐이라 제품 기능, 보안 경계, 개발자 API를 확인할 수 없습니다.
+- 공식 제품 페이지나 문서가 확인되기 전까지는 약한 관찰 신호로 유지해야 합니다.
+
+확인 포인트
+- Ghost AI의 공식 제품 설명과 disposable worlds의 정확한 의미를 확인해야 합니다.
+- 에이전트가 생성한 환경이 코드 실행 샌드박스인지, 시뮬레이션/브라우저 환경인지 확인해야 합니다.
+- API, SDK, 가격, 데이터 보존 정책, 격리 모델을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=jZg1EkujbJ0">The &#34;AI Job Apocalypse&#34; is CANCELLED!</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth의 AI 일자리 영향 해설 영상입니다. Agent/LLM 제품 변화보다는 의견/거시 담론에 가까워 보류가 적절합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “The &#34;AI Job Apocalypse&#34; is CANCELLED!”입니다.
+- RSS 설명은 Hapax 후원 링크를 포함합니다.
+- 챕터는 AI Job Apocalypse, Are IPOs the Cause?, Hapax sponsor, The Human Sandwich, The Key Mechanism입니다.
+- 설명에는 Wes Roth의 X, 뉴스레터, 팟캐스트, 비즈니스 문의 링크가 포함되어 있습니다.
+- 신규 모델, API, 코딩 에이전트, 개발자 도구, 벤치마크 근거는 입력에 없습니다.
+
+인사이트
+- AI 고용 영향 담론으로는 의미가 있을 수 있지만 daily Agent/AI 개발 트렌드 핵심 범위와는 거리가 있습니다.
+- Hapax가 별도 AI 제품일 가능성은 있으나 후원 링크 외 제품 세부가 없습니다.
+
+확인 포인트
+- Hapax가 개발자/에이전트 도구인지 단순 스폰서인지 확인해야 합니다.
+- 영상 내 데이터 출처가 1차 보고서인지 의견 해설인지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=uFnxyXlRxag">Claude, The Pope, and AGI</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth의 Claude, 교황 회칙, AGI 관련 AI 뉴스 영상입니다. 제품/개발자 신호보다 거버넌스·담론성 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “Claude, The Pope, and AGI”입니다.
+- RSS 설명은 최신 AI 뉴스, LLM, Gen AI, AGI rollout을 다룬다고 설명합니다.
+- Wes Roth가 OpenAI, Google, Anthropic, NVIDIA, Open Source AI 소식을 다룬다는 채널 소개가 포함되어 있습니다.
+- 설명에는 X, 뉴스레터, 팟캐스트, 비즈니스 문의 링크가 포함되어 있습니다.
+- Claude 제품 변경, API, 모델 릴리스, 코딩 에이전트 기능에 대한 구체 정보는 입력에 없습니다.
+
+인사이트
+- Anthropic/AI 거버넌스 담론과 연결될 수 있지만, daily developer trend로는 약합니다.
+- Anthropic의 Chris Olah 교황 회칙 발언 항목과 중복 가능성이 있어 보류가 적절합니다.
+
+확인 포인트
+- 영상이 Anthropic 공식 정책 변화나 제품 변경을 다루는지 확인해야 합니다.
+- 단순 뉴스 해설이면 회사/거버넌스 참고 항목으로만 유지해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=DGw2KKyXuYQ">The REAL Reason Andrej Karpathy Joined Anthropic</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth의 Andrej Karpathy-Anthropic 관련 해설 영상입니다. 인물/회사 추정성 콘텐츠로 보이며 제품·개발자 신호는 약합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 영상 제목은 “The REAL Reason Andrej Karpathy Joined Anthropic”입니다.
+- RSS 설명은 natural20.beehiiv.com의 관련 글을 링크합니다.
+- 설명에는 최신 AI 뉴스, LLM, Gen AI, AGI rollout, OpenAI/Google/Anthropic/NVIDIA/Open Source AI 커버리지를 소개하는 문구가 포함됩니다.
+- X, 뉴스레터, 팟캐스트, 비즈니스 문의 링크가 포함되어 있습니다.
+- 입력에는 Anthropic 공식 인사 발표, 제품 로드맵, Claude/Claude Code 변경 근거가 없습니다.
+
+인사이트
+- 유명 연구자/개발자 이동은 장기적으로 회사 방향성 신호가 될 수 있지만, 현재 입력은 2차 해설에 가깝습니다.
+- 제품, 모델, SDK, 에이전트 하네스 변화와 직접 연결되는 근거가 없으므로 보류가 적절합니다.
+
+확인 포인트
+- Anthropic 또는 Karpathy 본인의 공식 확인이 있는지 확인해야 합니다.
+- 실제 입사/역할/연구 방향이 공개됐는지 확인해야 합니다.
+- Claude, Claude Code, agent tooling 변화와 연결되는 1차 자료가 있는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://openai.com/index/boston-childrens-hospital">Boston Children’s uses AI to unlock new diagnoses</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI가 Boston Children’s Hospital의 AI 활용 사례를 공개했습니다. patient care 개선, operational burden 감소, 40건 이상 희귀질환 진단 지원이 언급됩니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News 항목은 Boston Children’s Hospital이 OpenAI technology를 사용한다고 설명합니다.
+- 목적은 patient care 개선입니다.
+- operational burden 감소도 주요 효과로 언급됩니다.
+- 40건 이상의 rare disease cases 진단을 돕는다고 설명합니다.
+- 입력에는 신규 제품 출시, API 변경, 가격, agent harness 기능 정보가 없습니다.
+
+인사이트
+- 공식 고객/기관 적용 사례로 신뢰도는 있으나, 제품 발표보다는 채택 사례입니다.
+- 의료 분야에서는 결과 수치보다 검증 절차, 임상 책임, workflow integration을 확인해야 합니다.
+
+확인 포인트
+- 어떤 OpenAI 기술 또는 모델이 사용됐는지 확인해야 합니다.
+- 진단 지원에서 의료진 검토, 환자 안전, 규제 준수 절차가 어떻게 설계됐는지 확인해야 합니다.
+- 40건 이상 rare disease cases가 어떤 기간과 기준에서 집계됐는지 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/">Check out real-life AI prototypes from the Futures Lab.</a> - Google AI Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Google이 University of Waterloo 학생들의 AI prototypes 사례를 소개했습니다. sign language tutor 같은 교육/업무 관련 프로토타입이 언급됩니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Google AI Blog 항목은 Futures Lab의 real-life AI prototypes를 소개합니다.
+- University of Waterloo students가 개발한 AI prototypes가 중심입니다.
+- 예시로 sign language tutors가 언급됩니다.
+- 목적은 education and work의 미래를 바꾸는 사례를 보여주는 것입니다.
+- RSS 입력에는 이미지 URL이 포함되어 있습니다.
+- 제품 출시, API 변경, agent harness 기능은 입력에 포함되어 있지 않습니다.
+
+인사이트
+- 공식 Google 채널이지만 제품 발표가 아니라 교육/프로토타입 소개입니다.
+- agent harness, coding agent, MCP, observability와의 직접 연결은 약해 보류 또는 약한 신호가 적절합니다.
+
+확인 포인트
+- 프로토타입이 Google AI Studio, Gemini API, Vertex AI 등 구체 도구를 사용했는지 확인해야 합니다.
+- 공개 데모나 코드가 있는지 확인해야 합니다.
+- 실제 제품화 계획인지 학생 프로젝트 소개인지 구분해야 합니다.</div>
+    </details>
+    <p><a href="https://www.anthropic.com/news/chris-olah-pope-leo-encyclical">Announcements May 25, 2026 Anthropic co-founder Chris Olah&#39;s remarks on Pope Leo XIV&#39;s encyclical &#34;Magnifica humanitas&#34; The full text of Chris Olah&#39;s remarks on the Pope&#39;s encyclical on AI.</a> - Anthropic News</p>
+    <details class="trend-detail weak-detail">
+      <summary>Anthropic 공동창업자 Chris Olah의 AI 관련 교황 회칙 발언 전문입니다. 제품 출시가 아닌 정책/사회적 논의 항목입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Anthropic News 항목은 2026년 5월 25일 Announcements로 수집됐습니다.
+- 제목은 Anthropic co-founder Chris Olah의 Pope Leo XIV encyclical &#34;Magnifica humanitas&#34; 관련 발언입니다.
+- 원문은 Pope의 AI 관련 encyclical에 대한 Chris Olah의 remarks 전문으로 설명됩니다.
+- 입력에는 Claude, API, pricing, tool use, MCP, deployment 관련 제품 변경 정보가 없습니다.
+- 현재 리포트의 product reporter 범위에서는 정책/담론성 공식 글로 보는 것이 적절합니다.
+
+인사이트
+- Anthropic 공식 채널 신호지만 제품 발표가 아니므로 top trend에서 제외해야 합니다.
+- AI 거버넌스나 안전 철학 섹션에는 참고 가능하지만 agent harness 운영 변화와 직접 연결하기 어렵습니다.
+
+확인 포인트
+- 본문에서 Anthropic 제품 정책, safety evaluation, deployment policy 변화가 실제로 언급되는지 확인해야 합니다.
+- Claude 또는 developer tooling 관련 발표와 연결되는지 확인해야 합니다.
+- 단순 발언 전문이면 deferred 처리하는 것이 적절합니다.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>수집 범위</h2>
+    <p class="error">reddit_machine_learning: HTTPStatusError: Client error &#39;403 Blocked&#39; for url &#39;https://www.reddit.com/r/MachineLearning/new.json?limit=10&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</p>
+  </section>
+</main>
+</body>
+</html>
