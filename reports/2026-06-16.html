@@ -1,0 +1,2274 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent/AI 트렌드 리포트 - 2026-06-16</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; color: #172026; background: #f7f8fa; }
+    main { max-width: 1160px; margin: 0 auto; padding: 32px 20px; }
+    header { border-bottom: 3px solid #172026; margin-bottom: 24px; }
+    h1 { font-size: 32px; margin: 0 0 8px; }
+    h2 { font-size: 21px; margin-top: 28px; }
+    h3 { font-size: 18px; line-height: 1.3; margin: 0; }
+    .summary { font-size: 16px; line-height: 1.55; }
+    .trend-list { display: grid; gap: 14px; }
+    .trend-card {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 260px;
+      gap: 16px;
+      align-items: stretch;
+      background: white;
+      border: 1px solid #d9dee3;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .trend-card.no-image { grid-template-columns: minmax(0, 1fr) 260px; }
+    .trend-image { min-height: 112px; background: #e9eef3; border-radius: 6px; overflow: hidden; }
+    .trend-image img { width: 100%; height: 100%; min-height: 112px; object-fit: cover; display: block; }
+    .trend-content { min-width: 0; }
+    .trend-content p { margin: 10px 0 0; line-height: 1.5; }
+    .trend-detail { margin-top: 10px; line-height: 1.5; }
+    .trend-detail summary {
+      cursor: pointer;
+      color: #172026;
+      list-style-position: outside;
+    }
+    .trend-detail summary:hover { color: #0b5cad; }
+    .trend-detail-body {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-left: 3px solid #0b5cad;
+      background: #f3f6f9;
+      border-radius: 6px;
+      white-space: pre-line;
+    }
+    .weak-detail { margin: 4px 0 12px; }
+    .weak-detail summary::before { content: "- "; }
+    .trend-insight {
+      border-left: 1px solid #d9dee3;
+      padding-left: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .trend-insight strong { display: block; margin-bottom: 8px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
+    .tag { font-size: 12px; background: #e9eef3; border-radius: 999px; padding: 4px 8px; }
+    .related { margin-top: 12px; }
+    .related ul { margin: 6px 0 0; padding-left: 18px; }
+    .related li { margin: 3px 0; }
+    a { color: #0b5cad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .error { color: #8a1f11; }
+    @media (max-width: 860px) {
+      .trend-card { grid-template-columns: 1fr; }
+      .trend-insight { border-left: 0; border-top: 1px solid #d9dee3; padding-left: 0; padding-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Agent/AI 트렌드 리포트</h1>
+    <p>2026-06-16 - 생성 2026-06-16T11:36:39.418127+00:00</p>
+  </header>
+
+  <section>
+    <h2>핵심 요약</h2>
+    <p class="summary">핵심 트렌드 12건 · 관찰 신호 85건 · 수집 이슈 1건을 정리했습니다.</p>
+  </section>
+
+  <section>
+    <h2>핵심 트렌드</h2>
+    <div class="trend-list">
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="http://arxiv.org/abs/2606.13643v1">Recursive Agent Harnesses</a></h3>
+          <div class="meta">
+            <span class="tag">#research</span>
+            <span class="tag">#paper</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#subagent</span>
+            <span class="tag">#benchmark</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#tool_use</span>
+            <span class="tag">#long_context</span>
+            <span class="tag">prototype</span>
+            <span class="tag">strategic</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Recursive Agent Harnesses는 model call이 아니라 filesystem tools, code execution, planning을 포함한 full agent harness를 재귀 단위로 삼는 연구입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) 논문은 recursive language model 흐름과 production coding agent의 subagent spawn 흐름을 연결합니다. 2) RAH는 도구 없는 model call 대신 full agent harness를 재귀 단위로 둡니다. 3) parent agent가 실행 가능한 script를 생성해 fine-grained workload용 subagent harness를 병렬로 띄웁니다. 4) 작은 subtask에는 structured function call도 사용한다고 설명합니다. 5) GPT-5 backbone 고정 조건에서 Oolong-Synthetic 199 samples, 13 context-length buckets, 최대 4M tokens 평가를 제시합니다. 6) Codex coding-agent baseline 71.75%를 81.36%로 개선했고 Claude Sonnet 4.5 backbone에서는 89.77%라고 보고합니다. 인사이트: 모델 교체보다 harness recursion과 subagent 병렬화가 성능 축이 될 수 있다는 점이 핵심입니다. 확인 포인트: 코드 공개, 비용, subagent 격리, parent script 안전성, baseline 동등성, Oolong-Synthetic 구성 확인이 필요합니다.</div>
+          </details>
+          <p><small>arXiv Search</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          코딩 에이전트 성능을 모델 점수와 하네스 설계로 분리해 평가해야 한다는 강한 연구 신호입니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://www.databricks.com/blog/introducing-omnigent-meta-harness-combine-control-and-share-your-agents">Omnigent: A Meta-Harness to Combine, Control and Share Your Agents</a></h3>
+          <div class="meta">
+            <span class="tag">#databricks</span>
+            <span class="tag">#omnigent</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#sandbox</span>
+            <span class="tag">#policy</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">#github</span>
+            <span class="tag">#open_source</span>
+            <span class="tag">prototype</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Omnigent는 Claude Code, Codex, Pi, 자체 에이전트를 공통 계층에서 결합·교체·통제하는 meta-harness 신호입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) Databricks Blog와 GitHub Repository Search가 같은 Omnigent 흐름을 포착했습니다. 2) 입력 기준 Omnigent는 Claude Code, Codex, Pi, 사용자가 작성한 에이전트 위에 공통 계층을 제공합니다. 3) 하네스를 교체하거나 결합할 때 재작성 부담을 줄이는 것이 핵심입니다. 4) policies와 sandboxing으로 에이전트 실행을 통제한다고 설명됩니다. 5) 같은 live session에서 실시간 협업할 수 있다는 설명도 포함됩니다. 6) 관련 GitHub 저장소 omnigent-ai/omnigent는 입력 기준 2189 stars입니다. 인사이트: 여러 코딩 에이전트를 병행하는 조직에는 agent control plane, 정책 적용, sandbox, 세션 공유가 중요해집니다. 확인 포인트: forks, release tag, 최근 커밋, 라이선스, policy 언어, sandbox 경계, self-host 가능 여부를 확인해야 합니다.</div>
+          </details>
+          <p><small>Hacker News Algolia</small></p>
+          <div class="related">
+            <strong>Omnigent: A Meta-Harness to Combine, Control and Share Your Agents - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://github.com/omnigent-ai/omnigent">https://github.com/omnigent-ai/omnigent</a></li>
+              <li><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUG9qNEdUYmU4bEhiVl9scGt3V2ZocGw2UHdDV0JHZmtiZXBvc3lMVTREel9UVURUbEdfTERKVGZOVzItVmt1Y05iZDY1aVFmR3hoWjVQcUc0eEx0MTN1ek4ydUtsRi02RVh1cFp5S0tpY0ZsUmdTMW1rZjVsa3ZUeUdRcFFhTjE0emlmM2xyb1RvcV9SRF9rc3hZd1Bka0ppRHJxQkh2bUx4QQ?oc=5">https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUG9qNEdUYmU4bEhiVl9scGt3V2ZocGw2UHdDV0JHZmtiZXBvc3lMVTREel9UVURUbEdfTERKVGZOVzItVmt1Y05iZDY1aVFmR3hoWjVQcUc0eEx0MTN1ek4ydUtsRi02RVh1cFp5S0tpY0ZsUmdTMW1rZjVsa3ZUeUdRcFFhTjE0emlmM2xyb1RvcV9SRF9rc3hZd1Bka0ppRHJxQkh2bUx4QQ?oc=5</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          복수 코딩 에이전트를 조직적으로 운영하려면 공통 정책·sandbox·세션 계층이 필요합니다. 입력상 repo stars도 강한 채택 후보 신호입니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="http://arxiv.org/abs/2606.13707v1">Orchestra-o1: Omnimodal Agent Orchestration</a></h3>
+          <div class="meta">
+            <span class="tag">#research</span>
+            <span class="tag">#paper</span>
+            <span class="tag">#agentic</span>
+            <span class="tag">#orchestration</span>
+            <span class="tag">#subagent</span>
+            <span class="tag">#benchmark</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#multimodal</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">prototype</span>
+            <span class="tag">strategic</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Orchestra-o1은 텍스트·이미지·오디오·비디오가 섞인 omnimodal 작업에서 modality-aware decomposition과 online sub-agent specialization을 결합한 연구입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) 논문은 agent swarm 흐름이 single-agent workflow에서 multi-agent system으로 이동했다고 봅니다. 2) 기존 orchestration framework가 좁은 modality 집합에 제한된다고 지적합니다. 3) Orchestra-o1은 text, image, audio, video가 공존하는 omnimodal task를 겨냥합니다. 4) 핵심은 modality-aware task decomposition, online sub-agent specialization, parallel sub-task execution입니다. 5) OmniGAIA benchmark에서 second-best approach보다 10.3% accuracy가 높았다고 보고합니다. 6) DA-GRPO를 제안해 Orchestra-o1-8B를 훈련하고 공개 omnimodal agent 대비 SOTA를 주장합니다. 인사이트: 멀티모달 업무 에이전트는 큰 모델 하나보다 modality별 역할 분담과 병렬 실행 정책이 성능 차이를 만들 수 있습니다. 확인 포인트: OmniGAIA 구성, baseline 설정, DA-GRPO ablation, 코드와 모델 공개 여부를 확인해야 합니다.</div>
+          </details>
+          <p><small>arXiv Search</small></p>
+          <div class="related">
+            <strong>Orchestra-o1: Omnimodal Agent Orchestration - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://paperswithcode.com/papers/2606.13707">https://paperswithcode.com/papers/2606.13707</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          멀티모달 장기 작업에서 하네스와 오케스트레이터가 성능을 좌우한다는 강한 연구 신호입니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://openai.com/index/openai-to-acquire-ona">OpenAI to acquire Ona</a></h3>
+          <div class="meta">
+            <span class="tag">#openai</span>
+            <span class="tag">#codex</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#autonomous_agent</span>
+            <span class="tag">#cloud_environment</span>
+            <span class="tag">#security</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">prototype</span>
+            <span class="tag">strategic</span>
+            <span class="tag">신호 5/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>OpenAI가 Ona 인수 계획을 발표했습니다. 입력상 핵심은 Codex에 secure, persistent cloud environments를 더해 long-running AI agents를 지원하려는 방향입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) OpenAI News RSS에 2026-06-11 항목으로 수집됐습니다. 2) 제목은 OpenAI to acquire Ona입니다. 3) OpenAI가 Ona를 인수할 계획이라고 설명합니다. 4) 목적은 Codex 확장입니다. 5) 확장 방향은 secure, persistent cloud environments입니다. 6) 기대 범위는 enterprise workflows 전반의 long-running AI agents입니다. 인사이트: 코딩 에이전트 경쟁축이 단발 코드 생성에서 지속 실행 환경, 보안 경계, 기업 워크플로 통합으로 이동하고 있습니다. 확인 포인트: 인수 완료 여부, Codex 반영 기능, persistent environment 격리·권한·감사 로그, 가격 또는 SKU 변화 확인이 필요합니다.</div>
+          </details>
+          <p><small>OpenAI News</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          Codex류 코딩 에이전트의 운영 기반이 세션형 CLI/IDE에서 장시간 실행 가능한 클라우드 작업 환경으로 확장될 수 있습니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/how-we-made-coding-agent-spend-predictable">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6a2b6498d3e8c89dcee435da_dark-77%20characters%20max.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/how-we-made-coding-agent-spend-predictable">How LangChain Made Coding Agent Spend Predictable</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#gateway</span>
+            <span class="tag">#budget</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#pricing</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangChain은 LangSmith LLM Gateway로 coding agent spend를 실시간 추적하고 팀·사용자별 budget을 설정하는 운영 패턴을 제시했습니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LangChain Blog 항목이며 제목은 How LangChain Made Coding Agent Spend Predictable입니다. 2) LangSmith LLM Gateway를 사용한다고 입력에 명시돼 있습니다. 3) coding agent spend를 real time으로 추적합니다. 4) team과 user 단위 budget 설정을 지원한다고 설명됩니다. 5) 목적은 runaway AI costs 방지입니다. 6) 개발자 관점에서는 coding agent rollout의 FinOps와 guardrail 사례입니다. 인사이트: agent loop와 subtask fan-out 때문에 비용은 모델 선택만으로 통제하기 어렵습니다. 확인 포인트: budget 초과 시 hard block인지 alert인지, provider별 가격 정규화, 재시도 비용 처리, user/team policy 우선순위를 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          개발자 조직에서 coding agent를 확대하려면 예산 통제와 비용 관찰성이 기본 운영 기능입니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6a302d809a834ad277d46961_fireworks-labs.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/building-a-100x-cheaper-trace-judge-with-fireworks">Building a 100x Cheaper Trace Judge with Fireworks</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#fireworks</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#trace_judge</span>
+            <span class="tag">#pricing</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">prototype</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangChain과 Fireworks는 production traces에서 perceived error signal을 찾는 저비용 trace judge를 소개했습니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LangChain Blog 항목이며 Fireworks와 함께 다룹니다. 2) production traces에서 perceived error signal을 mining하기 위한 open model fine-tuning이 핵심입니다. 3) 목표는 frontier model performance를 훨씬 낮은 비용으로 맞추는 것입니다. 4) 제목은 100x cheaper trace judge를 전면에 둡니다. 5) trace judge는 agent run 로그에서 오류 후보를 자동 평가하는 eval/observability 구성요소입니다. 인사이트: 에이전트 실행량이 늘어나면 모든 trace를 비싼 frontier judge로 평가하기 어렵습니다. 확인 포인트: 100x 비용 산정, training data, human agreement, false positive/negative, trace privacy, judge drift 관리를 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+          <div class="related">
+            <strong>Building a 100x Cheaper Trace Judge with Fireworks - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.langchain.com/blog/production-monitoring">https://www.langchain.com/blog/production-monitoring</a></li>
+              <li><a href="https://www.langchain.com/blog/regression-testing">https://www.langchain.com/blog/regression-testing</a></li>
+              <li><a href="https://www.langchain.com/blog/test-run-comparisons">https://www.langchain.com/blog/test-run-comparisons</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          평가 비용을 낮추지 못하면 production agent observability는 샘플링에 머뭅니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://www.llamaindex.ai/blog/llamaindex-newsletter-6-10-26">LlamaIndex Newsletter 6-10-26</a></h3>
+          <div class="meta">
+            <span class="tag">#llamaindex</span>
+            <span class="tag">#llamaparse</span>
+            <span class="tag">#document_ai</span>
+            <span class="tag">#benchmark</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LlamaIndex 뉴스레터는 ParseBench, Parse-Flow, Fable 5 ParseBench 결과, LlamaParse granular bounding boxes를 묶어 document AI 평가와 audit-grade citation 흐름을 보여줍니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LlamaIndex Blog 항목입니다. 2) ParseBench가 CVPR 2026으로 향한다는 내용이 포함됩니다. 3) Parse-Flow는 visual document intelligence workflow를 위한 출시 항목으로 언급됩니다. 4) Anthropic Fable 5가 ParseBench에서 강한 결과를 냈다는 내용이 포함됩니다. 5) LlamaParse는 word, line, cell-level granular bounding boxes를 추가해 audit trail을 강화한다고 설명됩니다. 6) 별도 관련 항목은 audit-grade citation across document AI workflows를 강조합니다. 인사이트: 문서 에이전트 경쟁이 추출 정확도에서 benchmark, 원문 위치 증거, 감사 가능성까지 확장되고 있습니다. 확인 포인트: ParseBench dataset 공개 여부, Fable 5 비교 조건, Parse-Flow 사용 가능 범위, bounding box API edge case를 확인해야 합니다.</div>
+          </details>
+          <p><small>LlamaIndex Blog</small></p>
+          <div class="related">
+            <strong>LlamaIndex Newsletter 6-10-26 - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.llamaindex.ai/blog/announcing-granular-bounding-boxes-in-llamaparse">https://www.llamaindex.ai/blog/announcing-granular-bounding-boxes-in-llamaparse</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          문서 AI 에이전트는 원문 위치를 검증할 수 있어야 운영에 들어갑니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/production-monitoring">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69ea26c641422fceaede19f8_Group-30548.webp" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/production-monitoring">Agent Observability: How to Monitor and Evaluate LLM Agents in Production</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#evaluation</span>
+            <span class="tag">#production</span>
+            <span class="tag">#tool_use</span>
+            <span class="tag">adopted</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangChain은 production LLM agents를 trace, evaluate, improve at scale 하기 위한 agent observability 흐름을 제시했습니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LangChain Blog 항목입니다. 2) 제목은 Agent Observability: How to Monitor and Evaluate LLM Agents in Production입니다. 3) production monitoring for LLM agents에는 새로운 observability tools가 필요하다고 설명합니다. 4) 핵심 동사는 trace, evaluate, improve입니다. 5) 대상 규모는 at scale입니다. 6) 단일 기능 출시보다 LangSmith 계열 운영 패턴 설명에 가깝습니다. 인사이트: 운영형 에이전트는 tool call, intermediate step, latency, cost, evaluation outcome을 trace 단위로 묶어야 실패 복구와 회귀 테스트가 가능합니다. 확인 포인트: trace schema, eval 연결, alerting, 민감 데이터 마스킹, 장시간 trace 보존 정책을 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+          <div class="related">
+            <strong>Agent Observability: How to Monitor and Evaluate LLM Agents in Production - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://www.langchain.com/blog/regression-testing">https://www.langchain.com/blog/regression-testing</a></li>
+              <li><a href="https://www.langchain.com/blog/test-run-comparisons">https://www.langchain.com/blog/test-run-comparisons</a></li>
+              <li><a href="https://www.langchain.com/blog/pairwise-evaluations-with-langsmith">https://www.langchain.com/blog/pairwise-evaluations-with-langsmith</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          에이전트를 프로덕션에 넣으려면 실행 관찰성과 평가 루프가 제품 기능만큼 중요합니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69e23754937c2f749d12bb0b_76%20(1).png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering">Agentic Engineering: How Swarms of AI Agents Are Redefining Software Engineering</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langgraph</span>
+            <span class="tag">#agent_framework</span>
+            <span class="tag">#orchestration</span>
+            <span class="tag">#multi_agent</span>
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">prototype</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 3/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangChain은 LangGraph 기반 multi-agent engineering architecture를 소개하며 swarms of AI agents가 debug time과 cross-team delivery에 영향을 줄 수 있다고 주장했습니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LangChain Blog 항목입니다. 2) real engineering teams를 mirror하는 multi-agent systems를 설명합니다. 3) 단순히 code faster가 아니라 debug time을 93% 줄일 수 있다는 주장이 포함됐습니다. 4) cross-team delivery를 압축할 수 있다는 설명도 있습니다. 5) architecture built on LangGraph라고 입력에 명시됩니다. 6) 평가 조건, 팀 규모, task 유형, 93% 산정 방식은 제공되지 않았습니다. 인사이트: LangGraph가 단일 agent framework를 넘어 소프트웨어 팀 구조를 흉내 내는 orchestration layer로 포지셔닝되고 있습니다. 확인 포인트: 93% claim의 기준, workflow 구성, human approval 지점, 실패 agent 처리, 실제 고객 사례 여부를 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          multi-agent coding workflow는 역할 분담, orchestration, review loop를 성능의 일부로 만듭니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://openai.com/index/openai-on-oracle-cloud">Access OpenAI models and Codex through your Oracle cloud commitment</a></h3>
+          <div class="meta">
+            <span class="tag">#openai</span>
+            <span class="tag">#codex</span>
+            <span class="tag">#enterprise</span>
+            <span class="tag">#deployment</span>
+            <span class="tag">#security</span>
+            <span class="tag">#governance</span>
+            <span class="tag">#cloud</span>
+            <span class="tag">released</span>
+            <span class="tag">high</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>OpenAI models와 Codex를 Oracle Cloud commitment로 사용할 수 있게 한다는 공식 발표입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) OpenAI News RSS에 2026-06-10 20:00 UTC 항목으로 수집됐습니다. 2) 제목은 Access OpenAI models and Codex through your Oracle cloud commitment입니다. 3) Oracle Cloud를 통해 OpenAI models와 Codex에 접근할 수 있다고 설명합니다. 4) 기존 Oracle cloud commitment를 활용하는 것이 핵심입니다. 5) 목적은 enterprise security and governance를 갖춘 AI build/deploy입니다. 6) 모델 성능 발표라기보다 조달, 배포, 거버넌스 채널 확장입니다. 인사이트: 기업 에이전트 도입에서 API 성능보다 구매 경로, 보안 승인, 기존 클라우드 약정 사용 가능성이 병목이 될 수 있습니다. 확인 포인트: 지원 모델과 Codex 기능, 데이터 경계, 로깅 정책, 지역·컴플라이언스 범위, 직접 계약 대비 차이를 확인해야 합니다.</div>
+          </details>
+          <p><small>OpenAI News</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          Codex가 Oracle Cloud 구매·거버넌스 경로에 들어가면 엔터프라이즈 도입 장벽을 낮출 수 있습니다.
+        </aside>
+      </article>
+      <article class="trend-card" data-layout="horizontal">
+        <a class="trend-image" href="https://www.langchain.com/blog/announcing-langsmith-is-now-a-transactable-offering-in-the-azure-marketplace">
+          <img src="https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/69cbafe61082f68faaecee34_langsmithazure.png" alt="">
+        </a>
+        <div class="trend-content">
+          <h3><a href="https://www.langchain.com/blog/announcing-langsmith-is-now-a-transactable-offering-in-the-azure-marketplace">Announcing LangSmith is now a transactable offering in the Azure Marketplace</a></h3>
+          <div class="meta">
+            <span class="tag">#langchain</span>
+            <span class="tag">#langsmith</span>
+            <span class="tag">#azure</span>
+            <span class="tag">#marketplace</span>
+            <span class="tag">#observability</span>
+            <span class="tag">#enterprise</span>
+            <span class="tag">#deployment</span>
+            <span class="tag">released</span>
+            <span class="tag">medium</span>
+            <span class="tag">신호 4/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>LangSmith가 Azure Marketplace transactable offering으로 제공되며 Azure VPC 배포, full data control, MACC credit support를 내세웁니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) LangChain Blog 항목입니다. 2) LangSmith가 Azure Marketplace에서 사용 가능하다고 설명됩니다. 3) DevOps platform for LLM apps를 Azure VPC에 배포하는 형태로 요약됩니다. 4) full data control을 강조합니다. 5) MACC credit support가 포함됩니다. 6) eval/observability 플랫폼의 조달·배포 채널 확장입니다. 인사이트: agent observability 도구에는 trace, prompt, 사용자 데이터가 모이므로 배포 경계와 조달 경로가 도입의 핵심 조건입니다. 확인 포인트: Azure VPC 배포 범위, 데이터 저장 위치, 네트워크 격리, SSO/RBAC, 기능 차이, 가격을 확인해야 합니다.</div>
+          </details>
+          <p><small>LangChain Blog</small></p>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          기업 개발팀은 기능보다 배포 경계와 조달 경로 때문에 도구 도입이 결정되는 경우가 많습니다.
+        </aside>
+      </article>
+      <article class="trend-card no-image" data-layout="horizontal">
+        <div class="trend-content">
+          <h3><a href="https://github.com/backnotprop/plannotator">Show HN: Plannotator – annotate agent plans, diffs, and HTML</a></h3>
+          <div class="meta">
+            <span class="tag">#coding_agent</span>
+            <span class="tag">#harness_engineering</span>
+            <span class="tag">#community</span>
+            <span class="tag">#open_source</span>
+            <span class="tag">#cli</span>
+            <span class="tag">#tooling</span>
+            <span class="tag">#workflow</span>
+            <span class="tag">#review</span>
+            <span class="tag">prototype</span>
+            <span class="tag">medium</span>
+            <span class="tag">신호 3/5</span>
+          </div>
+          <details class="trend-detail">
+            <summary>Plannotator는 에이전트 계획·diff·HTML 산출물을 브라우저에서 주석 처리하고 다시 에이전트 세션으로 돌려보내는 로컬 리뷰 도구입니다.</summary>
+            <div class="trend-detail-body">원문 상세 요약: 1) HN Show HN 항목이며 입력 기준 HN 점수 4·댓글 1입니다. 2) Claude Code plan mode가 끝난 뒤 긴 터미널 텍스트 대신 브라우저에서 계획을 열어 주석을 달 수 있게 시작됐습니다. 3) 주석은 다시 agent session으로 전달됩니다. 4) PR-style code review를 지원하며 git, jj, p4, GitHub/GitLab PR을 다룬다고 설명합니다. 5) markdown, URL, folder, agent 생성 HTML artifact에도 주석을 달 수 있습니다. 6) Claude Code, Codex, Copilot CLI, Gemini, OpenCode, Kiro, Droid, Amp, Pi 등 9개 harness를 지원합니다. 7) local-first이며 공유 시 브라우저 암호화, 서버 ciphertext 저장, URL fragment key 구조를 설명합니다. 인사이트: 코딩 에이전트 병목이 생성에서 계획 승인과 산출물 리뷰로 이동하고 있습니다. 확인 포인트: 지원 하네스별 안정성, E2E 암호화 구현, 대규모 PR 성능, 유지보수 상태를 확인해야 합니다.</div>
+          </details>
+          <p><small>Hacker News Algolia</small></p>
+          <div class="related">
+            <strong>Show HN: Plannotator – annotate agent plans, diffs, and HTML - 근거 및 관련 링크</strong>
+            <ul>
+              <li><a href="https://news.ycombinator.com/item?id=48495970">Hacker News discussion</a></li>
+            </ul>
+          </div>
+        </div>
+        <aside class="trend-insight">
+          <strong>인사이트</strong>
+          여러 코딩 하네스를 하나의 리뷰 표면으로 묶는 도구는 agent review loop와 승인 UX의 중요성을 보여줍니다.
+        </aside>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>관찰 신호</h2>
+    <p><a href="https://rajitkhanna.com/agents/">Building agents without harness engineering</a> - Hacker News Algolia - 신호 4/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Building agents without harness engineering은 HN에서 입력 기준 가장 큰 harness 관련 커뮤니티 반응을 얻은 글이지만 본문 요약은 제공되지 않았습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약: 1) HN Algolia에서 agent harness 키워드로 수집됐고 입력 기준 HN 점수 29·댓글 16입니다. 2) 수집 시각은 2026-06-11T17:28:52+00:00입니다. 3) 제공 입력에는 원문 본문 요약이 없습니다. 4) 제목은 harness engineering 없이 agents를 만드는 접근을 직접 다룹니다. 5) 같은 batch에는 Martin Fowler의 harness engineering 글, survey, Agents Last Exam harness 글도 함께 잡혀 있습니다. 인사이트: 하네스 엔지니어링이 에이전트 논쟁의 중심 키워드가 된 커뮤니티 신호입니다. 확인 포인트: 원문 전문을 가져와 주장이 하네스 불필요론인지, 시작 방법인지, 기존 논쟁에 대한 반론인지 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Building agents without harness engineering - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://news.ycombinator.com/item?id=48493447">Hacker News discussion</a></li>
+        <li><a href="https://martinfowler.com/articles/harness-engineering.html">https://martinfowler.com/articles/harness-engineering.html</a></li>
+        <li><a href="https://labs.beconfident.app/papers/harness-engineering-survey">https://labs.beconfident.app/papers/harness-engineering-survey</a></li>
+        <li><a href="https://agents-last-exam.org/blogs/harness-matters">https://agents-last-exam.org/blogs/harness-matters</a></li>
+      </ul>
+    </div>
+    <p><a href="https://www.llamaindex.ai/blog/announcing-granular-bounding-boxes-in-llamaparse">Announcing Granular Bounding Boxes in LlamaParse</a> - LlamaIndex Blog - 신호 4/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>LlamaParse가 word, line, cell-level bounding boxes를 지원한다고 발표했습니다. document AI workflow에서 audit-grade citation을 가능하게 하는 기능입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- LlamaIndex Blog 항목으로 수집됐습니다.
+- 제목은 Announcing Granular Bounding Boxes in LlamaParse입니다.
+- 제공 입력은 2026-06-09 LlamaParse 항목으로 표시합니다.
+- LlamaParse now supports word, line, and cell-level bounding boxes라고 설명합니다.
+- 목적은 document AI workflows 전반의 audit-grade citation입니다.
+- 문서 처리 결과와 원문 시각 위치를 연결하는 기능 신호입니다.
+
+인사이트
+- RAG와 document extraction이 운영 업무에 들어가면 출처 문단 링크만으로는 부족합니다. 단어·라인·셀 단위 bounding box는 표, 스캔 문서, 감사 대응에서 사람이 결과를 검증하는 시간을 줄일 수 있습니다.
+
+확인 포인트
+- API 응답 형식, 좌표계, 표 병합 셀 처리, 이미지/PDF 품질 저하 사례, 기존 LlamaParse 플랜에서의 제공 여부, downstream citation UI 연동 방식을 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Announcing Granular Bounding Boxes in LlamaParse - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://www.llamaindex.ai/blog/llamaindex-newsletter-6-10-26">https://www.llamaindex.ai/blog/llamaindex-newsletter-6-10-26</a></li>
+      </ul>
+    </div>
+    <p><a href="https://github.com/ahwurm/localharness">LocalHarness – an agent harness for local LLMs (open-source)</a> - Hacker News Algolia - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>LocalHarness는 HN에 올라온 local LLM용 오픈소스 agent harness입니다. HN 점수 3·댓글 1의 작은 신호지만 로컬 에이전트 하네스 흐름과 맞물립니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- HN Algolia에서 agent harness 키워드로 수집됐고, 입력 기준 HN 점수 3·댓글 1입니다.
+- 제목은 &#39;LocalHarness – an agent harness for local LLMs (open-source)&#39;입니다.
+- 제공 입력에는 저장소 본문 요약이 없어 기능 세부는 확인되지 않습니다.
+
+원문 상세 요약
+- 로컬 LLM을 위한 agent harness라는 점이 제목에서 확인됩니다.
+- 오픈소스로 소개됐습니다.
+- 같은 입력 묶음에 로컬 LLM 기반 agentic coding, 오프라인/샌드박스 코딩 하네스, 클라우드 모델 대체 Ask HN이 함께 있어 주제 연관성이 있습니다.
+- 점수는 낮지만 로컬 실행, 비용, 프라이버시 흐름의 보조 신호로 볼 수 있습니다.
+
+인사이트
+- 로컬 모델이 코딩 에이전트 워크플로에 들어오려면 모델 자체보다 파일 접근, tool call, sandbox, 승인 흐름을 다루는 하네스가 필요합니다. LocalHarness는 그 수요를 직접 겨냥한 커뮤니티 실험입니다.
+
+확인 포인트
+- 지원 로컬 런타임, tool call 방식, 파일 권한 경계, 테스트 유무, 최근 커밋, 라이선스를 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>LocalHarness – an agent harness for local LLMs (open-source) - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://news.ycombinator.com/item?id=48540374">Hacker News discussion</a></li>
+      </ul>
+    </div>
+    <p><a href="https://github.com/DotNetAge/mindx">DotNetAge/mindx</a> - GitHub Repository Search - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>MindX는 open-source AI Agent orchestration platform/Agent Harness로, hybrid orchestration modes와 intelligent memory systems를 내세웁니다. 입력 기준 stars 32입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GitHub Repository Search에서 2026-06-16T11:36:07+00:00에 수집됐습니다.
+- 저장소명은 DotNetAge/mindx입니다.
+- 입력 기준 stars는 32입니다.
+- 설명은 open-source AI Agent orchestration platform, 즉 Agent Harness입니다.
+- hybrid orchestration modes를 제공한다고 요약됩니다.
+- intelligent memory systems를 포함한다고 설명됩니다.
+- AI Agent workflows를 build, manage, run하는 목적의 플랫폼으로 소개됩니다.
+
+인사이트
+- 오케스트레이션과 메모리를 함께 묶은 하네스는 장시간 실행 agent workflow의 반복 요구사항입니다. 다만 입력에는 실제 runtime, SDK, memory schema, deployment 방식이 없으므로 채택 판단에는 저장소 확인이 필요합니다.
+
+확인 포인트
+- 지원 언어/런타임, workflow DSL, memory persistence 방식, examples, tests, release tags, 최근 커밋, forks, 라이선스, 운영 배포 문서를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://github.com/XXY-CH/Aetherion">XXY-CH/Aetherion</a> - GitHub Repository Search - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Aetherion은 local-first Agent Harness Kernel을 표방하며 Git-like control로 안전하고 감사 가능한 AI agent 실행을 지향합니다. 입력 기준 stars 4로 초기 repo 신호입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GitHub Repository Search에서 2026-06-16T11:36:50+00:00에 수집됐습니다.
+- 저장소명은 XXY-CH/Aetherion입니다.
+- 입력 기준 stars는 4입니다.
+- 저장소 설명은 Local-first Agent Harness Kernel입니다.
+- Git-like control을 통해 safe, auditable AI agents를 지원한다고 설명합니다.
+- local-first, auditability, Git-like control이 핵심 개발자 키워드입니다.
+
+인사이트
+- 에이전트 하네스가 production으로 가려면 실행 결과를 되돌리고, 변경 내역을 추적하고, 사람 리뷰 지점을 만들 수 있어야 합니다. Aetherion은 이 문제를 Git-like control로 풀려는 초기 실험입니다.
+
+확인 포인트
+- 실제 CLI/API 구조, Git-like control의 구현 범위, rollback semantics, sandbox 유무, 테스트, release tag, 라이선스, 최근 커밋과 issue activity를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://github.com/Liaabnormal676/find-cve-agent">Liaabnormal676/find-cve-agent</a> - GitHub Repository Search - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>find-cve-agent는 open source packages에서 실제 CVE를 찾고 false positive를 거르기 위한 multi-agent Claude Code harness입니다. 입력 기준 stars 0이지만 security agent harness로 주제가 선명합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GitHub Repository Search에서 2026-06-16T11:34:37+00:00에 수집됐습니다.
+- 저장소명은 Liaabnormal676/find-cve-agent입니다.
+- 입력 기준 stars는 0입니다.
+- 설명은 multi-agent Claude Code harness를 사용해 open source packages에서 real CVEs를 찾는 것입니다.
+- security research와 false positive filtering을 목표로 합니다.
+- 입력에는 실제 발견 사례, benchmark, supported ecosystem, 라이선스, 릴리스 정보가 없습니다.
+
+인사이트
+- 보안 취약점 탐색은 agent harness의 실제 가치와 위험이 모두 큰 영역입니다. false positive filtering을 명시한 점은 실무 문제를 잘 겨냥하지만, 검증 없는 보안 자동화는 신뢰하기 어렵습니다.
+
+확인 포인트
+- 재현 가능한 CVE 발견 사례, supported package ecosystem, false positive 측정, tool permission, sandbox, disclosure policy, 테스트, 최근 커밋, 라이선스를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://news.ycombinator.com/item?id=48509874">Anthropic Fable just deleted a .git folder of mine, what&#39;s next?</a> - Hacker News Algolia - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>HN 사용자가 Anthropic Fable에 저장소 수정을 맡겼다가 .git 폴더가 삭제된 사례를 공유했습니다. 핵심은 모델 성능보다 작업 디렉터리·rm -rf·권한 경계 같은 하네스 안전장치입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- 입력 기준 HN 점수 4·댓글 6으로 큰 점수는 아니지만, 구체적 사고 시나리오가 있어 품질 높은 커뮤니티 신호입니다.
+- 작성자는 Fable을 며칠간 많이 써봤고 강력하지만 가끔 매우 이상한 방식으로 판단한다고 평가했습니다.
+- 문제 상황은 submodule, symlink 등이 섞인 저장소 수정을 맡기며 더 많은 재량을 준 뒤 발생했습니다.
+
+원문 상세 요약
+- Fable 출력에 .git이 삭제됐다는 내용이 나타났다고 합니다.
+- 작성자는 원인이 shell working directory가 repo root로 재설정된 뒤 pwd를 재확인하지 않고 relative-path rm -rf를 실행한 실수라고 설명했습니다.
+- 복구 불가능하거나 치명적인 상황은 아니었다고 했지만, production system에서는 훨씬 큰 피해가 날 수 있다고 지적했습니다.
+- 이 사례는 하네스가 시스템을 AI 에이전트로부터 보호할 뿐 아니라 에이전트가 자기 실수로 망가지는 것도 막는다는 주장으로 이어집니다.
+- 댓글 수보다 중요한 신호는 실패 모드가 구체적이라는 점입니다: 작업 디렉터리 재검증, 삭제 명령 승인, repo root 보호, dry-run 같은 안전장치가 바로 연결됩니다.
+
+인사이트
+- 코딩 에이전트 도입 판단에서 모델 이름보다 하네스 정책이 더 중요해지는 사례입니다. 특히 파일 삭제, git metadata, symlink, submodule, cwd 변경은 별도 정책으로 막아야 합니다.
+
+확인 포인트
+- Fable의 실제 제품/모델 명칭과 재현 가능성은 원문 외 추가 사례로 확인해야 합니다. 내부 도입 시에는 삭제 명령 allowlist, repo metadata 보호, 실행 전 pwd 출력, 변경 diff 승인 흐름을 점검하세요.</div>
+    </details>
+    <p><a href="https://blog.alexewerlof.com/p/local-llms-for-agentic-coding">에이전트 코딩에 로컬 LLM 활용하기</a> - GeekNews - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>GeekNews와 HN Ask가 로컬 LLM 기반 에이전트 코딩을 반복적으로 다룹니다. 가격 부담, 데이터 프라이버시, 오프라인·샌드박스형 코딩 하네스가 핵심 논점입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- GeekNews raw item으로 &#39;에이전트 코딩에 로컬 LLM 활용하기&#39;가 수집됐습니다.
+- 관련 GeekNews 제목에는 클라우드 플래그십 모델 가격 급등 속에서 비용 부담 없이 코딩 작업을 이어가기 위한 로컬 모델 활용법이 언급됩니다.
+- 또 다른 관련 제목은 데이터 프라이버시와 무료 사용을 이유로 클라우드 모델을 떠나는 개발자와 컨테이너화·샌드박스화된 오프라인 코딩 하네스를 언급합니다.
+
+원문 상세 요약
+- 제공 입력상 원문 본문은 없고 제목/발췌 수준의 신호만 있습니다.
+- 핵심 주제는 Claude/GPT 같은 클라우드 모델을 일상 코딩에서 로컬 모델로 대체할 수 있는지입니다.
+- Ask HN 항목도 같은 질문을 직접 던지고 있어 커뮤니티 관심이 단발이 아닙니다.
+- 가격 상승, 데이터 프라이버시, 오프라인 실행, sandboxed coding harness가 반복 키워드입니다.
+- 로컬 모델이 SOTA 클라우드 모델 성능에 어느 정도 근접하는지와 실제 agentic coding에서 충분한지가 확인 포인트입니다.
+
+인사이트
+- 코딩 에이전트 비용이 사용량과 함께 커지면서 &#39;최고 성능 모델만 사용&#39;에서 &#39;로컬/클라우드 혼합 라우팅&#39;으로 관심이 옮겨갈 수 있습니다. 보안 민감 코드베이스에서는 프라이버시 이유도 큽니다.
+
+확인 포인트
+- 실제 로컬 모델명, 하드웨어 요구사항, benchmark가 아닌 repo-level 작업 성공률, 컨테이너 sandbox 구성, 클라우드 fallback 전략을 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>에이전트 코딩에 로컬 LLM 활용하기 - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://news.hada.io/topic?id=30488">GeekNews</a></li>
+        <li><a href="https://news.hada.io/topic?id=30525">GeekNews</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=48542100">Ask HN</a></li>
+      </ul>
+    </div>
+    <p><a href="https://stillwind.ai">Show HN: Stillwind – High Resolution Electronic Component Search</a> - Hacker News Algolia - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Show HN의 Stillwind는 전자부품 검색을 LLM 추출 데이터베이스와 AI 에이전트 질의로 풀려는 제품입니다. 1천 개 이상 schema, 13만 개 이상 properties, Sonnet 4.6 에이전트 사용 등 구체적 구현 설명이 있습니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- HN Show HN 항목으로 수집됐고, 입력 기준 HN 점수 7·댓글 0입니다.
+- 사용자가 복잡한 전자부품 사양에 맞는 부품을 찾도록 돕는 검색 엔진입니다.
+- PCB를 만드는 사람들과 대화한 뒤, 정확한 부품 검색이 매우 오래 걸리고 지루하며 좋은 결과로 이어지지 않는 문제를 겨냥했다고 설명합니다.
+
+원문 상세 요약
+- 광범위한 사양 설명만 입력해도 몇 시간이 아니라 몇 분 안에 맞는 부품을 찾는 것을 목표로 합니다.
+- 자체 부품 데이터베이스와 부품 속성 데이터가 핵심 기반입니다.
+- LLM으로 각 부품의 parameter를 1천 개 이상 schema로 추출했고, 전체적으로 13만 개 이상 properties를 다룬다고 설명합니다.
+- 속성 깊이가 너무 커서 직접 시각화하기 어려워졌고, Sonnet 4.6 기반 AI 에이전트가 데이터베이스를 대화형으로 질의한다고 합니다.
+- 결과 표시 전에는 다른 모델로 데이터를 검증해 첫 결과가 조금 늦을 수 있다고 설명합니다.
+- 현재 microcontroller, sensor, advanced IC 대부분과 passive/generic part 일부를 포함한다고 합니다.
+- 기술 스택으로 SvelteKit, Cloudflare Workers, Hyperdrive, PostgreSQL 18, io_uring, NVMe 서버를 언급했습니다.
+
+인사이트
+- 일반 챗봇이 아니라 고해상도 도메인 데이터베이스 위에서 에이전트가 query planner 역할을 하는 사례입니다. 부품 검색처럼 schema가 깊고 조건 조합이 복잡한 영역에서 에이전트 UI가 실용성을 얻는지 볼 만합니다.
+
+확인 포인트
+- 부품 속성 추출 정확도, 검증 모델의 false positive, 최신 재고/가격 데이터 연동 여부, 추천 조합 기능의 실제 품질을 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>Show HN: Stillwind – High Resolution Electronic Component Search - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://news.ycombinator.com/item?id=48494234">Hacker News discussion</a></li>
+      </ul>
+    </div>
+    <p><a href="https://www.youtube.com/watch?v=-DXhS_uAMIw">지금 가장 쉬운 AI 사업 아이디어</a> - Nomad Coders YouTube - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Nomad Coders 영상은 Hermes Agent를 배포하고 AI 직원을 커스터마이징해 사업 모델로 연결하는 흐름을 다룹니다. Nous Research, GEPA 논문, Honcho 링크가 있어 agent product/prototype 신호로 추적할 만합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Nomad Coders YouTube RSS에서 2026-06-14에 수집된 영상입니다.
+- 영상 주제는 Hermes Agent를 살펴보고 배포하는 방법입니다.
+- 목차는 Hermes AI 에이전트의 등장, 스스로 발전하는 Hermes, AI 직원을 비즈니스로 파는 방법, Hostinger 배포, AI 직원 만들기, 커스터마이징, 사업 모델로 구성됩니다.
+- 설명에는 Hermes Agent, Nous Research, GEPA 논문, Honcho GitHub 링크가 포함되어 있습니다.
+- 영상에는 Hostinger 배포 프로모션과 쿠폰 코드 안내도 포함되어 있어 제품 소개/스폰서 성격이 섞여 있습니다.
+
+인사이트
+- AI 직원을 템플릿화해 배포·커스터마이징·판매하는 흐름은 agent 제품화의 대중화 신호입니다. 다만 자기개선이나 사업성 주장은 영상만으로 확정하기 어렵고, Hermes/GEPA/Honcho 원문 확인이 필요합니다.
+
+확인 포인트
+- Hermes Agent의 실제 기능 범위, Nous Research 공식 문서, GEPA 논문 내용, Honcho 저장소의 역할을 확인하세요.
+- 배포형 agent가 어떤 권한, 메모리, 도구 연결, 보안 경계를 갖는지 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>지금 가장 쉬운 AI 사업 아이디어 - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://hermes-agent.nousresearch.com/">https://hermes-agent.nousresearch.com/</a></li>
+        <li><a href="https://arxiv.org/abs/2507.19457">https://arxiv.org/abs/2507.19457</a></li>
+        <li><a href="https://github.com/plastic-labs/honcho">https://github.com/plastic-labs/honcho</a></li>
+      </ul>
+    </div>
+    <p><a href="https://paperswithcode.com/papers/2606.06036">Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents</a> - Papers with Code Latest - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Memory is Reconstructed, Not Retrieved는 LLM agent memory를 단순 검색이 아니라 graph memory reconstruction 관점으로 다루는 연구 신호입니다. 장시간 실행 에이전트의 기억 품질과 오류 복구 설계에 관련됩니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 제공 입력에서 확인되는 제목은 Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents입니다.
+- Papers with Code Latest에 잡힌 memory/research/paper 항목입니다.
+- 입력에는 본문 요약이 없어 구체적 graph construction, retrieval/reconstruction 알고리즘, benchmark는 확인되지 않습니다.
+- 제목상 agent memory를 단순 vector retrieval 문제가 아니라 graph 기반 재구성 문제로 바라봅니다.
+- 장기 task에서 memory는 저장된 사실을 다시 꺼내는 것뿐 아니라 현재 목표에 맞게 관계를 복원하고 오류를 통제하는 문제로 이어집니다.
+
+인사이트
+- 장시간 agent harness에서는 memory write policy, memory update, conflict resolution, forgetting, citation이 모두 품질과 안전성에 영향을 줍니다. 이 논문은 memory subsystem을 독립 평가 대상으로 다뤄야 한다는 신호입니다.
+
+확인 포인트
+- 사용한 benchmark, memory graph schema, stale/incorrect memory 처리, retrieval baseline, code 공개, 장기 multi-step task 성능을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2504.19413">Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</a> - Papers with Code Latest - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Mem0는 production-ready AI agents를 위한 scalable long-term memory 항목으로 수집됐습니다. 입력상 세부 내용은 부족하지만 장기 메모리, 운영형 agent, 재현성 평가 관점에서 추적 가치가 있습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 제공 입력에서 확인되는 제목은 Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory입니다.
+- Papers with Code Latest에 잡힌 memory/research/paper 신호입니다.
+- 현재 입력에는 abstract나 실험 결과가 없어 메모리 구조, scale claim, benchmark는 확인되지 않습니다.
+- 제목은 production-ready agent와 scalable long-term memory를 직접 연결합니다.
+- 이는 대화형 memory보다 장시간 실행 agent의 상태 관리, 사용자별 기억, 도구 사용 이력, 정책 기반 삭제와 연결되는 주제입니다.
+
+인사이트
+- production-ready라는 표현은 실제 운영 요구를 암시하지만, 검증해야 할 것은 latency, storage cost, privacy boundary, memory correction, deletion semantics입니다. agent memory는 기능이 아니라 운영 책임에 가깝습니다.
+
+확인 포인트
+- 논문 원문, 오픈소스/제품 구현, memory benchmark, user-level isolation, PII 처리, 삭제/수정 API, hallucinated memory 방지 메커니즘을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://openai.com/index/academy-courses-applying-ai-at-work">New OpenAI Academy courses for the next era of work</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI는 실무 AI skills, repeatable workflows, everyday work agents 적용을 돕는 Academy courses 3개를 소개했습니다. 제품 기능보다 교육·채택 지원 발표입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News RSS에 2026-06-12 10:00 UTC 항목으로 수집됐습니다.
+- 제목은 New OpenAI Academy courses for the next era of work입니다.
+- 제공 입력은 OpenAI가 three Academy courses를 소개했다고 설명합니다.
+- 목적은 practical AI skills 구축입니다.
+- 또 다른 목적은 repeatable workflows 생성입니다.
+- everyday work에서 agents를 적용하는 내용도 포함됩니다.
+- 기능 출시보다는 adoption enablement와 교육 콘텐츠 발표에 가깝습니다.
+
+인사이트
+- 에이전트 제품 확산에는 기능뿐 아니라 조직 내 반복 가능한 업무 패턴 교육이 필요합니다. 다만 이 항목은 하네스, API, 배포 기능 변화가 아니므로 상위 기술 트렌드보다는 공식 채택 지원 신호로 두는 편이 맞습니다.
+
+확인 포인트
+- 강좌의 대상 사용자, 실습 도구, agents 관련 커리큘럼 깊이, Codex/API/ChatGPT 중 어떤 제품을 다루는지, 기업 교육 프로그램과의 연결을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://openai.com/index/introducing-openai-partner-network">Introducing the OpenAI Partner Network</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenAI Partner Network 발표는 글로벌 파트너를 통해 enterprise AI adoption, deployment, transformation을 가속하려는 생태계 확장 신호입니다. 입력 기준 $150M investment가 언급됩니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- OpenAI News RSS에 2026-06-14 17:00 UTC 항목으로 수집됐습니다.
+- 제목은 Introducing the OpenAI Partner Network입니다.
+- 제공 입력은 OpenAI가 Partner Network를 launch한다고 설명합니다.
+- $150M investment가 언급됩니다.
+- 목적은 global partners가 enterprise AI adoption을 가속하도록 돕는 것입니다.
+- deployment와 transformation도 함께 언급됩니다.
+- 에이전트 하네스 기능 출시는 아니고 파트너 생태계·도입 채널 발표입니다.
+
+인사이트
+- 기업 AI 도입은 기술 기능보다 SI, 컨설팅, 배포 파트너 생태계의 영향을 크게 받습니다. 다만 에이전트, MCP, Codex, evaluation 등 직접 기능 변화는 입력에 없어 제품 기술 트렌드로는 중간 이하 우선순위입니다.
+
+확인 포인트
+- 파트너 범위, 자격 기준, $150M 투자 집행 방식, Codex/API/ChatGPT Enterprise와의 연결, 고객 배포 사례, 파트너가 제공하는 보안·거버넌스 책임 범위를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.anthropic.com/news/claude-corps">Announcements Jun 11, 2026 Introducing Claude Corps We’re launching Claude Corps, a national fellowship program for people early in their careers who are passionate about extending the benefits of AI to communities across America.</a> - Anthropic News - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Anthropic은 Claude Corps라는 national fellowship program을 발표했습니다. 제공 입력 기준 AI benefits를 미국 커뮤니티로 확장하려는 early-career fellowship입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Anthropic News 웹 항목으로 수집됐습니다.
+- 날짜는 2026-06-11로 표시됩니다.
+- 제목은 Introducing Claude Corps입니다.
+- 제공 입력은 Claude Corps를 national fellowship program이라고 설명합니다.
+- 대상은 early career people입니다.
+- 목표는 AI의 benefits를 communities across America로 확장하는 것입니다.
+- 에이전트 하네스, coding agent, API, MCP, pricing 변화는 입력에 없습니다.
+
+인사이트
+- Anthropic의 생태계·사회 적용 프로그램 신호이지만 Product Reporter의 핵심 우선순위인 agent harness, tool use, deployment, evaluation과는 직접성이 낮습니다. 공식 발표이므로 weak section에 두는 것이 적절합니다.
+
+확인 포인트
+- fellowship 운영 방식, Claude 제품 사용 범위, 지원 대상 커뮤니티, measurable outcomes, 개발자/에이전트 생태계와의 연결 여부를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://news.hada.io/topic?id=30529">Apple의 Foundation Models 프레임워크에 Claude를 서버 사이드 모델로 연결하는 Swift 패키지로, 개발자가 Apple 온디바이스 모델과 똑같은 코드 ...</a> - GeekNews - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>GeekNews는 Apple Foundation Models 프레임워크에 Claude를 서버 사이드 모델로 연결하는 Swift 패키지를 포착했습니다. 온디바이스 모델과 같은 코드 경로로 서버 Claude를 쓰려는 개발자 경험 신호입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- GeekNews raw item으로 수집됐고 제목에 핵심 기능이 포함돼 있습니다.
+- Apple Foundation Models 프레임워크에 Claude를 서버 사이드 모델로 연결하는 Swift 패키지입니다.
+- 개발자가 Apple 온디바이스 모델과 같은 코드 방식으로 Claude를 호출할 수 있게 하는 것이 요지입니다.
+
+원문 상세 요약
+- 제공 입력에는 제목 일부만 있어 패키지 이름, 저장소, 라이선스, 지원 Claude 모델은 확인되지 않았습니다.
+- 핵심 가치는 Apple의 Foundation Models API 스타일과 서버 사이드 Claude 호출을 맞추는 것입니다.
+- 온디바이스 모델과 서버 모델을 같은 앱 코드 구조에서 교체하거나 병행하려는 수요를 반영합니다.
+- 모바일/Apple 생태계에서 로컬 모델과 클라우드 모델 라우팅을 추상화하는 도구 신호로 볼 수 있습니다.
+
+인사이트
+- 앱 개발자는 온디바이스 모델의 지연시간·프라이버시와 서버 모델의 성능을 함께 쓰고 싶어 합니다. 이 패키지는 모델 라우팅을 프레임워크 호환성 문제로 풀려는 작은 하지만 중요한 커뮤니티 신호입니다.
+
+확인 포인트
+- 패키지 저장소, 인증 처리, streaming 지원, Apple Foundation Models와의 API 호환 범위, fallback 정책, 개인정보 전송 고지를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2407.16741">OpenDevin: An Open Platform for AI Software Developers as Generalist
+  Agents</a> - Papers with Code Latest - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenDevin은 AI software developer를 generalist agent로 다루는 open platform 연구 항목입니다. 코딩 에이전트 하네스의 초기 기준점으로 가치가 있으나 입력에는 상세 평가가 없습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 제공 입력에서 확인되는 제목은 OpenDevin: An Open Platform for AI Software Developers as Generalist Agents입니다.
+- Papers with Code Latest에 수집된 research/paper 항목입니다.
+- 현재 입력에는 abstract, benchmark, code details가 없습니다.
+- 제목상 software development agent를 generalist agent platform으로 구현하는 방향입니다.
+- 코딩 에이전트 하네스 관점에서는 sandbox, filesystem access, browser/tool use, task evaluation, human review loop가 핵심 확인 대상입니다.
+
+인사이트
+- OpenDevin 계열은 이후 코딩 에이전트 하네스 논의의 비교 기준이 될 수 있습니다. 최신성보다 중요한 것은 공개 플랫폼이 어떤 권한 모델과 평가 태스크를 제공했는지입니다.
+
+확인 포인트
+- SWE-bench류 평가 여부, supported tools, sandbox 경계, 실패 로그, reproducible task suite, 현재 프로젝트 유지보수 상태를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://github.com/OpenCoven/coven">OpenCoven/coven</a> - GitHub Repository Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>OpenCoven/coven은 project-scoped agent sessions용 local harness substrate라는 한 줄 설명만 수집된 초기 저장소입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- OpenCoven/coven: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GitHub Repository Search (stars 22)
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Local harness substrate for project-scoped 에이전트 sessions라고 설명합니다.
+
+한글 정리
+- OpenCoven/coven은(는) OpenCoven/coven: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #github, #open_source
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://github.com/Foundersieve687/skill-gateway">Foundersieve687/skill-gateway</a> - GitHub Repository Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>skill-gateway는 Claude/agent skill 요청을 자동 라우팅해 skill repo를 외우지 않아도 되게 하는 초기 GitHub 저장소입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Foundersieve687/skill-gateway: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GitHub Repository Search (stars 1)
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Route requests to the right Claude/에이전트 skill automatically, so you can use the skill ecosystem without memorizing repos라고 설명합니다.
+
+한글 정리
+- Foundersieve687/skill-gateway은(는) Foundersieve687/skill-gateway: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #anthropic, #github, #open_source
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://github.com/nickderobertis/oneharness">nickderobertis/oneharness</a> - GitHub Repository Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>oneharness는 여러 agentic coding harness를 하나의 CLI로 실행하고 parallel prompts와 uniform JSON을 제공하려는 저장소입니다. 입력 기준 stars 0으로 매우 초기입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GitHub Repository Search에서 2026-06-16T11:34:44+00:00에 수집됐습니다.
+- 저장소명은 nickderobertis/oneharness입니다.
+- 입력 기준 stars는 0입니다.
+- 설명은 many agentic coding harnesses를 위한 one CLI입니다.
+- prompts를 병렬 실행하고 uniform JSON을 얻는다고 요약됩니다.
+- 구체 지원 harness, CLI 예제, 출력 schema, release 정보는 제공되지 않았습니다.
+
+인사이트
+- 여러 코딩 하네스를 같은 prompt로 비교하고 JSON으로 수집하는 기능은 eval harness와 벤더 비교에 바로 연결됩니다. 다만 현 시점에서는 아이디어 신호에 가깝습니다.
+
+확인 포인트
+- 지원 하네스 목록, output schema, parallel run isolation, 실패 처리, 비용 집계, examples, release tag, 라이선스, 최근 커밋을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://github.com/llaa33219/miniouto">llaa33219/miniouto</a> - GitHub Repository Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>miniouto는 coreouto 기반의 minimal, file-driven CLI agent harness입니다. 입력 기준 stars 0으로 채택 신호는 약하지만 CLI 하네스 실험으로 추적할 만합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- GitHub Repository Search에서 2026-06-16T11:35:47+00:00에 수집됐습니다.
+- 저장소명은 llaa33219/miniouto입니다.
+- 입력 기준 stars는 0입니다.
+- 설명은 minimal, file-driven CLI agent harness입니다.
+- coreouto 위에 구축됐다고 요약됩니다.
+- 구체 기능, 예제, 라이선스, 릴리스 정보는 제공 입력에 없습니다.
+
+인사이트
+- 파일 기반 CLI 하네스는 단순하지만 재현 가능한 agent run, prompt/version control, CI 연동과 잘 맞을 수 있습니다. 다만 stars 0이므로 개발자 채택 신호라기보다 신생 실험으로 봐야 합니다.
+
+확인 포인트
+- coreouto와의 관계, 실행 파일 포맷, JSON 출력 여부, tool permission 모델, 예제, 테스트, 라이선스, 최근 커밋을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/rAWB8-qiVQo">HeyGen AI video generator just changed the game...</a> - Wes Roth YouTube - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Wes Roth의 HeyGen Shorts는 디지털 트윈 아바타, 스크립트 기반 영상 생성, 175개 이상 언어 번역을 소개합니다. paid partnership이라 제품 광고성 약한 신호로 분류합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Wes Roth YouTube RSS에서 2026-06-12에 수집된 Shorts입니다.
+- 설명은 HeyGen AI Video Generator가 짧은 클립으로 Digital Twin Avatar를 만들 수 있다고 소개합니다.
+- 스크립트를 영상으로 바꾸고, 콘텐츠를 175개 이상 언어로 번역하며, 반복 촬영 없이 영상 제작을 확장할 수 있다고 설명합니다.
+- 설명에 paid partnership with HeyGen이라고 명시되어 있습니다.
+- 전체 영상 링크도 함께 제공됩니다.
+
+인사이트
+- AI 영상 생성 도구의 제품화 신호는 분명하지만, Agent/LLM/coding-agent 핵심 신호는 아닙니다. 광고성 콘텐츠이므로 공식 제품 문서와 사용자 사례가 없으면 약한 신호로 두는 편이 맞습니다.
+
+확인 포인트
+- HeyGen 공식 기능 문서, 가격, API 제공 여부, 데이터/초상권 처리, 기업 사용 조건을 확인해야 합니다.</div>
+    </details>
+    <div class="related">
+      <strong>HeyGen AI video generator just changed the game... - 근거 및 관련 링크</strong>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=NiY38aQQkqM">https://www.youtube.com/watch?v=NiY38aQQkqM</a></li>
+      </ul>
+    </div>
+    <p><a href="https://openai.com/index/using-codex-to-simulate-black-holes">How an astrophysicist uses Codex to help simulate black holes</a> - OpenAI News - 신호 3/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>How an astrophysicist uses Codex to help simulate black holes: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- How an astrophysicist uses Codex to help simulate black holes: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.
+- 원천: OpenAI News
+- 분류: coding_agent / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity라고 설명합니다.
+
+한글 정리
+- How an astrophysicist uses Codex to help simulate black holes은(는) 코딩 에이전트의 실행 방식, 개발 워크플로, 코드 생성/리뷰 자동화와 관련된 소식입니다.
+- 주요 태그: #openai, #coding_agent
+
+인사이트
+- 개발자가 명세 작성, 코드 생성, 리뷰를 맡기는 범위가 넓어질 수 있습니다. 내부 코드베이스 적용성, 보안 경계, 리뷰 비용을 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxQUG9qNEdUYmU4bEhiVl9scGt3V2ZocGw2UHdDV0JHZmtiZXBvc3lMVTREel9UVURUbEdfTERKVGZOVzItVmt1Y05iZDY1aVFmR3hoWjVQcUc0eEx0MTN1ek4ydUtsRi02RVh1cFp5S0tpY0ZsUmdTMW1rZjVsa3ZUeUdRcFFhTjE0emlmM2xyb1RvcV9SRF9rc3hZd1Bka0ppRHJxQkh2bUx4QQ?oc=5">Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 - Databricks</a> - Google Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 - Databricks: Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 Databricks</summary>
+      <div class="trend-detail-body">핵심 정리
+- Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 - Databricks: Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 Databricks
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 Databricks
+
+한글 정리
+- Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 - Databricks은(는) Omnigent를 소개합니다: 에이전트를 결합, 제어 및 공유하기 위한 메타 하네스 Databricks 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQZEJpdWM0SXEta1lGZnc3TTdsVHZKRjlNT1VlU2M4Vmd1X19fTXdjaFFWUGdSWjVxWHFoZDFHRWxpV29CM3hYRWtwdFlCZ3ljRmhENkprVWVYNnlnN2I3WHhvdC15OWRPaWdCa0lwWU04S1VscEpqZm5ROGc2N19uNGhwdk5RNUE?oc=5">앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 - 네이버 프리미엄콘텐츠</a> - Google Search - 신호 2/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 - 네이버 프리미엄콘텐츠: 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 네이버 프리미엄콘텐츠</summary>
+      <div class="trend-detail-body">핵심 정리
+- 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 - 네이버 프리미엄콘텐츠: 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 네이버 프리미엄콘텐츠
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 네이버 프리미엄콘텐츠
+
+한글 정리
+- 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 - 네이버 프리미엄콘텐츠은(는) 앤트로픽이 말하는 AI 바이오 에이전트의 핵심: 생물학 데이터 인프라 &amp; 하네스 엔지니어링 네이버 프리미엄콘텐츠 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE55dXF4T05qd2o0YXdLSXBUbkI0d2pUTGVSSG01Qnd3bmVvYUs3X3FwbVVHdnV1XzA2ZDQ4a3BSdmtPTHJMZlhqOXZXQzBjWDFBNnJTeFBmV2dWWFJhNEo2c0hZMVNfbFZ1a2c?oc=5">&#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 - AI타임스</a> - Google Search - 신호 1/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>&#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 - AI타임스: &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 AI타임스</summary>
+      <div class="trend-detail-body">핵심 정리
+- &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 - AI타임스: &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 AI타임스
+- 원천: Google Search
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 AI타임스
+
+한글 정리
+- &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 - AI타임스은(는) &#34;클로드 코드·코덱스를 하나로&#34;…데이터브릭스, 에이전트 통합 플랫폼 공개 AI타임스 내용을 다룹니다.
+- 주요 태그: #release
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1jZWVSWkJXWHIwc1pzdkc2SUJaQ0M3Mnppdk1PNmtuOGVPY2YybDBqNWpFcFdmZ0QzT0trN2RHaWpPLWNmNkxGN29hdXF6NW02WTlNdEdybHptak82YW13b281ZFhUN3UxbmlfRXFXVQ?oc=5">&#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 - 이코노미사이언스</a> - Google Search - 신호 1/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>&#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 - 이코노미사이언스: &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 이코노미사이언스</summary>
+      <div class="trend-detail-body">핵심 정리
+- &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 - 이코노미사이언스: &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 이코노미사이언스
+- 원천: Google Search
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 이코노미사이언스
+
+한글 정리
+- &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 - 이코노미사이언스은(는) &#34;생성형 AI 이후로 AX&#34;…KT·AWS·Databricks, 스타트업 AI 전환 해법 제시 이코노미사이언스 내용을 다룹니다.
+- 주요 태그: #other
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE4yc0F4ZUpuY1BRRnhFTmQtN3RvTGdBSmNTd3F2ZUZjb0xoNkFjY2l5bXRZMzB1aTl0cndyd1ZrRGUxQVNHVHEwaE9YY0NfZUlXNnlRNVR3VUJfYW44UFA2dmhVMG1acFducEt4OE1TVQ?oc=5">KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 - 비즈니스플러스</a> - Google Search - 신호 1/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 - 비즈니스플러스: KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 비즈니스플러스</summary>
+      <div class="trend-detail-body">핵심 정리
+- KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 - 비즈니스플러스: KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 비즈니스플러스
+- 원천: Google Search
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 비즈니스플러스
+
+한글 정리
+- KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 - 비즈니스플러스은(는) KT, AWS·데이터브릭스와 스타트업 AX 지원…판교서 기술 세미나 개최 비즈니스플러스 내용을 다룹니다.
+- 주요 태그: #other
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=0pgCBV8CTZY">Anthropic is starting to panic…</a> - Fireship YouTube - 신호 1/5</p>
+    <details class="trend-detail weak-detail">
+      <summary>Anthropic is starting to panic…: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Anthropic is starting to panic…: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: Fireship YouTube
+- 분류: product / 성숙도: released / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 원문은 Get $30 of Pioneer inference credits for only $5 - Anthropic just proposed something insane - the idea that maybe we should wait a second and pause all AI development라고 설명합니다.
+- 원문은 But why now?라고 설명합니다.
+- 원문은 #coding #programming #ai #nthropic 📚 Resources - Want more Fireship?라고 설명합니다.
+- 원문은 🗞️ Newsletter: 🧠 Courses:라고 설명합니다.
+
+한글 정리
+- Anthropic is starting to panic…은(는) Anthropic is starting to panic…: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #anthropic, #release, #youtube, #ide, #video, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>노이즈 및 보류 항목</h2>
+    <p><a href="https://www.youtube.com/watch?v=DBIL3QcHzXQ">AI 뉴스 - 클로드 Fable 5 금지, Gemini 실시간 번역, GLM-5.2, Kimi-K2.7-Code, MiniMax M3, SpaceX AI1 위성 등</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>조코딩 주간 AI 뉴스는 Codex 토큰 리밋 리셋, Google Colab CLI, Gemini-SQL2, Kimi-K2.7-Code 등 개발자 관련 후보를 묶은 종합 영상입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약: 1) 조코딩 YouTube RSS에서 2026-06-15에 수집된 주간 AI 뉴스 영상입니다. 2) 목차에는 Claude Fable 5 접근 이슈가 첫 항목으로 배치됩니다. 3) 개발자 관점 추적 대상은 Kimi-K2.7-Code, Codex 토큰 리밋 리셋, Google Colab CLI, Gemini-SQL2입니다. 4) 모델/멀티모달 항목으로 GLM-5.2, MiniMax M3, Gemini 3.5 Live Translate, DiffusionGemma가 언급됩니다. 5) 보안 항목으로 Fable 5 시스템 프롬프트 유출과 악성코드 안전장치 역이용이 포함됩니다. 인사이트: 이 영상은 단일 트렌드가 아니라 수집 큐입니다. 확인 포인트: 각 항목을 공식 블로그, GitHub 릴리스, 논문, API 문서로 분리 검증해야 합니다.</div>
+    </details>
+    <p><a href="https://github.com/omnigent-ai/omnigent">omnigent-ai/omnigent</a> - GitHub Repository Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>omnigent-ai/omnigent: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- omnigent-ai/omnigent: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.
+- 원천: GitHub Repository Search (stars 2189)
+- 분류: coding_agent / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 A meta-harness for all your AI 에이전트s라고 설명합니다.
+- 원문은 Omnigent provides a common layer over Claude Code, Codex, Pi, and the 에이전트s you write yourself: swap or combine harnesses without rewriting, keep them in check with policies and sandboxing, and collaborate in real time on the same live session, from any...라고 설명합니다.
+
+한글 정리
+- omnigent-ai/omnigent은(는) 코딩 에이전트의 실행 방식, 개발 워크플로, 코드 생성/리뷰 자동화와 관련된 소식입니다.
+- 주요 태그: #openai, #anthropic, #meta, #coding_agent, #github, #open_source, #ide, #tooling
+
+인사이트
+- 개발자가 명세 작성, 코드 생성, 리뷰를 맡기는 범위가 넓어질 수 있습니다. 내부 코드베이스 적용성, 보안 경계, 리뷰 비용을 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2606.13707">Orchestra-o1: Omnimodal Agent Orchestration</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>Orchestra-o1: Omnimodal Agent Orchestration: 에이전트 하네스/런타임 운영 신호입니다. 오케스트레이션, 도구 호출, 평가, 관찰성, 장시간 실행 안정성을 우선 확인하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Orchestra-o1: Omnimodal Agent Orchestration: 에이전트 하네스/런타임 운영 신호입니다. 오케스트레이션, 도구 호출, 평가, 관찰성, 장시간 실행 안정성을 우선 확인하세요.
+- 원천: Papers with Code Latest
+- 분류: harness_engineering / 성숙도: prototype / 영향도: high / 신호 4/5
+
+원문 상세 요약
+- 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+
+한글 정리
+- Orchestra-o1: Omnimodal Agent Orchestration은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #orchestration, #research, #paper
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.langchain.com/blog/regression-testing">Regression Testing with LangSmith</a> - LangChain Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Regression Testing with LangSmith: Regression Testing with LangSmith 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Regression Testing with LangSmith: Regression Testing with LangSmith 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.
+- 원천: LangChain Blog
+- 분류: harness_engineering / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Evaluate and iterate on LLM applications with confidence using LangSmith&#39;s regression testing라고 설명합니다.
+- 원문은 Compare experiments, track performance, and identify changes라고 설명합니다.
+
+한글 정리
+- Regression Testing with LangSmith은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #benchmark, #evaluation, #observability, #ide, #tooling
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.langchain.com/blog/test-run-comparisons">Test Run Comparisons</a> - LangChain Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Test Run Comparisons: Test Run Comparisons 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Test Run Comparisons: Test Run Comparisons 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.
+- 원천: LangChain Blog
+- 분류: harness_engineering / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Compare LLM test runs side-by-side with LangSmith&#39;s Test Run Comparisons라고 설명합니다.
+- 원문은 Manually inspect data, filter results, and gain insights faster라고 설명합니다.
+
+한글 정리
+- Test Run Comparisons은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #observability, #ide, #workflow, #tooling
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.langchain.com/blog/pairwise-evaluations-with-langsmith">Pairwise Evaluations with LangSmith</a> - LangChain Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Pairwise Evaluations with LangSmith: Pairwise Evaluations with LangSmith 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Pairwise Evaluations with LangSmith: Pairwise Evaluations with LangSmith 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.
+- 원천: LangChain Blog
+- 분류: harness_engineering / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Learn what pairwise 평가 is, why you might need it for LLM app development, and see an example of how to use it in LangSmith by LangChain라고 설명합니다.
+
+한글 정리
+- Pairwise Evaluations with LangSmith은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #benchmark, #evaluation, #observability
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.langchain.com/blog/iterating-towards-llm-reliability-with-evaluation-driven-development">Iterating Towards LLM Reliability with Evaluation Driven Development</a> - LangChain Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Iterating Towards LLM Reliability with Evaluation Driven Development: Iterating Towards LLM Reliability with Evaluation Driven Development 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Iterating Towards LLM Reliability with Evaluation Driven Development: Iterating Towards LLM Reliability with Evaluation Driven Development 기반 agent operation 하네스를 소개한 에이전트 운영 데모입니다.
+- 원천: LangChain Blog
+- 분류: harness_engineering / 성숙도: adopted / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Dosu uses 평가 driven development and LangSmith to build reliable LLM products at scale, monitor production performance, and iterate with confidence라고 설명합니다.
+
+한글 정리
+- Iterating Towards LLM Reliability with Evaluation Driven Development은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #benchmark, #evaluation, #observability, #ide, #tooling
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.langchain.com/blog/pinecone-serverless">Build and deploy a RAG app with Pinecone Serverless</a> - LangChain Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Build and deploy a RAG app with Pinecone Serverless: Build and deploy a RAG app with Pinecone Serverless 기반 observability 하네스를 소개한 에이전트 운영 데모입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Build and deploy a RAG app with Pinecone Serverless: Build and deploy a RAG app with Pinecone Serverless 기반 observability 하네스를 소개한 에이전트 운영 데모입니다.
+- 원천: LangChain Blog
+- 분류: harness_engineering / 성숙도: adopted / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Build production-ready RAG apps with Pinecone Serverless, LangChain, and LangServe라고 설명합니다.
+- 원문은 Deploy scalable AI with usage-based pricing and 관찰성라고 설명합니다.
+
+한글 정리
+- Build and deploy a RAG app with Pinecone Serverless은(는) 에이전트 하네스, 실행 격리, 승인 흐름, 관찰성, 평가 체계와 관련된 소식입니다.
+- 주요 태그: #harness_engineering, #agentic, #observability, #pricing
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=1PBRhm5ZnjU">Anthropic begged the world to stop AI… then shipped this</a> - Fireship YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Fireship 영상은 Claude Fable 릴리스와 Fable 5 vs Opus 4.8 데모를 다루지만, 설명 문구가 논평형이고 공식 Anthropic 출처가 입력에 없습니다. 약한 모델/코딩 신호로 보류가 적절합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Fireship YouTube RSS에서 2026-06-11에 수집된 영상입니다.
+- 설명은 Anthropic이 Claude Fable을 릴리스했다고 주장하고, Mythos class model이라고 표현합니다.
+- 주제 목록에는 Claude Fable release, Fable 5 vs Opus 4.8, Fable 5 Demo가 포함됩니다.
+- 영상 설명에는 Render 스폰서 문구가 먼저 배치되어 있습니다.
+- 입력에는 Anthropic 공식 릴리스, 모델 카드, API 문서, 벤치마크 링크가 없습니다.
+
+인사이트
+- 코딩/프로그래밍 채널의 모델 체감 테스트는 커뮤니티 관심을 파악하는 데 유용하지만, 모델 릴리스 여부나 성능 비교를 확정하기에는 부족합니다.
+
+확인 포인트
+- Anthropic 공식 발표, 모델명, API 제공 여부, 가격, 벤치마크, 코딩 작업 데모의 재현 가능성을 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=ey_GaPdC9zk">One man just liberated Fable... and now it’s illegal</a> - Fireship YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>One man just liberated Fable... and now it’s illegal: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- One man just liberated Fable... and now it’s illegal: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: Fireship YouTube
+- 분류: product / 성숙도: released / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Take BlueDot&#39;s Future of AI course for free - Just three days after the release of Claude Fable, the US government stepped in and banned it in the name of national security라고 설명합니다.
+- 원문은 But why?라고 설명합니다.
+- 원문은 #coding #programming #ai 🔖 Topics Covered - What makes Fable allegedly unsafe?라고 설명합니다.
+- 원문은 - Fable Jailbreak - Fable gets banned Want more Fireship?라고 설명합니다.
+- 원문은 🗞️ Newsletter: 🧠 Courses:라고 설명합니다.
+
+한글 정리
+- One man just liberated Fable... and now it’s illegal은(는) One man just liberated Fable... and now it’s illegal: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #anthropic, #release, #youtube, #security, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=vM2At8Uqp2Y">Claude Fable JUST got BANNED...</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Claude Fable JUST got BANNED...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Claude Fable JUST got BANNED...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.
+- 원천: Wes Roth YouTube
+- 분류: model / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 원문은 The latest AI News라고 설명합니다.
+- 원문은 Learn about LLMs, Gen AI and get ready for the rollout of AGI라고 설명합니다.
+- 원문은 Wes Roth covers the latest happenings in the world of OpenAI, Google, Anthropic, NVIDIA and Open Source AI라고 설명합니다.
+- 원문은 ______________________________________________ My Links 🔗 ➡️ Twitter: ➡️ AI Newsletter: Want to work with me?라고 설명합니다.
+- 원문은 Brand, sponsorship &amp; business inquiries: wesroth@smoothmedia.co Check out my AI Podcast where me and Dylan interview AI experts: ______________________________________________ #ai #openai #llm라고 설명합니다.
+
+한글 정리
+- Claude Fable JUST got BANNED...은(는) 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+- 주요 태그: #model, #openai, #anthropic, #google, #youtube, #open_source, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2605.03042">ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>ARIS는 autonomous research를 adversarial multi-agent collaboration으로 다루는 연구 후보지만 입력에는 제목과 Papers with Code URL만 있습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약: 1) 제목은 ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration입니다. 2) Papers with Code Latest에 잡힌 research/paper 신호입니다. 3) autonomous research workflow를 adversarial multi-agent collaboration으로 다룬다는 점만 확인됩니다. 4) 입력에는 abstract, code availability, benchmark, task suite, metric이 없습니다. 5) 방법론이 실제 연구 자동화인지, 논문 생성 보조인지, 평가 benchmark인지 구분할 수 없습니다. 인사이트: autonomous research agent는 장기 작업, 도구 사용, 검증 루프, 반론 agent를 요구하므로 harness engineering과 직접 연결됩니다. 확인 포인트: arXiv 원문, GitHub 코드, role 설계, 자동 실험 재현, human evaluation, leakage 방지를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2412.20138">TradingAgents: Multi-Agents LLM Financial Trading Framework</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>TradingAgents는 금융 트레이딩을 multi-agent LLM framework로 구성한 연구 후보지만 입력에는 본문 요약이 없습니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약: 1) 제목은 TradingAgents: Multi-Agents LLM Financial Trading Framework입니다. 2) Papers with Code Latest에 수집됐지만 summary는 비어 있습니다. 3) 제목상 금융 트레이딩 의사결정을 여러 LLM agent 역할로 나누는 framework입니다. 4) 데이터 기간, 거래 비용, benchmark, baseline, risk-adjusted metric, code availability는 확인되지 않습니다. 5) 금융 도메인은 backtest overfitting과 look-ahead bias 위험이 큽니다. 인사이트: multi-agent 하네스가 의사결정 도메인으로 확장되는 신호지만 금융 평가는 착시가 쉬워 재현성이 핵심입니다. 확인 포인트: 논문 원문, 코드, data split, transaction cost, slippage, live/paper trading 여부를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2605.27276">SIA: Self Improving AI with Harness &amp; Weight Updates</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>SIA는 self-improving AI를 harness update와 weight update 양쪽으로 다루는 연구 신호입니다. 자기개선 주장인 만큼 평가 격리, 반복 루프 안전성, 재현성 확인이 필수입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 제공 입력에서 확인되는 제목은 SIA: Self Improving AI with Harness &amp; Weight Updates입니다.
+- Papers with Code Latest에 수집됐지만 summary는 비어 있습니다.
+- 제목상 self-improving AI를 모델 weight update뿐 아니라 harness update와 함께 다룹니다.
+- 이는 agent가 실행 환경, 프롬프트, 도구 사용 절차, 평가 루프 자체를 개선하는 방향으로 해석됩니다.
+- 현재 입력에는 실험 설정, improvement loop, benchmark, safety guardrail, code release가 없습니다.
+
+인사이트
+- 하네스 자체를 업데이트 대상으로 삼는 연구는 agentic system engineering에서 중요합니다. 다만 self-improvement는 benchmark overfitting, reward hacking, unsafe tool policy mutation 위험이 커서 가장 엄격한 검증이 필요합니다.
+
+확인 포인트
+- 개선 루프가 무엇을 수정하는지, weight update와 harness update를 어떻게 분리 평가했는지, held-out tasks, rollback, human approval, 공개 코드 여부를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/papers/2606.02800">Cosmos 3: Omnimodal World Models for Physical AI</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>Cosmos 3는 physical AI를 위한 omnimodal world model 항목입니다. agent harness 직접성은 Orchestra-o1보다 약하지만, embodied/physical agent의 멀티모달 상태 모델링 신호로 보입니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- 제공 입력에서 확인되는 제목은 Cosmos 3: Omnimodal World Models for Physical AI입니다.
+- Papers with Code Latest에 수집된 research/paper 항목입니다.
+- 현재 입력에는 abstract가 없어 모델 구조, modality, benchmark, release 여부는 확인되지 않습니다.
+- 제목상 physical AI를 위한 omnimodal world model을 다룹니다.
+- agentic/harness 관점에서는 로봇/물리 환경 agent가 long-horizon planning을 할 때 world model과 tool/action loop를 어떻게 연결하는지가 핵심입니다.
+
+인사이트
+- 직접적인 코딩 에이전트 신호는 아니지만, 물리 에이전트는 관찰-예측-행동 루프가 길고 실패 비용이 높아 evaluation harness가 더 중요해집니다. 실제 benchmark와 시뮬레이터 공개 여부가 관건입니다.
+
+확인 포인트
+- 논문 원문, 모델 공개 여부, physical AI benchmark, simulator 또는 dataset, action planning 평가, real-world transfer 결과를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://agents-last-exam.org/blogs/harness-matters">Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam</a> - Hacker News Algolia</p>
+    <details class="trend-detail weak-detail">
+      <summary>Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: Hacker News Algolia (HN 점수 2, 댓글 0)
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam은(는) Does the Harness Matter? Lessons from Ale-Claw on Agents&#39; Last Exam: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #community
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://discuss.pytorch.kr/t/2026-06-08-14-ai-ml/10709">[2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>[2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- [2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GeekNews
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- [2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- [2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음은(는) [2026/06/08 ~ 14] 이번 주에 살펴볼 만한 AI/ML 논문 모음: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #research, #community, #paper
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/zai-org">Z.ai</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>Z.ai: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Z.ai: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: Papers with Code Latest
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- Z.ai 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- Z.ai은(는) Z.ai: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #research, #paper
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://paperswithcode.com/hexoaiorg">Hexo AI</a> - Papers with Code Latest</p>
+    <details class="trend-detail weak-detail">
+      <summary>Hexo AI: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Hexo AI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: Papers with Code Latest
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- Hexo AI 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- Hexo AI은(는) Hexo AI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #research, #paper
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=zJvN8PDX1is">NVIDIA&#39;s New Free AI - A Gift To Humanity</a> - Two Minute Papers YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Two Minute Papers 영상은 NVIDIA Nemotron 3 Ultra 논문을 언급합니다. 입력상 원문은 논문 링크와 스폰서 정보 위주라 모델/연구 약한 신호로만 유지합니다.</summary>
+      <div class="trend-detail-body">원문 상세 요약
+- Two Minute Papers YouTube RSS에서 2026-06-14에 수집된 영상입니다.
+- 제목은 NVIDIA의 새로운 무료 AI를 강조합니다.
+- 설명에는 Nemotron 3 Ultra paper 링크가 포함되어 있습니다.
+- Lambda GPU Cloud 스폰서 링크와 무료 렌더링 강의/소스코드 링크도 포함되어 있습니다.
+- 입력에는 Nemotron 3 Ultra의 모델 구조, 성능 수치, 라이선스, 다운로드 가능 여부가 없습니다.
+
+인사이트
+- Two Minute Papers는 연구 확산 신호로는 유용하지만, 현재 입력만으로 NVIDIA 모델 릴리스의 실제 개발자 영향도를 판단하기 어렵습니다.
+
+확인 포인트
+- NVIDIA 공식 논문/모델 페이지, 모델 공개 여부, 사용 조건, 벤치마크, API 또는 오픈웨이트 여부를 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/agentic-document-processing">Agentic Document Processing: How AI Agents Are Automating Complex Workflows</a> - LlamaIndex Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Agentic Document Processing: How AI Agents Are Automating Complex Workflows: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Agentic Document Processing: How AI Agents Are Automating Complex Workflows: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: LlamaIndex Blog
+- 분류: other / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Most document automation 도구s don&#39;t actually understand documents—they extract text, fill in fields, and hand off to a human the moment things get complicated라고 설명합니다.
+- 원문은 에이전트ic document processing changes this: AI 에이전트s reason through documents, handle exceptions autonomously, and connect to downstream systems to complete 워크플로s end-to-end라고 설명합니다.
+- 원문은 This piece breaks down how it works, where it delivers the most value, and what it takes to implement it in practice라고 설명합니다.
+
+한글 정리
+- Agentic Document Processing: How AI Agents Are Automating Complex Workflows은(는) Agentic Document Processing: How AI Agents Are Automating Complex Workflows: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #harness_engineering, #agentic, #autonomous_agent, #tool_use, #workflow, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/agentic-document-extraction">How Agentic AI Improves Document Extraction Accuracy and Automation</a> - LlamaIndex Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>How Agentic AI Improves Document Extraction Accuracy and Automation: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- How Agentic AI Improves Document Extraction Accuracy and Automation: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: LlamaIndex Blog
+- 분류: other / 성숙도: prototype / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 Traditional OCR transcribes documents — it doesn&#39;t understand them라고 설명합니다.
+- 원문은 When layouts shift or formats change, pipelines break and manual review queues pile up라고 설명합니다.
+- 원문은 에이전트ic document extraction treats document processing as a reasoning task, using visual grounding, spatial awareness, and self-correction to handle complex documents accurately, without templates or retraining라고 설명합니다.
+
+한글 정리
+- How Agentic AI Improves Document Extraction Accuracy and Automation은(는) How Agentic AI Improves Document Extraction Accuracy and Automation: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #harness_engineering, #agentic
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/unstructured-data-extraction">Unstructured Data Extraction: How to Turn Documents into Structured Insights</a> - LlamaIndex Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>Unstructured Data Extraction: How to Turn Documents into Structured Insights: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Unstructured Data Extraction: How to Turn Documents into Structured Insights: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.
+- 원천: LlamaIndex Blog
+- 분류: model / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Unstructured data extraction turns PDFs, emails, and documents into structured, queryable data라고 설명합니다.
+- 원문은 This guide breaks down how modern AI pipelines use NLP, NER, and LLMs to extract, validate, and integrate information at scale, so teams can unlock insights hidden in unstructured data라고 설명합니다.
+
+한글 정리
+- Unstructured Data Extraction: How to Turn Documents into Structured Insights은(는) 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+- 주요 태그: #model, #harness_engineering, #agentic, #ide, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/ocr-for-images">OCR for Images: Top AI Software for Image-to-Text Conversion</a> - LlamaIndex Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>OCR for Images: Top AI Software for Image-to-Text Conversion: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- OCR for Images: Top AI Software for Image-to-Text Conversion: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: LlamaIndex Blog
+- 분류: product / 성숙도: adopted / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Optical Character Recognition (OCR) is a critical first step in modern AI 워크플로s, turning images and scans into usable text라고 설명합니다.
+- 원문은 But real-world images introduce distortion, noise, and complex layouts that basic OCR often struggles with라고 설명합니다.
+- 원문은 Today’s teams need systems that preserve structure, extract reliable data, and feed automation and AI pipelines라고 설명합니다.
+- 원문은 This guide explores the top 도구s for image-to-text OCR and how to build a production-ready document intelligence stack라고 설명합니다.
+
+한글 정리
+- OCR for Images: Top AI Software for Image-to-Text Conversion은(는) OCR for Images: Top AI Software for Image-to-Text Conversion: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #harness_engineering, #agentic, #tool_use, #ide, #workflow, #multimodal, #image, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.llamaindex.ai/blog/ai-document-classification">AI Document Classification: A Practical Guide to Automated Sorting and Tagging</a> - LlamaIndex Blog</p>
+    <details class="trend-detail weak-detail">
+      <summary>AI Document Classification: A Practical Guide to Automated Sorting and Tagging: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- AI Document Classification: A Practical Guide to Automated Sorting and Tagging: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: LlamaIndex Blog
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Most organizations underestimate how much time gets spent before any real document processing happens, figuring out the nature of the document, where it belongs, and what should happen to it next라고 설명합니다.
+- 원문은 At scale, that sorting layer becomes a serious bottleneck라고 설명합니다.
+- 원문은 This guide covers how AI document classification eliminates it entirely, where it creates the most operational value, and what separates systems that hold up on real documents from those that only perform well on clean test sets라고 설명합니다.
+
+한글 정리
+- AI Document Classification: A Practical Guide to Automated Sorting and Tagging은(는) AI Document Classification: A Practical Guide to Automated Sorting and Tagging: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #harness_engineering, #agentic, #ide, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://openai.com/index/preply">How Preply combines AI and human tutors to personalize learning</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>How Preply combines AI and human tutors to personalize learning: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- How Preply combines AI and human tutors to personalize learning: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: OpenAI News
+- 분류: product / 성숙도: released / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises라고 설명합니다.
+
+한글 정리
+- How Preply combines AI and human tutors to personalize learning은(는) How Preply combines AI and human tutors to personalize learning: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai, #release
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://openai.com/index/bbva">BBVA puts AI at the core of banking with OpenAI</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>BBVA puts AI at the core of banking with OpenAI: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- BBVA puts AI at the core of banking with OpenAI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: OpenAI News
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Learn how BBVA scaled ChatGPT Enterprise to 100,000 employees and partnered with OpenAI to accelerate AI-powered banking transformation worldwide라고 설명합니다.
+
+한글 정리
+- BBVA puts AI at the core of banking with OpenAI은(는) BBVA puts AI at the core of banking with OpenAI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai, #ide, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://openai.com/index/lseg">From data to decisions: how LSEG is scaling trusted AI</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>From data to decisions: how LSEG is scaling trusted AI: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- From data to decisions: how LSEG is scaling trusted AI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: OpenAI News
+- 분류: product / 성숙도: released / 영향도: medium / 신호 3/5
+
+원문 상세 요약
+- 원문은 See how LSEG uses OpenAI to scale trusted AI across its global business, accelerating insights, shrinking release cycles, and empowering 4,000 employees라고 설명합니다.
+
+한글 정리
+- From data to decisions: how LSEG is scaling trusted AI은(는) From data to decisions: how LSEG is scaling trusted AI: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai, #release
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem">Supporting Europe’s work in ensuring a trustworthy AI ecosystem</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>Supporting Europe’s work in ensuring a trustworthy AI ecosystem: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Supporting Europe’s work in ensuring a trustworthy AI ecosystem: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: OpenAI News
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and 도구s to help people understand AI-generated content라고 설명합니다.
+
+한글 정리
+- Supporting Europe’s work in ensuring a trustworthy AI ecosystem은(는) Supporting Europe’s work in ensuring a trustworthy AI ecosystem: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai, #tool_use, #tooling
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://openai.com/index/prc-linked-influence-operations-ai-debates">PRC-linked influence operations are targeting AI debates in the US</a> - OpenAI News</p>
+    <details class="trend-detail weak-detail">
+      <summary>PRC-linked influence operations are targeting AI debates in the US: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- PRC-linked influence operations are targeting AI debates in the US: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: OpenAI News
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 A new report from OpenAI details PRC-linked influence operations using AI to target U.S라고 설명합니다.
+- 원문은 tech debates, data center narratives, tariffs, and false claims about ChatGPT라고 설명합니다.
+
+한글 정리
+- PRC-linked influence operations are targeting AI debates in the US은(는) PRC-linked influence operations are targeting AI debates in the US: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.hada.io/topic?id=30523">홈랩 서비스 관리를 위해 OpenCode Web UI에 Git 접근을 붙이고, AI 변경은 PR 검토 뒤 GitOps가 배포하는 흐름으로 구성함 약 12개의 docker comp...</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>GeekNews의 홈랩 OpenCode Web UI/GitOps 흐름은 개인 인프라에서도 AI 변경을 PR 검토 뒤 배포하는 패턴이 확산되는 신호입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- GeekNews raw item으로 수집됐으며, 제목에 홈랩 서비스 관리 구조가 비교적 구체적으로 들어 있습니다.
+- OpenCode Web UI에 Git 접근을 붙이고, AI 변경은 PR 검토 뒤 GitOps가 배포하는 흐름입니다.
+- 약 12개의 docker compose 서비스가 언급되지만 입력 제목이 잘려 있어 전체 수량과 구성은 확인이 필요합니다.
+
+원문 상세 요약
+- 대상은 홈랩 서비스 관리입니다.
+- AI가 직접 운영 환경에 반영하는 대신 Git 변경을 만들고 PR 검토를 거친 뒤 GitOps가 배포하는 구조로 보입니다.
+- OpenCode Web UI와 Git 접근을 연결한 점이 핵심입니다.
+- 개인/소규모 운영에서도 &#39;AI 제안 → 사람 리뷰 → GitOps 배포&#39; 패턴이 쓰이고 있음을 보여줍니다.
+- 입력에 원문 본문이 없어 보안 경계, 승인 단계, rollback 구성은 확인되지 않았습니다.
+
+인사이트
+- 에이전트가 운영 변경을 직접 수행하는 대신 Git과 PR을 중간 권한 경계로 쓰는 방식은 실무 하네스 설계에 바로 적용 가능한 패턴입니다. 개인 홈랩 사례라도 production GitOps와 같은 원칙을 공유합니다.
+
+확인 포인트
+- OpenCode 권한 범위, Git credential 관리, PR 승인자, GitOps controller, 비밀값 처리, rollback 흐름을 원문에서 확인해야 합니다.</div>
+    </details>
+    <p><a href="https://rsgm.dev/post/ai-dev-platform/">내 홈랩 AI 개발 플랫폼</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>내 홈랩 AI 개발 플랫폼: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- 내 홈랩 AI 개발 플랫폼: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GeekNews
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 내 홈랩 AI 개발 플랫폼 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- 내 홈랩 AI 개발 플랫폼은(는) 내 홈랩 AI 개발 플랫폼: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #community
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.hada.io/topic?id=30488">클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ...</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ...: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- 클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ...: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GeekNews
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ... 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- 클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ...은(는) 클라우드 플래그십 모델의 가격 급등 속에서, 비용 부담 없이 코딩 작업을 이어갈 수 있는 로컬 모델 활용법 정리 로컬 모델은 SOTA 모델 성능에 ...: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #pricing, #community
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.hada.io/topic?id=30525">데이터 프라이버시와 LLM의 무료 사용을 이유로 클라우드 모델을 완전히 떠난 개발자들이 등장 중이며, 컨테이너화·샌드박스화된 오프라인 코딩 하...</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>데이터 프라이버시와 LLM의 무료 사용을 이유로 클라우드 모델을 완전히 떠난 개발자들이 등장 중이며, 컨테이너화·샌드박스화된 오프라인 코딩 하...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- 데이터 프라이버시와 LLM의 무료 사용을 이유로 클라우드 모델을 완전히 떠난 개발자들이 등장 중이며, 컨테이너화·샌드박스화된 오프라인 코딩 하...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.
+- 원천: GeekNews
+- 분류: model / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+
+한글 정리
+- 데이터 프라이버시와 LLM의 무료 사용을 이유로 클라우드 모델을 완전히 떠난 개발자들이 등장 중이며, 컨테이너화·샌드박스화된 오프라인 코딩 하...은(는) 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+- 주요 태그: #model, #community
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.ycombinator.com/item?id=48542100">Ask HN: 일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요?</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요?: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- 일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요?: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GeekNews
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요? 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- 일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요?은(는) 일상적인 코딩에서 Claude/GPT를 로컬 모델로 대체한 사람이 있나요?: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #openai, #anthropic, #community
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.hada.io/topic?id=30531">PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ...</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ...: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ...: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GeekNews
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ... 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+
+한글 정리
+- PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ...은(는) PyTorchKR🔥🇰🇷 🤔💭 이번 주에 선정된 10편의 논문을 살펴보면, 인공지능 연구가 단순한 모델 성능 향상을 넘어 자율성, 신뢰성, 그리고 효율성의 ...: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #autonomous_agent, #research, #community, #paper
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://github.com/eriklee1895/writing-agent-harness">eriklee1895/writing-agent-harness</a> - GitHub Repository Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>eriklee1895/writing-agent-harness: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- eriklee1895/writing-agent-harness: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요.
+- 원천: GitHub Repository Search (stars 5)
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Erik&#39;s 에이전트ic writing harness라고 설명합니다.
+
+한글 정리
+- eriklee1895/writing-agent-harness은(는) eriklee1895/writing-agent-harness: Agent/AI 생태계에서 관찰된 신호입니다. 실제 출시 여부, 사용자 반응, 기존 도구 대비 차별점을 확인하세요. 내용을 중심으로 정리한 Agent/AI 트렌드입니다.
+- 주요 태그: #agentic, #github, #open_source
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://github.com/caramador83/harness-100">caramador83/harness-100</a> - GitHub Repository Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>caramador83/harness-100: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- caramador83/harness-100: 코드 생성, 리뷰, 작업 자동화를 다루는 코딩 에이전트 업데이트입니다.
+- 원천: GitHub Repository Search (stars 0)
+- 분류: coding_agent / 성숙도: adopted / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 Build 100 Claude Code harnesses for 에이전트 teams, with Korean and English support, across 10 domains for production use라고 설명합니다.
+
+한글 정리
+- caramador83/harness-100은(는) 코딩 에이전트의 실행 방식, 개발 워크플로, 코드 생성/리뷰 자동화와 관련된 소식입니다.
+- 주요 태그: #anthropic, #coding_agent, #github, #open_source
+
+인사이트
+- 개발자가 명세 작성, 코드 생성, 리뷰를 맡기는 범위가 넓어질 수 있습니다. 내부 코드베이스 적용성, 보안 경계, 리뷰 비용을 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1wWE5rZjM4U3ZUZTl1NmlmNlVOd2JCUW9rMTdYZXNZeEVtWXpjVkJHT0JGelJkeV9xRHZTNWRQbUFPc3NRVW9CbDIwMGdCQQ?oc=5">현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 - 전자신문</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 - 전자신문: 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 전자신문</summary>
+      <div class="trend-detail-body">핵심 정리
+- 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 - 전자신문: 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 전자신문
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 전자신문
+
+한글 정리
+- 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 - 전자신문은(는) 현업에서 바로 쓰는 &#39;하네스 엔지니어링&#39; 실습 교육 7월 3일 개최 전자신문 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE9ZZkdjX0lIMUJNNzBUckl0cVhkMHZyYmNSekUyTmRIang4SkRXNnRtREpTUTM1Qm9vUmlJZjVZNFNSQ01GeDBQOFE0THhRZDF3NGlsaUx6eWNsSEpHXzhWaGxxVWpIS2JLNDFUb0E1SXRwX0U10gF0QVVfeXFMT1lmR2NfSUgxQk03MFRySXRxWGQwdnJiY1J6RTJOZEhqeDhKRFc2dG1ESlNRMzVCb29SaUlmNVk0U1JDTUZ4MFA4UTRMeFFkMXc0aWxpTHp5Y2xISkdfOFZobHFVakhLYks0MVRvQTVJdHBfRTU?oc=5">하네스 엔지니어링 with 클로드 코드 [새책] - IT조선</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>하네스 엔지니어링 with 클로드 코드 [새책] - IT조선: 하네스 엔지니어링 with 클로드 코드 [새책] IT조선</summary>
+      <div class="trend-detail-body">핵심 정리
+- 하네스 엔지니어링 with 클로드 코드 [새책] - IT조선: 하네스 엔지니어링 with 클로드 코드 [새책] IT조선
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 하네스 엔지니어링 with 클로드 코드 [새책] IT조선
+
+한글 정리
+- 하네스 엔지니어링 with 클로드 코드 [새책] - IT조선은(는) 하네스 엔지니어링 with 클로드 코드 [새책] IT조선 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic, #ide, #tooling
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE9pQl9Gd3RmNzJmcHR0ejVMTmlkeGFILUVOYXpOeUJyQlR0cm52RF9XV0g1V3hpdzNHcG9oNU8wcEVaZ0tkLUJscWwyMFp0bUtOLW9MZVpUcTZkaTkt?oc=5">하네스 엔지니어링! 에이전트들끼리 어떻게 일하게 할까? - 티타임즈</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>하네스 엔지니어링! 에이전트들끼리 어떻게 일하게 할까?</summary>
+      <div class="trend-detail-body">핵심 정리
+- 하네스 엔지니어링! 에이전트들끼리 어떻게 일하게 할까? - 티타임즈: 하네스 엔지니어링!. 에이전트들끼리 어떻게 일하게 할까?
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 하네스 엔지니어링!
+- 에이전트들끼리 어떻게 일하게 할까?
+- 티타임즈
+
+한글 정리
+- 하네스 엔지니어링! 에이전트들끼리 어떻게 일하게 할까? - 티타임즈은(는) 하네스 엔지니어링!. 에이전트들끼리 어떻게 일하게 할까? 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE5lQlJBRm96ODRhclplMXQweDlCam5GY3lLNUliOVQ0c1J3ZVRKcGx5N1JCdG9lNG5xV19PTnFYdGFTdEYySW1CWXpQMXhPY0s3b3lmS0R4SkhDTTNGczFBVHRB?oc=5">&#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은? - 디지털데일리</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>&#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은? - 디지털데일리: &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은?.</summary>
+      <div class="trend-detail-body">핵심 정리
+- &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은? - 디지털데일리: &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은?. 디지털데일리
+- 원천: Google Search
+- 분류: harness_engineering / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은?
+- 디지털데일리
+
+한글 정리
+- &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은? - 디지털데일리은(는) &#34;하네스 갖추면 오픈소스도 프론티어급&#34;…레드햇이 제안하는 금융권 AI 핵심 전략은?. 디지털데일리 내용을 다룹니다.
+- 주요 태그: #harness_engineering, #agentic, #open_source
+
+인사이트
+- 하네스 변화는 에이전트를 실험에서 운영 단계로 옮기는 핵심 신호입니다. 평가, 관찰성, 도구 권한, 실패 복구, 사람 승인 지점을 함께 점검하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE8zZGhYNHYzZWY0a0xDaXNhcXlCS3pHaXdnMHdzaGxreUg3R2lNRUxiSnFQR1hnZWpaNE9MNmlPdjdaZU5jaEo3Zzg3X04tS0pFTXg4VDh3QnRhYUVxYWc?oc=5">Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders - 투데이안</a> - Google Search</p>
+    <details class="trend-detail weak-detail">
+      <summary>Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders - 투데이안: Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders 투데이안</summary>
+      <div class="trend-detail-body">핵심 정리
+- Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders - 투데이안: Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders 투데이안
+- 원천: Google Search
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders 투데이안
+
+한글 정리
+- Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders - 투데이안은(는) Boomi Named a Pioneer in June 2026 Gartner® Emerging Market Quadrant for No-Code Agent Builders 투데이안 내용을 다룹니다.
+- 주요 태그: #other
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=deFvnmibzow">Fable JUST made EVERYONE MAD...</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Fable JUST made EVERYONE MAD...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Fable JUST made EVERYONE MAD...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.
+- 원천: Wes Roth YouTube
+- 분류: model / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 원문은 The latest AI News라고 설명합니다.
+- 원문은 Learn about LLMs, Gen AI and get ready for the rollout of AGI라고 설명합니다.
+- 원문은 Wes Roth covers the latest happenings in the world of OpenAI, Google, Anthropic, NVIDIA and Open Source AI라고 설명합니다.
+- 원문은 ______________________________________________ My Links 🔗 ➡️ Twitter: ➡️ AI Newsletter: Want to work with me?라고 설명합니다.
+- 원문은 Brand, sponsorship &amp; business inquiries: wesroth@smoothmedia.co Check out my AI Podcast where me and Dylan interview AI experts: ______________________________________________ #ai #openai #llm라고 설명합니다.
+
+한글 정리
+- Fable JUST made EVERYONE MAD...은(는) 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+- 주요 태그: #model, #openai, #anthropic, #google, #youtube, #open_source, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=xUbIVUnQnZg">Mythos 5 is WILD...</a> - Wes Roth YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Mythos 5 is WILD...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Mythos 5 is WILD...: LLM 모델 업데이트 신호입니다. 성능, 비용, API 호환성, 에이전트 워크플로 적용 영향을 추적하세요.
+- 원천: Wes Roth YouTube
+- 분류: model / 성숙도: released / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 원문은 LINKS etc: ______________________________________________ My Links 🔗 ➡️ Twitter: ➡️ AI Newsletter: Want to work with me?라고 설명합니다.
+- 원문은 Brand, sponsorship &amp; business inquiries: wesroth@smoothmedia.co Check out my AI Podcast where me and Dylan interview AI experts: ______________________________________________ #ai #openai #llm라고 설명합니다.
+
+한글 정리
+- Mythos 5 is WILD...은(는) 모델 성능, 도구 사용, 비용 또는 API 변화와 관련된 소식입니다.
+- 주요 태그: #model, #openai, #release, #youtube, #video
+
+인사이트
+- 모델 성능, 요금, API 변화가 에이전트 제품의 비용 구조와 기능 범위를 바꿀 수 있습니다. 벤치마크와 실제 도구 사용 성능을 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=BineJAZxs2k">Opus vs Fable 디자인 능력 비교</a> - Code Factory YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>Opus vs Fable 디자인 능력 비교: Mythos와 Opus의 디자인 능력을 전격 비교 해봤습니다. 어떤 부분에선 Mythos가 마음에 들고 어떤 부분에선 Opus가 마음에 드는데 여러분은 어떻게 생각하세요?</summary>
+      <div class="trend-detail-body">핵심 정리
+- Opus vs Fable 디자인 능력 비교: Mythos와 Opus의 디자인 능력을 전격 비교 해봤습니다. 어떤 부분에선 Mythos가 마음에 들고 어떤 부분에선 Opus가 마음에 드는데 여러분은 어떻게 생각하세요?
+- 원천: Code Factory YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- Mythos와 Opus의 디자인 능력을 전격 비교 해봤습니다
+- 어떤 부분에선 Mythos가 마음에 들고 어떤 부분에선 Opus가 마음에 드는데 여러분은 어떻게 생각하세요?
+- 오늘의 썸네일을 만든 AI 딱테잎: 디자인까지 점령한 클로드!
+- 클로드 디자인: 디자인에 이어서 영상 편집까지 해주는 클로드: 이번에도 구독과 좋아요 알림 설정 댓글 및 하잎보이 플리즈 📕 국내 최초 안티그래비티 완벽 가이드 📕 국내 최초 클로드 코드 완벽 가이드 ✉️ 최신 AI및 프로그래밍 무료 메일링 리스트 ⭐️ 코드팩토리 통합링크 (모든 강의 및 서적) ⭐️ 👉 SNS X(Twitter): Threads: Instagram: Facebook: LinkedIn: 👉 바이브코딩 오픈톡방 자유 주제: 클로드 코드: 커서/안티그래비티: 👉 NestJS 마스터클래스 👉 플러터 초급 👉 플러터 중급 👉 Typescript...
+
+한글 정리
+- Opus vs Fable 디자인 능력 비교은(는) Mythos와 Opus의 디자인 능력을 전격 비교 해봤습니다. 어떤 부분에선 Mythos가 마음에 들고 어떤 부분에선 Opus가 마음에 드는데 여러분은 어떻게 생각하세요? 내용을 다룹니다.
+- 주요 태그: #anthropic, #youtube, #multimodal, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=lQTnnglT0XE">드디어 출시한 클로드 미토스</a> - Code Factory YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>드디어 출시한 클로드 미토스: 오늘의 썸네일을 만든 AI 딱테잎: 디자인까지 점령한 클로드!</summary>
+      <div class="trend-detail-body">핵심 정리
+- 드디어 출시한 클로드 미토스: 오늘의 썸네일을 만든 AI 딱테잎: 디자인까지 점령한 클로드!
+- 원천: Code Factory YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- 오늘의 썸네일을 만든 AI 딱테잎: 디자인까지 점령한 클로드!
+- 클로드 디자인: 디자인에 이어서 영상 편집까지 해주는 클로드: 이번에도 구독과 좋아요 알림 설정 댓글 및 하잎보이 플리즈 📕 국내 최초 안티그래비티 완벽 가이드 📕 국내 최초 클로드 코드 완벽 가이드 ✉️ 최신 AI및 프로그래밍 무료 메일링 리스트 ⭐️ 코드팩토리 통합링크 (모든 강의 및 서적) ⭐️ 👉 SNS X(Twitter): Threads: Instagram: Facebook: LinkedIn: 👉 바이브코딩 오픈톡방 자유 주제: 클로드 코드: 커서/안티그래비티: 👉 NestJS 마스터클래스 👉 플러터 초급 👉 플러터 중급 👉 Typescript...
+
+한글 정리
+- 드디어 출시한 클로드 미토스은(는) 오늘의 썸네일을 만든 AI 딱테잎: 디자인까지 점령한 클로드! 내용을 다룹니다.
+- 주요 태그: #release, #youtube, #multimodal, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/rlVakwnaekU">??? : 그거 위험해?? 그럼 쓰면 안되지</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>??? : 그거 위험해??</summary>
+      <div class="trend-detail-body">핵심 정리
+- ??? : 그거 위험해?? 그럼 쓰면 안되지: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #ai #클로드 #fable5
+
+한글 정리
+- ??? : 그거 위험해?? 그럼 쓰면 안되지은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #security, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/PEN75r_dwrM">스스로 발전하는 AI, 곧 온다 ㄷㄷ</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>스스로 발전하는 AI, 곧 온다 ㄷㄷ: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 스스로 발전하는 AI, 곧 온다 ㄷㄷ: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #ai #앤트로픽 #재귀개선
+
+한글 정리
+- 스스로 발전하는 AI, 곧 온다 ㄷㄷ은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/9U2A5qIAvIg">티빙 개인정보 유출이 큰일인 진짜 이유 ㄷㄷ</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>티빙 개인정보 유출이 큰일인 진짜 이유 ㄷㄷ: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 티빙 개인정보 유출이 큰일인 진짜 이유 ㄷㄷ: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #티빙 #개인정보 #유출
+
+한글 정리
+- 티빙 개인정보 유출이 큰일인 진짜 이유 ㄷㄷ은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/nsfudxPMsyA">뭐? 로봇 하나를 조심하라고?</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>뭐? 로봇 하나를 조심하라고?: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 뭐? 로봇 하나를 조심하라고?: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #ai #로봇 #휴머노이드
+
+한글 정리
+- 뭐? 로봇 하나를 조심하라고?은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/tlJeZb8Y8J4">감정표현까지 가능해진 오픈소스 TTS</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>감정표현까지 가능해진 오픈소스 TTS: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 감정표현까지 가능해진 오픈소스 TTS: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #tts #오픈소스 #ai
+
+한글 정리
+- 감정표현까지 가능해진 오픈소스 TTS은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #open_source, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/980ZKEQE52U">머스크한테 손을 벌린 구글...</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>머스크한테 손을 벌린 구글...: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 머스크한테 손을 벌린 구글...: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #ai #구글 #일론머스크
+
+한글 정리
+- 머스크한테 손을 벌린 구글...은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/SHWgPOixM-M">쓰기 너무 좋아진 오픈클로 ㄷㄷ 이래도 안써?</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>쓰기 너무 좋아진 오픈클로 ㄷㄷ 이래도 안써?: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- 쓰기 너무 좋아진 오픈클로 ㄷㄷ 이래도 안써?: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #오픈클로 #ai #마이크로소프트
+
+한글 정리
+- 쓰기 너무 좋아진 오픈클로 ㄷㄷ 이래도 안써?은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/shorts/QW0feE9z58k">AI 시장 먹어버리겠다는 엔비디아의 새로운 칩</a> - JoCoding YouTube</p>
+    <details class="trend-detail weak-detail">
+      <summary>AI 시장 먹어버리겠다는 엔비디아의 새로운 칩: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...</summary>
+      <div class="trend-detail-body">핵심 정리
+- AI 시장 먹어버리겠다는 엔비디아의 새로운 칩: ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님...
+- 원천: JoCoding YouTube
+- 분류: other / 성숙도: prototype / 영향도: low / 신호 1/5
+
+원문 상세 요약
+- ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다
+- #ai #엔비디아 #스파크
+
+한글 정리
+- AI 시장 먹어버리겠다는 엔비디아의 새로운 칩은(는) ✅ 조코딩과 코딩 공부하기 VVIP 멤버십 후원 그림자그림자님, 차딩Chading TV님, Sicongbabe님, 정진균님, Tae hwan Kim님, 시원-r9u님, YCN유림방송님, 그래머피티님, GomnaStudio님, violet8mira님, 천사슥님, jsp3356님, 예스타님, yubizen님, shintony667님 감사드립니다 내용을 다룹니다.
+- 주요 태그: #youtube, #video
+
+인사이트
+- 초기 신호입니다. 반복 보도, 실제 사용자 사례, 공개 데모가 이어지는지 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+    <p><a href="https://www.youtube.com/watch?v=PZ9u6DR8qOU">Claude Code 창시자, 소프트웨어 엔지니어의 종말을 말하다 [유튜브]</a> - GeekNews</p>
+    <details class="trend-detail weak-detail">
+      <summary>Claude Code 창시자, 소프트웨어 엔지니어의 종말을 말하다 [유튜브]: 원문에서 확인된 Agent/AI 관련 업데이트입니다.</summary>
+      <div class="trend-detail-body">핵심 정리
+- Claude Code 창시자, 소프트웨어 엔지니어의 종말을 말하다 [유튜브]: 코딩 에이전트와 개발 자동화 관련 신호입니다. 코드 생성, 리뷰, 명세 기반 작업에 실제로 쓸 수 있는지 확인하세요.
+- 원천: GeekNews
+- 분류: coding_agent / 성숙도: prototype / 영향도: low / 신호 2/5
+
+원문 상세 요약
+- 코딩 에이전트의 실행 방식, 개발 워크플로, 코드 생성/리뷰 자동화와 관련된 소식입니다.
+
+한글 정리
+- Claude Code 창시자, 소프트웨어 엔지니어의 종말을 말하다 [유튜브]은(는) 코딩 에이전트의 실행 방식, 개발 워크플로, 코드 생성/리뷰 자동화와 관련된 소식입니다.
+- 주요 태그: #anthropic, #coding_agent, #youtube, #community, #video
+
+인사이트
+- 개발자가 명세 작성, 코드 생성, 리뷰를 맡기는 범위가 넓어질 수 있습니다. 내부 코드베이스 적용성, 보안 경계, 리뷰 비용을 확인하세요.
+
+확인 포인트
+- 원문에서 실제 출시 여부, 코드/논문/제품 근거, 가격이나 API 변경 여부를 확인하세요.
+- 하네스나 에이전트 운영에 적용할 경우 권한, 보안 경계, 평가 기준을 함께 점검하세요.</div>
+    </details>
+  </section>
+
+  <section>
+    <h2>수집 범위</h2>
+    <p class="error">reddit_machine_learning: HTTPStatusError: Client error &#39;403 Blocked&#39; for url &#39;https://www.reddit.com/r/MachineLearning/new.json?limit=10&#39;
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403</p>
+  </section>
+</main>
+</body>
+</html>
